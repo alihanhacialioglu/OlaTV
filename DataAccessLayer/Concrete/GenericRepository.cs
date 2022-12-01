@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,14 +38,14 @@ namespace DataAccessLayer.Concrete
             context.SaveChanges();
         }
 
-        public List<T> GetAll(System.Linq.Expressions.Expression<Func<T, bool>> filter = null)
+        public List<T> GetAll(Expression<Func<T, bool>> filter = null)
         {
             return filter == null
                 ? _objects.ToList()
                 : _objects.Where(filter).ToList();
         }
 
-        public T Get(System.Linq.Expressions.Expression<Func<T, bool>> filter)
+        public T Get(Expression<Func<T, bool>> filter)
         {
             return _objects.SingleOrDefault(filter);
         }
