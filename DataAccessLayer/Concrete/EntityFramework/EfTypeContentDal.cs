@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfBackgroundDal : GenericRepository<Background>, IBackgroundDal
+    public class EfTypeContentDal : GenericRepository<TypeContent>, ITypeContentDal
     {
     }
 }
