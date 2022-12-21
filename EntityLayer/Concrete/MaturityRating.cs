@@ -12,7 +12,7 @@ namespace EntityLayer.Concrete
         [Key]
         public int MaturityRatingId { get; set; }
 
-        [StringLength(10)]
+        [StringLength(20)]
         public string StatusName { get; set; }
 
         [StringLength(100)]

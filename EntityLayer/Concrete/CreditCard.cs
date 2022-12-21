@@ -13,7 +13,7 @@ namespace EntityLayer.Concrete
         public int CreditCardId { get; set; }
 
         [StringLength(25)]
-        public string Name { get; set; }
+        public string CreditCardHolder{ get; set; }
         public int CreditCardNo { get; set; }
         public DateTime ExpirationDate { get; set; }
         public byte Cvv { get; set; }

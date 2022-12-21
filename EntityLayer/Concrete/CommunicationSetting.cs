@@ -13,10 +13,10 @@ namespace EntityLayer.Concrete
         public int CommunicationSettingId { get; set; }
 
         [StringLength(30)]
-        public string CommunicationName { get; set; }
+        public string CommunicationSettingName { get; set; }
 
         [StringLength(100)]
-        public string CommunicationExplanation { get; set; }
+        public string CommunicationSettingExplanation { get; set; }
 
         //Relation with ProfileCommuniicationSetting
         public ICollection<ProfileCommunicationSetting> ProfileCommunicationSettings { get; set; }

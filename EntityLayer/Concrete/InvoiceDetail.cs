@@ -10,7 +10,7 @@ namespace EntityLayer.Concrete
     public class InvoiceDetail
     {
         [Key]
-        public int InvoicedetailId { get; set; }
+        public int InvoiceDetailId { get; set; }
 
         public float TotalPrice { get; set; }
 
