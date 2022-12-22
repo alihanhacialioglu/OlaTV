@@ -10,7 +10,7 @@ namespace EntityLayer.Concrete
     public class Profile
     {
         [Key]
-        public int PrfileId { get; set; }
+        public int ProfileId { get; set; }
 
         [StringLength(20)]
         public string ProfileName { get; set; }

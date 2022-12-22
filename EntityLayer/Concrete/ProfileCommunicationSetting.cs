@@ -11,7 +11,7 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int ProfileCommunicationSettingId { get; set; }
-        public bool CommunicationSelection { get; set; }
+        public bool ProfileCommunicationSettingSelection { get; set; }
 
         //Relation with Profile
         public int ProfileId { get; set; }

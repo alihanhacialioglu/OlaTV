@@ -13,10 +13,10 @@ namespace EntityLayer.Concrete
         public int PlaybackSettingId { get; set; }
 
         [StringLength(20)]
-        public string PlaybackName { get; set; }
+        public string PlaybackSettingName { get; set; }
 
         [StringLength(100)]
-        public string PlaybackExplanation { get; set; }
+        public string PlaybackSettingExplanation { get; set; }
 
         //Relation with ProfilePlaybackSetting
         public ICollection<ProfilePlaybackSetting> ProfilePlaybackSettings { get; set; }
