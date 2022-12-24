@@ -10,5 +10,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface ITypeDal : IGenericDal<Type>
     {
+        void Add(System.Type type);
     }
 }
