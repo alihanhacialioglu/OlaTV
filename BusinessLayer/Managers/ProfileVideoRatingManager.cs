@@ -34,7 +34,7 @@ namespace BusinessLayer.Manager
 
         public ProfileVideoRating GetByRate(string rate)
         {
-            return _profileVideoRatingDal.Get(p=>p.ProfileVideoRate==rate);
+            return _profileVideoRatingDal.Get(p=>p.VideoRate==rate);
         }
 
         public void Remove(ProfileVideoRating profileVideoRating)

@@ -53,7 +53,7 @@ namespace BusinessLayer.Manager
             return _userDal.Get(u => u.Password == password);
         }
 
-        public User GetByPhoneNumber(string number)
+        public User GetByPhoneNumber(int number)
         {
             return _userDal.Get(u => u.PhoneNumber == number);
         }
