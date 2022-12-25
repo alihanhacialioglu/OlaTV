@@ -11,7 +11,7 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int ProfileVideoWatchingId { get; set; }
-        public DateTime VideoDateOfWached { get; set; }
+        public DateTime ProfileVideoDateOfWached { get; set; }
 
         //Relation with Profile
         public int ProfileId { get; set; }

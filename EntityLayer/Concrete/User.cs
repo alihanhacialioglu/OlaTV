@@ -22,7 +22,7 @@ namespace EntityLayer.Concrete
         public string EmailAddress { get; set; }
 
         [StringLength(11)]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public DateTime DateOfRegistration { get; set; }
         public int AccessPin { get; set; }
 

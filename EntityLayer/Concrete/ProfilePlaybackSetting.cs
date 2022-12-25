@@ -11,7 +11,7 @@ namespace EntityLayer.Concrete
     {
         [Key]
         public int ProfilePlaybackSettingId { get; set; }
-        public bool PlaybackSelection { get; set; }
+        public bool PlaybackPlaybackSelection { get; set; }
 
         //Relation with PlaybackSetting
         public int PlaybackSettingId { get; set; }
