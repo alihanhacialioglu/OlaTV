@@ -28,7 +28,7 @@ namespace BusinessLayer.Manager
 
         public ProfileVideoWatching GetByDateTime(DateTime dateTime)
         {
-            return _profileVideoWatchingDal.Get(p => p.VideoDateOfWached == dateTime);
+            return _profileVideoWatchingDal.Get(p => p.ProfileVideoDateOfWached == dateTime);
         }
 
         public ProfileVideoWatching GetById(int id)

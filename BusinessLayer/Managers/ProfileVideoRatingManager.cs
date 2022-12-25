@@ -13,9 +13,9 @@ namespace BusinessLayer.Manager
     public class ProfileVideoRatingManager : IProfileVideoRatingService
     {
         IProfileVideoRatingDal _profileVideoRatingDal;
-        public ProfileVideoRatingManager(IProfileVideoRatingDal profileVideoRatingDal) 
+        public ProfileVideoRatingManager(IProfileVideoRatingDal profileVideoRatingDal)
         {
-            _profileVideoRatingDal= profileVideoRatingDal;
+            _profileVideoRatingDal = profileVideoRatingDal;
         }
         public void Add(ProfileVideoRating profileVideoRating)
         {
@@ -34,7 +34,7 @@ namespace BusinessLayer.Manager
 
         public ProfileVideoRating GetByRate(string rate)
         {
-            return _profileVideoRatingDal.Get(p=>p.VideoRate==rate);
+            return _profileVideoRatingDal.Get(p => p.ProfileVideoRate == rate);
         }
 
         public void Remove(ProfileVideoRating profileVideoRating)

@@ -17,7 +17,7 @@ namespace BusinessLayer.Services
         User GetByName(string name);
         User GetByPassword(string password);
         User GetByEmail(string email);
-        User GetByPhoneNumber(int number);
+        User GetByPhoneNumber(string number);
         User GetByPin(int pin);
         User GetByDateTime(DateTime dateTime);
     }
