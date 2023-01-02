@@ -16,6 +16,6 @@ namespace EntityLayer.Concrete
         public string StyleName { get; set; }
 
         //Relation with StyleContent
-        public ICollection<StyleContent> StyleContents { get; set; }
+        public virtual ICollection<StyleContent> StyleContents { get; set; }
     }
 }

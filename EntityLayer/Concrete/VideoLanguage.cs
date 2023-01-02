@@ -14,10 +14,10 @@ namespace EntityLayer.Concrete
 
         //Relation with Video
         public int VideoId { get; set; }
-        public Video video { get; set; }
+        public virtual Video video { get; set; }
 
         //Relation with Language
         public int LanguageId { get; set; }
-        public Language language { get; set; }
+        public virtual Language Language { get; set; }
     }
 }

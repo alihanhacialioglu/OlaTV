@@ -16,6 +16,6 @@ namespace EntityLayer.Concrete
         public string CategoryName { get; set; }
 
         //Relation with Video
-        public ICollection<Video> Videos { get; set; }
+        public virtual ICollection<Video> Videos { get; set; }
     }
 }

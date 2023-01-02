@@ -19,6 +19,6 @@ namespace EntityLayer.Concrete
         public string PlaybackSettingExplanation { get; set; }
 
         //Relation with ProfilePlaybackSetting
-        public ICollection<ProfilePlaybackSetting> ProfilePlaybackSettings { get; set; }
+        public virtual ICollection<ProfilePlaybackSetting> ProfilePlaybackSettings { get; set; }
     }
 }

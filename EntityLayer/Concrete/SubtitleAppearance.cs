@@ -14,24 +14,24 @@ namespace EntityLayer.Concrete
 
         //Relation with Window
         public int WindowId { get; set; }
-        public Window window { get; set; }
+        public virtual Window window { get; set; }
         //Relation with Background
         public int BackgroundId { get; set; }
-        public Background background { get; set; }
+        public virtual Background background { get; set; }
 
         //Relation with Font
         public int FontId { get; set; }
-        public Font font { get; set; }
+        public virtual Font font { get; set; }
 
         //Relation with Shadow
         public int ShadowId { get; set; }
-        public Shadow shadow { get; set; }
+        public virtual Shadow shadow { get; set; }
 
         //Relation with TextSize
         public int TextSizeId { get; set; }
-        public TextSize textSize { get; set; }
+        public virtual TextSize textSize { get; set; }
 
         //Relation with Profile
-        public ICollection<Profile> Profiles { get; set; }
+        public virtual ICollection<Profile> Profiles { get; set; }
     }
 }

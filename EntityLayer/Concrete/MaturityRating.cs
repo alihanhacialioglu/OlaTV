@@ -19,9 +19,9 @@ namespace EntityLayer.Concrete
         public string MaturityExplanation { get; set; }
 
         //Relation with Profile
-        public ICollection<Profile> Profiles { get; set; }
+        public virtual ICollection<Profile> Profiles { get; set; }
 
         //Relation with Content
-        public ICollection<Content> Contents { get; set; }
+        public virtual ICollection<Content> Contents { get; set; }
     }
 }

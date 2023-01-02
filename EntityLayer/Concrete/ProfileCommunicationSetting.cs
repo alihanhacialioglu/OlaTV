@@ -15,10 +15,10 @@ namespace EntityLayer.Concrete
 
         //Relation with Profile
         public int ProfileId { get; set; }
-        public Profile profile { get; set; }
+        public virtual Profile profile { get; set; }
 
         //Relation with CommunicationSetting
         public int CommunicationSettingId { get; set; }
-        public CommunicationSetting communicationSetting { get; set; }
+        public virtual CommunicationSetting CommunicationSetting { get; set; }
     }
 }

@@ -16,6 +16,6 @@ namespace EntityLayer.Concrete
         public string GenreName { get; set; }
 
         //Relation with GenreContent
-        public ICollection<GenreContent> GenreContents { get; set; }
+        public virtual ICollection<GenreContent> GenreContents { get; set; }
     }
 }

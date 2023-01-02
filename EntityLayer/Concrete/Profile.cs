@@ -21,22 +21,22 @@ namespace EntityLayer.Concrete
 
         //Relation with User
         public int UserId { get; set; }
-        public User user { get; set; }
+        public virtual User user { get; set; }
 
         //Relation with Language
         public int LanguageId { get; set; }
-        public Language language { get; set; }
+        public virtual Language language { get; set; }
 
         //Relation with MaturityRating
         public int MaturityRatingId { get; set; }
-        public MaturityRating maturityRating { get; set; }
+        public virtual MaturityRating maturityRating { get; set; }
 
         //Relation with SubtitleAppearance
         public int SubtitleAppearanceId { get; set; }
-        public SubtitleAppearance subtitleAppearance { get; set; }
+        public virtual SubtitleAppearance subtitleAppearance { get; set; }
 
         //Relation with ProfileContent
-        public ICollection<ProfileContent> ProfileContents { get; set; }
+        public  virtual ICollection<ProfileContent> ProfileContents { get; set; }
 
     }
 }

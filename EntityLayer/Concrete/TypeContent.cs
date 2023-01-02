@@ -14,10 +14,10 @@ namespace EntityLayer.Concrete
 
         //Relation with Content
         public int ContentId { get; set; }
-        public Content content { get; set; }
+        public virtual Content content { get; set; }
 
         //Relation with Type
         public int TypeId { get; set; }
-        public Type type { get; set; }
+        public virtual Type type { get; set; }
     }
 }

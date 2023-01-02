@@ -16,6 +16,6 @@ namespace EntityLayer.Concrete
         public string TextSizeName { get; set; }
 
         //Relation with SubtitleAppearance
-        public ICollection<SubtitleAppearance> SubtitleAppearances { get; set; }
+        public virtual ICollection<SubtitleAppearance> SubtitleAppearances { get; set; }
     }
 }

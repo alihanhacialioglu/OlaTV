@@ -16,13 +16,13 @@ namespace EntityLayer.Concrete
         public string ColorName { get; set; }
 
         //Relation with Window
-        public ICollection<Window> windows { get; set; }
+        public virtual ICollection<Window> Windows { get; set; }
         //Relation with Background
-        public ICollection<Background> backgrounds { get; set; }
+        public virtual ICollection<Background> Backgrounds { get; set; }
         //Relation with Font
-        public ICollection<Font> fonts { get; set; }
+        public virtual ICollection<Font> Fonts { get; set; }
         //Relation with Shadow
-        public ICollection<Shadow> shadows { get; set; }
+        public virtual ICollection<Shadow> Shadows { get; set; }
 
 
 

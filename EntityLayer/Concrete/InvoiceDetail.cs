@@ -22,7 +22,7 @@ namespace EntityLayer.Concrete
 
         //Relation to CreditCard
         public int CreditCardId { get; set; }
-        public CreditCard creditCard { get; set; }
+        public virtual CreditCard creditCard { get; set; }
 
 
 

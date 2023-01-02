@@ -25,6 +25,6 @@ namespace EntityLayer.Concrete
 
 
         //Relation with User
-        public ICollection<User> user { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

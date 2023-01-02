@@ -17,28 +17,24 @@ namespace EntityLayer.Concrete
 
         //Relation with MaturityRating
         public int MaturityRatingId { get; set; }
-        public MaturityRating maturityRating { get; set; }
+        public virtual MaturityRating maturityRating { get; set; }
 
         //Relation with GenreContent
-        public int GenreId { get; set; }
-        public Genre genre { get; set; }
+        public virtual ICollection<GenreContent> GenreContents { get; set; }
 
         //Relation with TypeContent
-        public int TypeContentId { get; set; }
-        public TypeContent typeContent { get; set; }
+        public virtual ICollection<TypeContent> TypeContents { get; set; }
 
         //Relation with StyleContent
-        public int StylrContentId { get; set; }
-        public StyleContent styleContent { get; set; }
+        public virtual ICollection<StyleContent> StyleContents { get; set; }
 
         //Relation with ContentCastTitle
-        public ICollection<ContentCastTitle> ContentCastTitles { get; set; }
-
+        public virtual ICollection<ContentCastTitle> ContentCastTitles { get; set; }
 
         //Relation with ProfileContent
-        public ICollection<ProfileContent> ProfileContents { get; set; }
+        public virtual ICollection<ProfileContent> ProfileContents { get; set; }
 
         //Relation with Video
-        public ICollection<Video> Videos { get; set; }
+        public virtual ICollection<Video> Videos { get; set; }
     }
 }

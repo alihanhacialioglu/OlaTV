@@ -16,6 +16,6 @@ namespace EntityLayer.Concrete
         public string CastNameSurname { get; set; }
 
         //Relation with CastTitle
-        public ICollection<Cast> Casts { get; set; }
+        public virtual ICollection<CastTitle> CastTitle { get; set; }
     }
 }

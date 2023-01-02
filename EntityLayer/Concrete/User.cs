@@ -25,19 +25,18 @@ namespace EntityLayer.Concrete
         public string PhoneNumber { get; set; }
         public DateTime DateOfRegistration { get; set; }
         public int AccessPin { get; set; }
-
-
+        public bool isDelete { get; set; }
 
         //Relation with Packet
         public int PacketId { get; set; }
-        public Packet packet { get; set; }
+        public virtual Packet packet { get; set; }
 
 
         //Relation with CreditCard
-        public ICollection<CreditCard> CreditCards { get; set; }
+        public virtual ICollection<CreditCard> CreditCards { get; set; }
 
         //Relation with Profile
-        public ICollection<Profile> Profiles { get; set; }
+        public virtual ICollection<Profile> Profiles { get; set; }
 
     }
 }

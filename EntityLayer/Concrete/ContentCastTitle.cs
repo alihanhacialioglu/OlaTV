@@ -15,10 +15,10 @@ namespace EntityLayer.Concrete
 
         //Relation with CastTitle
         public int CastTitleId { get; set; }
-        public CastTitle castTitle { get; set; }
+        public virtual CastTitle castTitle { get; set; }
 
         //Relation with Content
         public int ContentId { get; set; }
-        public Content content { get; set; }
+        public virtual Content content { get; set; }
     }
 }

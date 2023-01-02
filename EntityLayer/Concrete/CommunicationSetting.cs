@@ -19,7 +19,7 @@ namespace EntityLayer.Concrete
         public string CommunicationSettingExplanation { get; set; }
 
         //Relation with ProfileCommuniicationSetting
-        public ICollection<ProfileCommunicationSetting> ProfileCommunicationSettings { get; set; }
+        public virtual ICollection<ProfileCommunicationSetting> ProfileCommunicationSettings { get; set; }
 
     }
 }

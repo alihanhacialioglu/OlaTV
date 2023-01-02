@@ -16,6 +16,6 @@ namespace EntityLayer.Concrete
         public string TitleName { get; set; }
 
         //Relation with CastTitle
-        public ICollection<CastTitle> CastTitles { get; set; }
+        public virtual ICollection<CastTitle> CastTitles { get; set; }
     }
 }

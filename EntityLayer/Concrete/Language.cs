@@ -16,12 +16,12 @@ namespace EntityLayer.Concrete
         public string LanguageName { get; set; }
 
         //Relation with Profile
-        public ICollection<Profile> Profiles { get; set; }
+        public virtual ICollection<Profile> Profiles { get; set; }
 
         //Relation with Video
-        public ICollection<Video> Videos { get; set; }
+        public virtual ICollection<Video> Videos { get; set; }
         //Relation with VideoLanguage
-        public ICollection<VideoLanguage> VideoLanguages { get; set; }
+        public virtual ICollection<VideoLanguage> VideoLanguages { get; set; }
 
     }
 }

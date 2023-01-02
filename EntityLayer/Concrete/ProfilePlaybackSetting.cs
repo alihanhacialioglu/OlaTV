@@ -15,11 +15,11 @@ namespace EntityLayer.Concrete
 
         //Relation with PlaybackSetting
         public int PlaybackSettingId { get; set; }
-        public PlaybackSetting playbackSetting { get; set; }
+        public virtual PlaybackSetting playbackSetting { get; set; }
 
         //Relation with Profile
         public int ProfileId { get; set; }
-        public Profile profile { get; set; }
+        public virtual Profile profile { get; set; }
 
     }
 }

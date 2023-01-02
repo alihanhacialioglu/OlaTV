@@ -16,6 +16,6 @@ namespace EntityLayer.Concrete
         public string TypeName { get; set; }
 
         //Relation with TypeContent
-        public ICollection<TypeContent> TypeContents { get; set; }
+        public virtual ICollection<TypeContent> TypeContents { get; set; }
     }
 }
