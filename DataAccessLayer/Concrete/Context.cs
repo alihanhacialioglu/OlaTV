@@ -13,9 +13,13 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=OlaTvDB;Trusted_Connection=true");
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=OlaTvDB;Trusted_Connection=true");
 
-            //optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=Northwind;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=LAPTOP-7U5PUCF6;Initial Catalog=DbOlaTv;" +
+               "Persist Security Info=False;User ID=sa;Password=6161;" +
+               "MultipleActiveResultSets=False;Encrypt=False;" +
+               "TrustServerCertificate=False;Connection Timeout=30;");
+
         }
 
         public DbSet<Background> Backgrounds { get; set; }
