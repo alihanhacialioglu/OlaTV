@@ -14,11 +14,11 @@ namespace EntityLayer.Concrete
 
         //Relation with Style
         public int StyleId { get; set; }
-        public virtual Style style { get; set; }
+        public virtual Style Style { get; set; }
 
         //Relation with Content
         public int ContentId { get; set; }
-        public virtual Content content { get; set; }
+        public virtual Content Content { get; set; }
 
     }
 }

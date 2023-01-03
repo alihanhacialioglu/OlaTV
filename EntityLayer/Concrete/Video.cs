@@ -20,14 +20,18 @@ namespace EntityLayer.Concrete
 
         //Relation with Language
         public int LanguageId { get; set; }
-        public virtual Language language { get; set; }
+        public virtual Language Language { get; set; }
 
-        //Relation with VideoLanguage
-        public virtual ICollection<VideoLanguage> VideoLanguages { get; set; }
+        //Relation with Content
+        public int ContentId { get; set; }
+        public virtual Content Content { get; set; }
 
         //Relation with Category
         public int CategoryId { get; set; }
-        public virtual Category category { get; set; }
+        public virtual Category Category { get; set; }
+
+        //Relation with VideoLanguage
+        public virtual ICollection<VideoLanguage> VideoLanguages { get; set; }
 
         //Relation with ProfileVideoWatching
         public virtual ICollection<ProfileVideoWatching> ProfileVideoWatchings { get; set; }
@@ -35,8 +39,6 @@ namespace EntityLayer.Concrete
         //Relation with ProfileVideoRating
         public virtual ICollection<ProfileVideoRating> ProfileVideoRatings { get; set; }
 
-        //Relation with Content
-        public int ContentId { get; set; }
-        public virtual Content content { get; set; }
+        
     }
 }

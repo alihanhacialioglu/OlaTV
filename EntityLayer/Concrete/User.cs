@@ -25,11 +25,11 @@ namespace EntityLayer.Concrete
         public string PhoneNumber { get; set; }
         public DateTime DateOfRegistration { get; set; }
         public int AccessPin { get; set; }
-        public bool isDelete { get; set; }
+        public bool IsDelete { get; set; }
 
         //Relation with Packet
         public int PacketId { get; set; }
-        public virtual Packet packet { get; set; }
+        public virtual Packet Packet { get; set; }
 
 
         //Relation with CreditCard

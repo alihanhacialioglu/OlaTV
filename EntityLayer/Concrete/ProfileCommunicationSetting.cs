@@ -15,7 +15,7 @@ namespace EntityLayer.Concrete
 
         //Relation with Profile
         public int ProfileId { get; set; }
-        public virtual Profile profile { get; set; }
+        public virtual Profile Profile { get; set; }
 
         //Relation with CommunicationSetting
         public int CommunicationSettingId { get; set; }

@@ -17,8 +17,8 @@ namespace EntityLayer.Concrete
 
         //Relation with Color
         public int ColorId { get; set; }
-        public virtual Color color { get; set; }
+        public virtual Color Color { get; set; }
         //Relation with SubtitleAppearance
-        public virtual ICollection<SubtitleAppearance> SubtitleAppearance { get; set; }
+        public virtual ICollection<SubtitleAppearance> SubtitleAppearances { get; set; }
     }
 }

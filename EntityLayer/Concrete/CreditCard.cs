@@ -22,7 +22,7 @@ namespace EntityLayer.Concrete
 
         //Relation with User
         public int UserId { get; set; }
-        public virtual User user { get; set; }
+        public virtual User User { get; set; }
 
         //Relation with InvoiceDetail
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }

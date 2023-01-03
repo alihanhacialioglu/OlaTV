@@ -14,10 +14,10 @@ namespace EntityLayer.Concrete
 
         //Relation with Cast
         public int CastId { get; set; }
-        public virtual Cast cast { get; set; }
+        public virtual Cast Cast { get; set; }
         //Relation with Title
         public int TitleId { get; set; }
-        public virtual Title title { get; set; }
+        public virtual Title Title { get; set; }
         //Relation with ContentCastTitle
         public virtual ICollection<ContentCastTitle> ContentCastTitles { get; set; }
     }

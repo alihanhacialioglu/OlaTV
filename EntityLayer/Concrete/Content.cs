@@ -17,7 +17,7 @@ namespace EntityLayer.Concrete
 
         //Relation with MaturityRating
         public int MaturityRatingId { get; set; }
-        public virtual MaturityRating maturityRating { get; set; }
+        public virtual MaturityRating MaturityRating { get; set; }
 
         //Relation with GenreContent
         public virtual ICollection<GenreContent> GenreContents { get; set; }

@@ -15,10 +15,10 @@ namespace EntityLayer.Concrete
 
         //Relation with Profile
         public int ProfileId { get; set; }
-        public virtual Profile profile { get; set; }
+        public virtual Profile Profile { get; set; }
 
         //Relation with Video
         public int VideoId { get; set; }
-        public virtual Video video { get; set; }
+        public virtual Video Video { get; set; }
     }
 }

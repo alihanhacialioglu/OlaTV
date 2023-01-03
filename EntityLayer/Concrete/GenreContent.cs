@@ -14,10 +14,10 @@ namespace EntityLayer.Concrete
 
         //Relation with Genre
         public int GenreId { get; set; }
-        public virtual Genre genre { get; set; }
+        public virtual Genre Genre { get; set; }
 
         //Relation with Content
         public int ContentId { get; set; }
-        public virtual Content content { get; set; }
+        public virtual Content Content { get; set; }
     }
 }
