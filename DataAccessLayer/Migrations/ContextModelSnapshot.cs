@@ -53,6 +53,9 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
                     b.HasKey("CastId");
 
                     b.ToTable("Casts");
