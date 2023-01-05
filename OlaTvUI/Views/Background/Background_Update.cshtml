@@ -1,0 +1,22 @@
+﻿@using EntityLayer.Concrete
+@model Background
+
+@{
+    ViewData["Title"] = "Background_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="p-2">
+    <h3>Updata Background</h3>
+    @using (Html.BeginForm("Background_Update", "Background", FormMethod.Post, new { @class = "form-group" }))
+    {
+        @Html.LabelFor(m=>m.BackgroundId,"Background Id")
+        @Html.TextBoxFor(m=>m.BackgroundId,new { @class = "form-control"})
+        @Html.LabelFor(m=>m.Color.ColorId,  "Color Name")
+        @Html.TextBoxFor(m=>m.Color.ColorId,new { @class = "form-control" })
+        <br />
+        <input class="form-control btn btn-primary" type="submit" value="Firma Güncelle" />
+    }
+</div>
