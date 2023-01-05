@@ -15,10 +15,6 @@ namespace EntityLayer.Concrete
         [StringLength(15)]
         public string ColorName { get; set; }
 
-        //Relation with Window
-        public virtual ICollection<Window> Windows { get; set; }
-        //Relation with Background
-        public virtual ICollection<Background> Backgrounds { get; set; }
         //Relation with Font
         public virtual ICollection<Font> Fonts { get; set; }
         //Relation with Shadow

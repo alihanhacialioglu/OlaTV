@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,12 @@ namespace EntityLayer.Concrete
         public int SubtitleAppearanceId { get; set; }
 
         //Relation with Window
-        public int WindowId { get; set; }
-        public virtual Window Window { get; set; }
+        [ForeignKey("Color")]
+        public int WindowColorId { get; set; }
+
         //Relation with Background
-        public int BackgroundId { get; set; }
-        public virtual Background Background { get; set; }
+        [ForeignKey("Color")]
+        public int BackgroundColorId { get; set; }
 
         //Relation with Font
         public int FontId { get; set; }
