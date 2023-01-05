@@ -29,7 +29,7 @@ namespace OlaTvUI.Controllers
             return RedirectToAction("Cast_Index");
         }
 
-        [HttpGet]
+      
         public IActionResult Cast_Update(int id)
         {
             Cast cast = cm.GetById(id);
@@ -45,15 +45,15 @@ namespace OlaTvUI.Controllers
             return RedirectToAction("Cast_Index");
         }
 
-        [HttpPost]
+        
         public IActionResult Cast_Delete(int id)
         {
             Cast cast=cm.GetById(id);
             cast.IsDelete = true;
-            cm.Remove(cast);
+            cm.Update(cast);
             return RedirectToAction("Cast_Index");
         }
-
+        
     }   
 
 }

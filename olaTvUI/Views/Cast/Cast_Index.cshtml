@@ -12,32 +12,34 @@
             <th>Case</th>
             <th></th>
             <th></th>
-            
+
         </tr>
-       
+
     </thead>
-   
+
     <tbody>
         @foreach (var item in Model)
         {
-            
+
             <tr>
-                <td>@item.CastNameSurname</td>                
-                <td>@item.IsDelete</td>                
+                <td>@item.CastNameSurname</td>
+                <td>@item.IsDelete</td>
                 <td>
-                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.CastId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fas fa-trash"></i> </button>
+                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.CastId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fa fa-trash" aria-hidden="true"></i> </button>
                 </td>
-                <td><a href="/Cast/Cast_Update/@item.CastId" type="button" class="btn btn-primary p-2">Update</a></td>
-                
+                <td>
+                    <a href="/Cast/Cast_Update/@item.CastId" type="button" class="btn btn-outline-primary">Update</a>
+                </td>
+
             </tr>
-            
+
         }
-        
+
 
     </tbody>
 </table>
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/Cast/Cast_Add" class="btn btn-warning">New Cast Add</a>
+    <a href="/Cast/Cast_Add" class="btn btn-success d-flex justify-content-center">Add<ion-icon name="add" style=" font-size:25px;"></ion-icon></a>
 </div>
 
 <!-- Modal -->
@@ -47,7 +49,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title" id="deleteLabel">Uyarı</h1>
+                <h1 class="modal-title" id="deleteLabel">Warning</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

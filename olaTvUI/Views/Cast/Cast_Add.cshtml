@@ -6,10 +6,9 @@
 }
 
 
-@using (Html.BeginForm("Cast_Index", "Cast", FormMethod.Post, new { @class = "form-group" }))
+@using (Html.BeginForm("Cast_Add", "Cast", FormMethod.Post, new { @class = "form-group" }))
 {
 
-    @Html.TextBoxFor(Cast=>Cast.CastId,new { @class = "form-control",@name="CastId"})
     @Html.Label("Name Surname")
     @Html.TextBoxFor(Cast=>Cast.CastNameSurname,new { @class = "form-control",@name="CastNameSurname" })
 
@@ -17,12 +16,12 @@
     @Html.Label("Durum")
     <select class="form-control" name="IsDelete">
 
-        <option selected>True</option>
-        <option>False</option>
+        <option >True</option>
+        <option selected>False</option>
 
     </select>
     <br />
-    <input class="form-control btn btn-primary" type="submit" value="Cast Add" />
+    <input class=" btn btn-primary" type="submit" value="Add" />
 }
 
 
