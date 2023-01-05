@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+@model Cast
+@{
+    ViewData["Title"] = "Cast_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Cast_Index", "Cast", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.TextBoxFor(Cast=>Cast.CastId,new { @class = "form-control",@name="CastId"})
+    @Html.Label("Name Surname")
+    @Html.TextBoxFor(Cast=>Cast.CastNameSurname,new { @class = "form-control",@name="CastNameSurname" })
+
+    <br />
+    @Html.Label("Durum")
+    <select class="form-control" name="IsDelete">
+
+        <option selected>True</option>
+        <option>False</option>
+
+    </select>
+    <br />
+    <input class="form-control btn btn-primary" type="submit" value="Cast Add" />
+}
+
+
