@@ -22,7 +22,7 @@ namespace DataAccessLayer.Concrete
 
         }
 
-        public DbSet<Background> Backgrounds { get; set; }
+      
         public DbSet<Cast> Casts { get; set; }
         public DbSet<CastTitle> CastTitles { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -56,7 +56,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<User> Users { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<VideoLanguage> VideoLanguages { get; set; }
-        public DbSet<Window> Windows { get; set; }
+        
 
 
     }
