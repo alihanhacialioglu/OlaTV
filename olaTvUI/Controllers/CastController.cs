@@ -8,24 +8,52 @@ namespace OlaTvUI.Controllers
     public class CastController : Controller
     {
         CastManager cm = new CastManager(new EfCastDal());
-        
+
         public IActionResult Cast_Index()
         {
             var casts = cm.GetAll();
             return View(casts);
         }
+
         [HttpGet]
         public IActionResult Cast_Add()
         {
-          
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult Cast_Add(Cast Cast) 
-        { 
-            cm.Add(Cast);
+        public IActionResult Cast_Add(Cast cast)
+        {
+            cm.Add(cast);
             return RedirectToAction("Cast_Index");
         }
-    }
+
+      
+        public IActionResult Cast_Update(int id)
+        {
+            Cast cast = cm.GetById(id);
+
+            return View(cast);
+        }
+
+        [HttpPost]
+        public IActionResult Cast_Update(Cast cast)
+        {
+            cm.Update(cast);
+
+            return RedirectToAction("Cast_Index");
+        }
+
+        
+        public IActionResult Cast_Delete(int id)
+        {
+            Cast cast=cm.GetById(id);
+            cast.IsDelete = true;
+            cm.Update(cast);
+            return RedirectToAction("Cast_Index");
+        }
+        
+    }   
+
 }
