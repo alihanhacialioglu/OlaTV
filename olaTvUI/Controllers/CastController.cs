@@ -7,11 +7,11 @@ namespace OlaTvUI.Controllers
 {
     public class CastController : Controller
     {
-        CastManager cm = new CastManager(new EfCastDal());
+        CastManager castManager = new CastManager(new EfCastDal());
 
         public IActionResult Cast_Index()
         {
-            var casts = cm.GetAll();
+            var casts = castManager.GetAll();
             return View(casts);
         }
 
@@ -25,14 +25,14 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult Cast_Add(Cast cast)
         {
-            cm.Add(cast);
+            castManager.Add(cast);
             return RedirectToAction("Cast_Index");
         }
 
       
         public IActionResult Cast_Update(int id)
         {
-            Cast cast = cm.GetById(id);
+            Cast cast = castManager.GetById(id);
 
             return View(cast);
         }
@@ -40,7 +40,7 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult Cast_Update(Cast cast)
         {
-            cm.Update(cast);
+            castManager.Update(cast);
 
             return RedirectToAction("Cast_Index");
         }
@@ -48,9 +48,9 @@ namespace OlaTvUI.Controllers
         
         public IActionResult Cast_Delete(int id)
         {
-            Cast cast=cm.GetById(id);
+            Cast cast=castManager.GetById(id);
             cast.IsDelete = true;
-            cm.Update(cast);
+            castManager.Update(cast);
             return RedirectToAction("Cast_Index");
         }
         

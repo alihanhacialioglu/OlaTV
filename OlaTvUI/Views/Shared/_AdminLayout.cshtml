@@ -28,6 +28,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <style>
         body, #content {
@@ -98,7 +99,7 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav sidebar accordion mr-3" id="accordionSidebar" style="transition:0.5s;">
-            @*bg-gradient-primary*@
+            
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/fima/index.html">
@@ -117,133 +118,161 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-            
+ 
 
-            <!-- Heading -->
-            <div class="sidebar-heading text-light" style="font-size:16px;">
-                Arayüz
-            </div>
+            <!-- Nav Item - User Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                   aria-expanded="true" aria-controls="collapseUser">
+                    <span class="material-symbols-outlined d-flex text-black" style="font-size:30px;">
+                        groups
+                    </span>
+                    <span>User Tables</span>
+                </a>
+                <div id="collapseUser" class="collapse" aria-labelledby="headingUser"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-light py-2 collapse-inner rounded">
+                        @*bg-white*@
+                        <h5 class="collapse-header">Tables</h5>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Nav Item - Firmalar Collapse Menu -->
+                        <a class="collapse-item" href="/User/User_Index">Users</a>
+                        <a class="collapse-item" href="/Packet/Packet_Index">Packets</a>
+                        <a class="collapse-item" href="/InvoiceDetail/InvoiceDetail_Index">Invoice Details</a>
+                        <a class="collapse-item" href="/CreditCard/CreditCard_Index">Credit Cards</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Profile Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile"
+                   aria-expanded="true" aria-controls="collapseProfile">
+                    <ion-icon name="person-add"></ion-icon>
+                   
+                    <span>Profile Tables</span>
+                </a>
+                <div id="collapseProfile" class="collapse" aria-labelledby="headingProfile"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-light py-2 collapse-inner rounded ">
+                        
+                        <h5 class="collapse-header">Tables</h5>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider d-none d-md-block">
+
+                        <a class="collapse-item" href="/Profile/Profile_Index">Profiles</a>
+                        <a class="collapse-item" href="/ProfileContent/ProfileContent_Index">Profile Contents</a>
+                        <a class="collapse-item" href="/ProfileCommunicationSetting/ProfileCommunicationSetting_Index">Profile Communication Settings</a>
+                        <a class="collapse-item" href="/ProfilePlaybackSetting/ProfilePlaybackSetting_Index">Profile Playback Settings</a>
+                        <a class="collapse-item" href="/CommunicationSetting/CommunicationSetting_Index">Communication Settings</a>
+                        <a class="collapse-item" href="/PlaybackSetting/PlaybackSetting_Index">Playback Settings</a>
+                        <a class="collapse-item" href="/MaturityRating/MaturityRating_Index">Maturity Ratings</a>
+                    </div>
+                </div>
+
+            </li>
+         
+            <!-- Nav Item - Video Collapse Menu-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVideo"
+                   aria-expanded="true" aria-controls="collapseVideo">
+                    <ion-icon name="trail-sign"></ion-icon>
+                   
+                    <span>Video Tables</span>
+                </a>
+                <div id="collapseVideo" class="collapse" aria-labelledby="headingVideo"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-light py-2 collapse-inner rounded">
+                        
+                        <h5 class="collapse-header">Tables</h5>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider d-none d-md-block">
+                        <a class="collapse-item" href="/Video/Video_Index">Videos</a>
+                        <a class="collapse-item" href="/Category/Category_Index">Categories</a>
+                        <a class="collapse-item" href="/VideoLanguage/VideoLanguage_Index">Video Languages</a>
+                        <a class="collapse-item" href="/Language/Language_Index">Languages</a>
+                        <a class="collapse-item" href="/ProfilVideoWatching/ProfilVideoWatching_Index">Profil Video Watchings</a>
+                        <a class="collapse-item" href="/ProfilVideoRating/ProfilVideoRating_Index">Profil Video Ratings</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Content Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContent"
+                   aria-expanded="true" aria-controls="collapseContent">
+                    <ion-icon name="map"></ion-icon>
+                    @*<i class="fas fa-fw fa-folder"></i>*@
+                    <span >Content Tables</span>
+                </a>
+                <div id="collapseContent" class="collapse" aria-labelledby="headingContent"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-light py-2 collapse-inner rounded">
+                        @*bg-white*@
+                        <h5 class="collapse-header">Tables</h5>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider d-none d-md-block">
+                        <a class="collapse-item" href="/Content/Content_Index">Contents</a>
+                        <a class="collapse-item" href="/Genre/Genre_Index">Genres</a>
+                        <a class="collapse-item" href="/Type/Type_Index">Types</a>
+                        <a class="collapse-item" href="/Style/Style_Index">Styles</a>                       
+                        <a class="collapse-item" href="/GenreContent/GenreContent_Index">Genre Contents</a>
+                        <a class="collapse-item" href="/TypeContent/TypeContent_Index">Type Contents</a>
+                        <a class="collapse-item" href="/StyleContent/StyleContent_Index">Style Contents</a>
+                    </div>
+                </div>
+            </li>
+
+             <!-- Nav Item - Subtitle Collapse Menu -->
             <li class="nav-item ">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFirmalar"
-                   aria-expanded="true" aria-controls="collapseFirmalar">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubtitle"
+                   aria-expanded="true" aria-controls="collapseSubtitle">
                     <ion-icon name="business"></ion-icon>
                     @*<i class="fas fa-fw fa-cog"></i>*@
 
                     <span>Subtitle Tables</span>
                 </a>
-                <div id="collapseFirmalar" class="collapse" aria-labelledby="headingFirmalar" data-parent="#accordionSidebar">
+                <div id="collapseSubtitle" class="collapse" aria-labelledby="headingSubtitle" data-parent="#accordionSidebar">
                     <div class="bg-light py-2 collapse-inner rounded">
                         @*bg-white*@
                         <h5 class="collapse-header">Tables</h5>
-                        <a class="collapse-item" href="/Cast/Cast_Index">Cast</a>
-                        <a class="collapse-item" href="/Background/Background_Index">Background</a>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider d-none d-md-block">
+                        <a class="collapse-item" href="/SubtitleAppearance/SubtitleAppearance_Index">Subtitle Appearances</a>
+                        <a class="collapse-item" href="/Font/Font_Index">Fonts</a>
+                        <a class="collapse-item" href="/Shadow/Shadow_Index">Shadows</a>
+                        <a class="collapse-item" href="/TextSize/TextSize_Index">TextSizes</a>
+                        <a class="collapse-item" href="/Color/Color_Index">Colors</a>
                        
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Otobüsler Collapse Menu -->
+            <!-- Nav Item - Cast Collapse Menu-->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOtobusler"
-                   aria-expanded="true" aria-controls="collapseOtobusler">
-                    <ion-icon name="bus"></ion-icon>
-                    <span>Otobüsler</span>
-                </a>
-                <div id="collapseOtobusler" class="collapse" aria-labelledby="headingOtobusler"
-                     data-parent="#accordionSidebar">
-                    <div class="bg-light py-2 collapse-inner rounded">
-                        @*bg-white*@
-                        <h6 class="collapse-header">İşlemler</h6>
-                        <!-- Divider -->
-                        <hr class="sidebar-divider d-none d-md-block">
-                        <a class="collapse-item" href="/Otobus/Index">Listele</a>
-                        <a class="collapse-item" href="/Otobus/Ekle">Ekle</a>
-                    </div>
-                </div>
-            </li>
-
-
-
-
-            <!-- Nav Item - Kullanicilar Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKullanicilar"
-                   aria-expanded="true" aria-controls="collapseKullanicilar">
-                    <ion-icon name="person-add"></ion-icon>
-                    @*<i class="fas fa-fw fa-folder"></i>*@
-                    <span>Kullanıcılar</span>
-                </a>
-                <div id="collapseKullanicilar" class="collapse" aria-labelledby="headingKullanicilar"
-                     data-parent="#accordionSidebar">
-                    <div class="bg-light py-2 collapse-inner rounded">
-                        @*bg-white*@
-                        <h6 class="collapse-header">İşlemler</h6>
-                        <a class="collapse-item" href="/Kullanici/Index">Listele</a>
-                        <a class="collapse-item" href="/Kullanici/Ekle">Ekle</a>
-                    </div>
-                </div>
-
-            </li>
-
-            
-
-            <!-- Nav Item - Güzergahlar -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGuzergahlar"
-                   aria-expanded="true" aria-controls="collapseGuzergahlar">
-                    <ion-icon name="trail-sign"></ion-icon>
-                    @*<i class="fas fa-fw fa-folder"></i>*@
-                    <span>Güzergahlar</span>
-                </a>
-                <div id="collapseGuzergahlar" class="collapse" aria-labelledby="headingGuzergahlar"
-                     data-parent="#accordionSidebar">
-                    <div class="bg-light py-2 collapse-inner rounded">
-                        @*bg-white*@
-                        <h6 class="collapse-header">İşlemler</h6>
-                        <a class="collapse-item" href="/Guzergah/Listele">Listele</a>
-                        <a class="collapse-item" href="/Guzergah/Ekle">Ekle</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Seferler -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeferler"
-                   aria-expanded="true" aria-controls="collapseSeferler">
-                    <ion-icon name="map"></ion-icon>
-                    @*<i class="fas fa-fw fa-folder"></i>*@
-                    <span >Seferler</span>
-                </a>
-                <div id="collapseSeferler" class="collapse" aria-labelledby="headingSeferler"
-                     data-parent="#accordionSidebar">
-                    <div class="bg-light py-2 collapse-inner rounded">
-                        @*bg-white*@
-                        <h6 class="collapse-header">İşlemler</h6>
-                        <a class="collapse-item" href="/GuzergahOtobus/Index">Listele</a>
-                        <a class="collapse-item" href="/GuzergahOtobus/Ekle">Ekle</a>
-                    </div>
-                </div>
-            </li>
-            <!-- Nav Item - Biletler -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBiletler"
-                   aria-expanded="true" aria-controls="collapseBiletler">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCast"
+                   aria-expanded="true" aria-controls="collapseCast">
                     <ion-icon name="ticket"></ion-icon>
                     @*<i class="fas fa-fw fa-folder"></i>*@
-                    <span>Biletler</span>
+                    <span>Cast Tables</span>
                 </a>
-                <div id="collapseBiletler" class="collapse" aria-labelledby="headingBiletler"
+                <div id="collapseCast" class="collapse" aria-labelledby="headingCast"
                      data-parent="#accordionSidebar">
                     <div class="bg-light py-2 collapse-inner rounded">
                         @*bg-white*@
-                        <h6 class="collapse-header">İşlemler</h6>
-                        <a class="collapse-item" href="/GuzergahOtobusKullanici/Index">Listele</a>
-                        <a class="collapse-item" href="/GuzergahOtobusKullanici/Ekle">Ekle</a>
+                        <h5 class="collapse-header">Tables</h5>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider d-none d-md-block">
+                        <a class="collapse-item" href="/Cast/Cast_Index">Casts</a>
+                        <a class="collapse-item" href="/Title/Title_Index">Titles</a>
+                        <a class="collapse-item" href="/CastTitle/CastTitle_Index">Cast Titles</a>
+                        <a class="collapse-item" href="/ContentCastTitle/ContentCastTitle_Index">Content Cast Titles</a>
+                        
                     </div>
                 </div>
             </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
