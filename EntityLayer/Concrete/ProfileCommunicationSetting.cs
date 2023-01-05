@@ -20,5 +20,7 @@ namespace EntityLayer.Concrete
         //Relation with CommunicationSetting
         public int CommunicationSettingId { get; set; }
         public virtual CommunicationSetting CommunicationSetting { get; set; }
-    }
+
+		public bool IsDelete { get; set; }
+	}
 }

@@ -14,8 +14,9 @@ namespace EntityLayer.Concrete
 
         [StringLength(30)]
         public string TitleName { get; set; }
+		public bool IsDelete { get; set; }
 
-        //Relation with CastTitle
-        public virtual ICollection<CastTitle> CastTitles { get; set; }
+		//Relation with CastTitle
+		public virtual ICollection<CastTitle> CastTitles { get; set; }
     }
 }

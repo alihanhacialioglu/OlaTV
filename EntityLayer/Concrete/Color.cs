@@ -14,9 +14,10 @@ namespace EntityLayer.Concrete
 
         [StringLength(15)]
         public string ColorName { get; set; }
+		public bool IsDelete { get; set; }
 
-        //Relation with Font
-        public virtual ICollection<Font> Fonts { get; set; }
+		//Relation with Font
+		public virtual ICollection<Font> Fonts { get; set; }
         //Relation with Shadow
         public virtual ICollection<Shadow> Shadows { get; set; }
 

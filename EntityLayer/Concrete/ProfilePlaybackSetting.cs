@@ -21,5 +21,7 @@ namespace EntityLayer.Concrete
         public int ProfileId { get; set; }
         public virtual Profile Profile { get; set; }
 
-    }
+		public bool IsDelete { get; set; }
+
+	}
 }

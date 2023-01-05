@@ -35,8 +35,10 @@ namespace EntityLayer.Concrete
         public int SubtitleAppearanceId { get; set; }
         public virtual SubtitleAppearance SubtitleAppearance { get; set; }
 
-        //Relation with ProfileContent
-        public virtual ICollection<ProfileContent> ProfileContents { get; set; }
+		public bool IsDelete { get; set; }
+
+		//Relation with ProfileContent
+		public virtual ICollection<ProfileContent> ProfileContents { get; set; }
         public virtual ICollection<ProfileVideoWatching> ProfileVideoWatchings { get; set; }
         public virtual ICollection<ProfileVideoRating> ProfileVideoRatings { get; set; }
         public virtual ICollection<ProfileCommunicationSetting> ProfileCommunicationSettings { get; set; }

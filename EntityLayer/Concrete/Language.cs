@@ -14,9 +14,10 @@ namespace EntityLayer.Concrete
 
         [StringLength(20)]
         public string LanguageName { get; set; }
+		public bool IsDelete { get; set; }
 
-        //Relation with Profile
-        public virtual ICollection<Profile> Profiles { get; set; }
+		//Relation with Profile
+		public virtual ICollection<Profile> Profiles { get; set; }
 
         //Relation with Video
         public virtual ICollection<Video> Videos { get; set; }

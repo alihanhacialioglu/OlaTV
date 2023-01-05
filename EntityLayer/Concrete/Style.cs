@@ -15,7 +15,9 @@ namespace EntityLayer.Concrete
         [StringLength(20)]
         public string StyleName { get; set; }
 
-        //Relation with StyleContent
-        public virtual ICollection<StyleContent> StyleContents { get; set; }
+		public bool IsDelete { get; set; }
+
+		//Relation with StyleContent
+		public virtual ICollection<StyleContent> StyleContents { get; set; }
     }
 }

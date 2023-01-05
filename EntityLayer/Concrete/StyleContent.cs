@@ -20,5 +20,7 @@ namespace EntityLayer.Concrete
         public int ContentId { get; set; }
         public virtual Content Content { get; set; }
 
-    }
+		public bool IsDelete { get; set; }
+
+	}
 }

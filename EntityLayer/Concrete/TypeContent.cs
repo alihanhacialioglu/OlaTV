@@ -19,5 +19,7 @@ namespace EntityLayer.Concrete
         //Relation with Type
         public int TypeId { get; set; }
         public virtual Type Type { get; set; }
-    }
+
+		public bool IsDelete { get; set; }
+	}
 }

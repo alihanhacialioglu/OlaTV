@@ -18,7 +18,9 @@ namespace EntityLayer.Concrete
         //Relation with Title
         public int TitleId { get; set; }
         public virtual Title Title { get; set; }
-        //Relation with ContentCastTitle
-        public virtual ICollection<ContentCastTitle> ContentCastTitles { get; set; }
+		public bool IsDelete { get; set; }
+
+		//Relation with ContentCastTitle
+		public virtual ICollection<ContentCastTitle> ContentCastTitles { get; set; }
     }
 }

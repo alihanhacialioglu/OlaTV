@@ -23,8 +23,9 @@ namespace EntityLayer.Concrete
         [StringLength(300)]
         public string PacketExplanation { get; set; }
 
+		public bool IsDelete { get; set; }
 
-        //Relation with User
-        public virtual ICollection<User> User { get; set; }
+		//Relation with User
+		public virtual ICollection<User> User { get; set; }
     }
 }

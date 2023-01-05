@@ -33,7 +33,9 @@ namespace EntityLayer.Concrete
         public int TextSizeId { get; set; }
         public virtual TextSize TextSize { get; set; }
 
-        //Relation with Profile
-        public virtual ICollection<Profile> Profiles { get; set; }
+		public bool IsDelete { get; set; }
+
+		//Relation with Profile
+		public virtual ICollection<Profile> Profiles { get; set; }
     }
 }

@@ -17,9 +17,10 @@ namespace EntityLayer.Concrete
 
         [StringLength(100)]
         public string MaturityExplanation { get; set; }
+		public bool IsDelete { get; set; }
 
-        //Relation with Profile
-        public virtual ICollection<Profile> Profiles { get; set; }
+		//Relation with Profile
+		public virtual ICollection<Profile> Profiles { get; set; }
 
         //Relation with Content
         public virtual ICollection<Content> Contents { get; set; }

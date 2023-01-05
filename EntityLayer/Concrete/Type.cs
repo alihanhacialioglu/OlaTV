@@ -14,8 +14,9 @@ namespace EntityLayer.Concrete
 
         [StringLength(20)]
         public string TypeName { get; set; }
+		public bool IsDelete { get; set; }
 
-        //Relation with TypeContent
-        public virtual ICollection<TypeContent> TypeContents { get; set; }
+		//Relation with TypeContent
+		public virtual ICollection<TypeContent> TypeContents { get; set; }
     }
 }

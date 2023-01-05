@@ -19,5 +19,7 @@ namespace EntityLayer.Concrete
         //Relation with Language
         public int LanguageId { get; set; }
         public virtual Language Language { get; set; }
-    }
+
+		public bool IsDelete { get; set; }
+	}
 }

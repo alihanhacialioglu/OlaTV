@@ -18,9 +18,10 @@ namespace EntityLayer.Concrete
         //Relation with MaturityRating
         public int MaturityRatingId { get; set; }
         public virtual MaturityRating MaturityRating { get; set; }
+		public bool IsDelete { get; set; }
 
-        //Relation with GenreContent
-        public virtual ICollection<GenreContent> GenreContents { get; set; }
+		//Relation with GenreContent
+		public virtual ICollection<GenreContent> GenreContents { get; set; }
 
         //Relation with TypeContent
         public virtual ICollection<TypeContent> TypeContents { get; set; }

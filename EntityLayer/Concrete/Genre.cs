@@ -14,8 +14,9 @@ namespace EntityLayer.Concrete
 
         [StringLength(30)]
         public string GenreName { get; set; }
+		public bool IsDelete { get; set; }
 
-        //Relation with GenreContent
-        public virtual ICollection<GenreContent> GenreContents { get; set; }
+		//Relation with GenreContent
+		public virtual ICollection<GenreContent> GenreContents { get; set; }
     }
 }

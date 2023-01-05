@@ -18,14 +18,14 @@ namespace EntityLayer.Concrete
         public DateTime ExpirationDate { get; set; }
         public byte Cvv { get; set; }
 
-
-
         //Relation with User
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
-        //Relation with InvoiceDetail
-        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
+		public bool IsDelete { get; set; }
+
+		//Relation with InvoiceDetail
+		public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
 
 
     }

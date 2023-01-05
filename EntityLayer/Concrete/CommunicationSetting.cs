@@ -17,9 +17,10 @@ namespace EntityLayer.Concrete
 
         [StringLength(100)]
         public string CommunicationSettingExplanation { get; set; }
+		public bool IsDelete { get; set; }
 
-        //Relation with ProfileCommuniicationSetting
-        public virtual ICollection<ProfileCommunicationSetting> ProfileCommunicationSettings { get; set; }
+		//Relation with ProfileCommuniicationSetting
+		public virtual ICollection<ProfileCommunicationSetting> ProfileCommunicationSettings { get; set; }
 
     }
 }

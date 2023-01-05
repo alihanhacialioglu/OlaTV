@@ -24,8 +24,6 @@ namespace EntityLayer.Concrete
         public int CreditCardId { get; set; }
         public virtual CreditCard CreditCard { get; set; }
 
-
-
-
-    }
+		public bool IsDelete { get; set; }
+	}
 }

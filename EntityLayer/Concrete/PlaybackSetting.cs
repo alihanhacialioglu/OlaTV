@@ -17,8 +17,9 @@ namespace EntityLayer.Concrete
 
         [StringLength(100)]
         public string PlaybackSettingExplanation { get; set; }
+		public bool IsDelete { get; set; }
 
-        //Relation with ProfilePlaybackSetting
-        public virtual ICollection<ProfilePlaybackSetting> ProfilePlaybackSettings { get; set; }
+		//Relation with ProfilePlaybackSetting
+		public virtual ICollection<ProfilePlaybackSetting> ProfilePlaybackSettings { get; set; }
     }
 }

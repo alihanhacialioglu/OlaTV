@@ -30,8 +30,10 @@ namespace EntityLayer.Concrete
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        //Relation with VideoLanguage
-        public virtual ICollection<VideoLanguage> VideoLanguages { get; set; }
+		public bool IsDelete { get; set; }
+
+		//Relation with VideoLanguage
+		public virtual ICollection<VideoLanguage> VideoLanguages { get; set; }
 
         //Relation with ProfileVideoWatching
         public virtual ICollection<ProfileVideoWatching> ProfileVideoWatchings { get; set; }

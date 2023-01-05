@@ -20,5 +20,7 @@ namespace EntityLayer.Concrete
         //Relation with Video
         public int VideoId { get; set; }
         public virtual Video Video { get; set; }
-    }
+
+		public bool IsDelete { get; set; }
+	}
 }
