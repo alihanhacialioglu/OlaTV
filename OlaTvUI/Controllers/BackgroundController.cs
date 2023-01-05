@@ -20,12 +20,12 @@ namespace OlaTvUI.Controllers
         [HttpGet]
         public IActionResult Background_Add()
         {
-            var backgrounds = backgroundManager.GetAll();
-            List<SelectListItem> colors = (from i in backgrounds
+            var allcolors = colorManager.GetAll();
+            List<SelectListItem> colors = (from i in allcolors
                                              select new SelectListItem
                                              {
-                                                 Text = i.Color.ColorName,
-                                                 Value = i.Color.ColorId.ToString()
+                                                 Text = i.ColorName,
+                                                 Value = i.ColorId.ToString()
                                              }).ToList();
             ViewBag.value = colors;
             return View();
@@ -38,7 +38,6 @@ namespace OlaTvUI.Controllers
             var colors = colorManager.GetAll();
             Color color = colors.Where(m => m.ColorId == background.Color.ColorId).FirstOrDefault();
             background.Color = color;
-            background.BackgroundId.Equals(null);
             backgroundManager.Add(background);
             return RedirectToAction("Background_Index");
         }
