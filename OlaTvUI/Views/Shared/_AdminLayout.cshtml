@@ -36,25 +36,25 @@
             padding-right: 10px;
         }
 
-        .footer{
+        .footer {
             background-color: #f5f5f5;
-            color:black;
+            color: black;
         }
 
-        #accordionSidebar, .topbar{
+        #accordionSidebar, .topbar {
             background-color: #545454;
         }
-       
+
 
         ion-icon {
-            color: #000000;
+            font-size: 20px;
+            color: black;
         }
-      
+
         table thead {
             font-size: 20px;
             color: black;
-            border-color:none;
-            
+            border-color: none;
         }
 
         table tbody {
@@ -70,26 +70,28 @@
             color: black;
         }
 
-       
-      
-
         .table-holder-bg {
             border-radius: 15px;
             background-color: #d3d3d3;
             width: 100%;
             padding: 8px;
-           
         }
 
-        span{
-            color:white;
+        span {
+            color: white;
         }
 
-        .nav-link{
-            transition:0.5s;
+        .nav-link {
+            transition: 0.5s;
         }
-        
-       
+
+        #btn-back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: #bdbebd;
+        }
     </style>
 </head>
 <body>
@@ -99,10 +101,10 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav sidebar accordion mr-3" id="accordionSidebar" style="transition:0.5s;">
-            
+
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/fima/index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-text text-light mx-3" style="font-size:20px;">OlaTv Admin Panel</div>
             </a>
 
@@ -112,21 +114,20 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
-                    
-                    <span style="font-size:17px;">Dashboard</span>
+
+                    <span style="font-size:16px;">Dashboard</span>
                 </a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
- 
+
 
             <!-- Nav Item - User Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
                    aria-expanded="true" aria-controls="collapseUser">
-                    <span class="material-symbols-outlined d-flex text-black" style="font-size:30px;">
-                        groups
-                    </span>
+                    <ion-icon name="people-sharp"></ion-icon>
+
                     <span>User Tables</span>
                 </a>
                 <div id="collapseUser" class="collapse" aria-labelledby="headingUser"
@@ -150,20 +151,20 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile"
                    aria-expanded="true" aria-controls="collapseProfile">
                     <ion-icon name="person-add"></ion-icon>
-                   
+
                     <span>Profile Tables</span>
                 </a>
                 <div id="collapseProfile" class="collapse" aria-labelledby="headingProfile"
                      data-parent="#accordionSidebar">
                     <div class="bg-light py-2 collapse-inner rounded ">
-                        
+
                         <h5 class="collapse-header">Tables</h5>
                         <!-- Divider -->
                         <hr class="sidebar-divider d-none d-md-block">
 
                         <a class="collapse-item" href="/Profile/Profile_Index">Profiles</a>
                         <a class="collapse-item" href="/ProfileContent/ProfileContent_Index">Profile Contents</a>
-                        <a class="collapse-item" href="/ProfileCommunicationSetting/ProfileCommunicationSetting_Index">Profile Communication Settings</a>
+                        <a class="collapse-item" style="white-space:pre-line" href="/ProfileCommunicationSetting/ProfileCommunicationSetting_Index">Profile Communication Settings</a>
                         <a class="collapse-item" href="/ProfilePlaybackSetting/ProfilePlaybackSetting_Index">Profile Playback Settings</a>
                         <a class="collapse-item" href="/CommunicationSetting/CommunicationSetting_Index">Communication Settings</a>
                         <a class="collapse-item" href="/PlaybackSetting/PlaybackSetting_Index">Playback Settings</a>
@@ -172,19 +173,18 @@
                 </div>
 
             </li>
-         
+
             <!-- Nav Item - Video Collapse Menu-->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVideo"
                    aria-expanded="true" aria-controls="collapseVideo">
-                    <ion-icon name="trail-sign"></ion-icon>
-                   
+                    <ion-icon name="play-circle"></ion-icon>
                     <span>Video Tables</span>
                 </a>
                 <div id="collapseVideo" class="collapse" aria-labelledby="headingVideo"
                      data-parent="#accordionSidebar">
                     <div class="bg-light py-2 collapse-inner rounded">
-                        
+
                         <h5 class="collapse-header">Tables</h5>
                         <!-- Divider -->
                         <hr class="sidebar-divider d-none d-md-block">
@@ -202,9 +202,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContent"
                    aria-expanded="true" aria-controls="collapseContent">
-                    <ion-icon name="map"></ion-icon>
-                    @*<i class="fas fa-fw fa-folder"></i>*@
-                    <span >Content Tables</span>
+                    <ion-icon name="document-text"></ion-icon>
+                    <span>Content Tables</span>
                 </a>
                 <div id="collapseContent" class="collapse" aria-labelledby="headingContent"
                      data-parent="#accordionSidebar">
@@ -216,7 +215,7 @@
                         <a class="collapse-item" href="/Content/Content_Index">Contents</a>
                         <a class="collapse-item" href="/Genre/Genre_Index">Genres</a>
                         <a class="collapse-item" href="/Type/Type_Index">Types</a>
-                        <a class="collapse-item" href="/Style/Style_Index">Styles</a>                       
+                        <a class="collapse-item" href="/Style/Style_Index">Styles</a>
                         <a class="collapse-item" href="/GenreContent/GenreContent_Index">Genre Contents</a>
                         <a class="collapse-item" href="/TypeContent/TypeContent_Index">Type Contents</a>
                         <a class="collapse-item" href="/StyleContent/StyleContent_Index">Style Contents</a>
@@ -224,12 +223,11 @@
                 </div>
             </li>
 
-             <!-- Nav Item - Subtitle Collapse Menu -->
+            <!-- Nav Item - Subtitle Collapse Menu -->
             <li class="nav-item ">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSubtitle"
                    aria-expanded="true" aria-controls="collapseSubtitle">
-                    <ion-icon name="business"></ion-icon>
-                    @*<i class="fas fa-fw fa-cog"></i>*@
+                    <ion-icon name="text"></ion-icon>
 
                     <span>Subtitle Tables</span>
                 </a>
@@ -244,7 +242,7 @@
                         <a class="collapse-item" href="/Shadow/Shadow_Index">Shadows</a>
                         <a class="collapse-item" href="/TextSize/TextSize_Index">TextSizes</a>
                         <a class="collapse-item" href="/Color/Color_Index">Colors</a>
-                       
+
                     </div>
                 </div>
             </li>
@@ -253,8 +251,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCast"
                    aria-expanded="true" aria-controls="collapseCast">
-                    <ion-icon name="ticket"></ion-icon>
-                    @*<i class="fas fa-fw fa-folder"></i>*@
+                    <ion-icon name="videocam"></ion-icon>
+
                     <span>Cast Tables</span>
                 </a>
                 <div id="collapseCast" class="collapse" aria-labelledby="headingCast"
@@ -268,7 +266,7 @@
                         <a class="collapse-item" href="/Title/Title_Index">Titles</a>
                         <a class="collapse-item" href="/CastTitle/CastTitle_Index">Cast Titles</a>
                         <a class="collapse-item" href="/ContentCastTitle/ContentCastTitle_Index">Content Cast Titles</a>
-                        
+
                     </div>
                 </div>
             </li>
@@ -291,7 +289,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow rounded" >
+                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow rounded">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -321,10 +319,6 @@
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                         </li>
-
-                        
-
-                        
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -374,7 +368,7 @@
             <footer class="sticky-footer footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span style="color:black;">Copyright &copy; Your Website 2021</span>
+                        <span style="color:black;">Copyright &copy; | Admin Panel | 2023</span>
                     </div>
                 </div>
             </footer>
@@ -385,10 +379,10 @@
 
     </div>
     <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+    <!-- Back to Top Button-->
+    <button type="button" class="btn btn-floating btn-lg " id="btn-back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -430,5 +424,33 @@
     <!-- Custom icon scripts -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Bact to top script -->
+    <script>
+        //Get the button
+        let mybutton = document.getElementById("btn-back-to-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (
+                document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 20
+            ) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.addEventListener("click", backToTop);
+
+        function backToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
 </body>
 </html>

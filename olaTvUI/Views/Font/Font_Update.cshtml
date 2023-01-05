@@ -1,0 +1,30 @@
+﻿@using EntityLayer.Concrete
+@model Font
+@{
+    ViewData["Title"] = "Font_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Font_Update", "Font", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.TextBoxFor(Cast=>Cast.FontId,new { @class = "form-control",@name="CastId",@value="@Model.CastId",@type="hidden"})
+
+    @Html.Label("Font Name")
+    @Html.TextBoxFor(Cast=>Cast.FontName,new { @class = "form-control",@name="FontName",@value="@Model.FontName" })
+    <br />
+    @Html.Label("Color Name")
+    @Html.TextBoxFor(Cast=>Cast.Color.ColorName,new { @class = "form-control",@name="ColorName",@value="@Model.ColorName" })
+    <br />
+    @Html.Label("Durum")
+    <select class="form-control" name="IsDelete">
+
+        <option selected>True</option>
+        <option>False</option>
+
+    </select>
+    <br />
+    <input class="form-control btn btn-primary" type="submit" value="Font Update" />
+}
+

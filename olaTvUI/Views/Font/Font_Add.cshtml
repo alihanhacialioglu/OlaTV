@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+@model Font
+@{
+    ViewData["Title"] = "Font_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Font_Add", "Font", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.Label("Font Name")
+    @Html.TextBoxFor(Cast=>Cast.FontName,new { @class = "form-control",@name="FontName" })
+    <br />
+    @Html.Label("Color Name")
+    @Html.TextBoxFor(Cast=>Cast.Color.ColorName,new { @class = "form-control",@name="ColorName" })
+    <br />
+    @Html.Label("Durum")
+    <select class="form-control" name="IsDelete">
+
+        <option>True</option>
+        <option selected>False</option>
+
+    </select>
+    <br />
+    <input class=" btn btn-primary" type="submit" value="Add" />
+}
+
+

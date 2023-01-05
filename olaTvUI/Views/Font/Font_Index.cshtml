@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model List<Font>
+@model List<EntityLayer.Concrete.Font>
 @{
     ViewData["Title"] = "Font_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,8 +9,8 @@
     <thead>
         <tr>
             <th>Font Name</th>
-            <th>Case</th>
-            <th></th>
+            <th>Color Name</th>
+            <th>Case</th>         
             <th></th>
 
         </tr>
@@ -23,6 +23,7 @@
 
             <tr>
                 <td>@item.FontName</td>
+                <td>@item.Color.ColorName</td>
                 <td>@item.IsDelete</td>
                 <td>
                     <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.FontId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fa fa-trash" aria-hidden="true"></i> </button>
@@ -68,8 +69,8 @@
     $(document).ready(function () {
         $('#decisionPopup').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var CastId = button.attr('data-bs-whatever');
-            console.log(CastId);
+            var FontId = button.attr('data-bs-whatever');
+            console.log(FontId);
             var a = document.querySelector("#delete-btn");
             a.href = "/Font/Font_Delete/" + FontId;
         });
