@@ -1,0 +1,30 @@
+﻿@using EntityLayer.Concrete
+@model ShadowColorModel
+@{
+    ViewData["Title"] = "Shadow_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Shadow_Add", "Shadow", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.Label("Shadow Name")
+    @Html.TextBox("ShadowName","",new { @class = "form-control", @placeholder="Shadow Name"})
+    <br />
+    @Html.Label("Color Name")
+    <select name="colorId" class="form-select">
+        @foreach(var color in Model.Colors)
+        {
+            <option value="@color.ColorId">@color.ColorName</option>
+        }
+    </select>
+    @Html.Label("Status")
+    <select class="form-select" name="IsDelete">
+
+        <option>True</option>
+        <option selected>False</option>
+
+    </select>
+    <br />
+    <input class=" btn btn-primary" type="submit" value="Add" />
+}
