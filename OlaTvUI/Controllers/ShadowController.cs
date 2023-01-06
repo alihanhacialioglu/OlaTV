@@ -19,10 +19,10 @@ namespace OlaTvUI.Controllers
         [HttpGet]
         public IActionResult Shadow_Add()
         {
-            ShadowColorModel shadowColorModal = new ShadowColorModel();
-            shadowColorModal.Colors = colorManager.GetAll();
-            shadowColorModal.ShadowModal = new Shadow();
-            return View(shadowColorModal);
+            ShadowModel shadowModel = new ShadowModel();
+			shadowModel.Colors = colorManager.GetAll();
+			shadowModel.Shadow = new Shadow();
+            return View(shadowModel);
         }
 
         [HttpPost]
@@ -34,8 +34,11 @@ namespace OlaTvUI.Controllers
 
         public IActionResult Shadow_Update(int id)
         {
-            Shadow shadow = shadowManager.GetById(id);
-            return View(shadow);
+			Shadow shadow = shadowManager.GetById(id);
+			ShadowModel shadowModel = new ShadowModel();
+			shadowModel.Colors = colorManager.GetAll();
+			shadowModel.Shadow = shadow;
+            return View(shadowModel);
         }
 
         [HttpPost]
