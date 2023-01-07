@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model ShadowModel
+
 @{
 	ViewData["Title"] = "Shadow_Add";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -10,6 +11,7 @@
 	@Html.Label("Shadow Name")
 	@Html.TextBox("ShadowName","",new { @class = "form-control", @placeholder="Shadow Name"})
 	<br />
+
 	@Html.Label("Color Name")
 	<select name="colorId" class="form-select">
 		<option disabled selected>Select Color</option>
@@ -19,11 +21,13 @@
 		}
 	</select>
 	<br />
+
 	@Html.Label("Status")
 	<select class="form-select" name="IsDelete">
 		<option selected>False</option>
 		<option>True</option>
 	</select>
 	<br />
+
 	<input class=" btn btn-primary" type="submit" value="Add" />
 }
