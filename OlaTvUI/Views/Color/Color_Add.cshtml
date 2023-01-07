@@ -1,0 +1,23 @@
+﻿@using EntityLayer.Concrete
+@model Color
+
+@{
+	ViewData["Title"] = "Color_Add";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Color_Add", "Color", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("Color Name")
+	@Html.TextBoxFor(m=>m.ColorName,new { @class = "form-control", @placeholder="Color Name" })
+	<br />
+
+	@Html.Label("Status")
+	<select class="form-select" name="IsDelete">
+		<option selected>False</option>
+		<option>True</option>
+	</select>
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Add" />
+}

@@ -1,0 +1,30 @@
+﻿@using EntityLayer.Concrete
+@model Color
+
+@{
+	ViewData["Title"] = "Color_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Color_Update", "Color", FormMethod.Post, new { @class = "form-group" }))
+{
+	<label>Color Id</label>
+	<input class="form-control" type="text" name="ColorId" value="@Model.ColorId" disabled />
+	@Html.TextBoxFor(m=>m.ColorId,new { @class = "form-control", @type="hidden"})
+	<br />
+
+	@Html.Label("Color Name")
+	@Html.TextBoxFor(m=>m.ColorName,new { @class = "form-control", @placeholder="Color Name" })
+	<br />
+
+	@Html.Label("Status")
+	@Html.DropDownList("IsDelete",
+	new SelectListItem[] {
+		new SelectListItem() { Text = "True", Value = "true", Selected = Model.IsDelete },
+		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.IsDelete }},
+	new { @class = "form-select"})
+	<br />
+
+	<input class="form-control btn btn-primary" type="submit" value="Color Update" />
+
+}
