@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230105132611_AddedIsDeleteColumnForAllEntities")]
-    partial class AddedIsDeleteColumnForAllEntities
+    [Migration("20230108110053_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -742,11 +742,15 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("SubtitleAppearanceId");
 
+                    b.HasIndex("BackgroundColorId");
+
                     b.HasIndex("FontId");
 
                     b.HasIndex("ShadowId");
 
                     b.HasIndex("TextSizeId");
+
+                    b.HasIndex("WindowColorId");
 
                     b.ToTable("SubtitleAppearances");
                 });
@@ -1118,13 +1122,13 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("EntityLayer.Concrete.Content", "Content")
                         .WithMany("ProfileContents")
                         .HasForeignKey("ContentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Profile", "Profile")
                         .WithMany("ProfileContents")
                         .HasForeignKey("ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Content");
@@ -1156,13 +1160,13 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("EntityLayer.Concrete.Profile", "Profile")
                         .WithMany("ProfileVideoRatings")
                         .HasForeignKey("ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Video", "Video")
                         .WithMany("ProfileVideoRatings")
                         .HasForeignKey("VideoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Profile");
@@ -1175,13 +1179,13 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("EntityLayer.Concrete.Profile", "Profile")
                         .WithMany("ProfileVideoWatchings")
                         .HasForeignKey("ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Video", "Video")
                         .WithMany("ProfileVideoWatchings")
                         .HasForeignKey("VideoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Profile");
@@ -1221,29 +1225,45 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("EntityLayer.Concrete.SubtitleAppearance", b =>
                 {
+                    b.HasOne("EntityLayer.Concrete.Color", "BackgroundColor")
+                        .WithMany("SubtitleAppearances1")
+                        .HasForeignKey("BackgroundColorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("EntityLayer.Concrete.Font", "Font")
                         .WithMany("SubtitleAppearances")
                         .HasForeignKey("FontId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Shadow", "Shadow")
                         .WithMany("SubtitleAppearances")
                         .HasForeignKey("ShadowId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.TextSize", "TextSize")
                         .WithMany("SubtitleAppearances")
                         .HasForeignKey("TextSizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.Color", "WindowColor")
+                        .WithMany("SubtitleAppearances2")
+                        .HasForeignKey("WindowColorId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("BackgroundColor");
 
                     b.Navigation("Font");
 
                     b.Navigation("Shadow");
 
                     b.Navigation("TextSize");
+
+                    b.Navigation("WindowColor");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.TypeContent", b =>
@@ -1308,13 +1328,13 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("EntityLayer.Concrete.Language", "Language")
                         .WithMany("VideoLanguages")
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("EntityLayer.Concrete.Video", "Video")
                         .WithMany("VideoLanguages")
                         .HasForeignKey("VideoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Language");
@@ -1342,6 +1362,10 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Fonts");
 
                     b.Navigation("Shadows");
+
+                    b.Navigation("SubtitleAppearances1");
+
+                    b.Navigation("SubtitleAppearances2");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.CommunicationSetting", b =>

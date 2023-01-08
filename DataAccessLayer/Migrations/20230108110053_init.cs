@@ -17,7 +17,8 @@ namespace DataAccessLayer.Migrations
                 {
                     CastId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CastNameSurname = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false)
+                    CastNameSurname = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,7 +31,8 @@ namespace DataAccessLayer.Migrations
                 {
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
+                    CategoryName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -43,7 +45,8 @@ namespace DataAccessLayer.Migrations
                 {
                     ColorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ColorName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
+                    ColorName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,7 +60,8 @@ namespace DataAccessLayer.Migrations
                     CommunicationSettingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CommunicationSettingName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    CommunicationSettingExplanation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    CommunicationSettingExplanation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,7 +74,8 @@ namespace DataAccessLayer.Migrations
                 {
                     GenreId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GenreName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                    GenreName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,7 +88,8 @@ namespace DataAccessLayer.Migrations
                 {
                     LanguageId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LanguageName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                    LanguageName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,7 +103,8 @@ namespace DataAccessLayer.Migrations
                     MaturityRatingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StatusName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    MaturityExplanation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    MaturityExplanation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,7 +121,8 @@ namespace DataAccessLayer.Migrations
                     ViewCount = table.Column<int>(type: "int", nullable: false),
                     PacketPrice = table.Column<float>(type: "real", nullable: false),
                     PacketContentQuality = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    PacketExplanation = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false)
+                    PacketExplanation = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -128,7 +136,8 @@ namespace DataAccessLayer.Migrations
                     PlaybackSettingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PlaybackSettingName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    PlaybackSettingExplanation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    PlaybackSettingExplanation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -141,7 +150,8 @@ namespace DataAccessLayer.Migrations
                 {
                     StyleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StyleName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                    StyleName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -154,7 +164,8 @@ namespace DataAccessLayer.Migrations
                 {
                     TextSizeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TextSizeName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
+                    TextSizeName = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,7 +178,8 @@ namespace DataAccessLayer.Migrations
                 {
                     TitleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TitleName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                    TitleName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -180,30 +192,12 @@ namespace DataAccessLayer.Migrations
                 {
                     TypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TypeName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                    TypeName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Types", x => x.TypeId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Backgrounds",
-                columns: table => new
-                {
-                    BackgroundId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ColorId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Backgrounds", x => x.BackgroundId);
-                    table.ForeignKey(
-                        name: "FK_Backgrounds_Colors_ColorId",
-                        column: x => x.ColorId,
-                        principalTable: "Colors",
-                        principalColumn: "ColorId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -213,7 +207,8 @@ namespace DataAccessLayer.Migrations
                     FontId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FontName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    ColorId = table.Column<int>(type: "int", nullable: false)
+                    ColorId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -233,7 +228,8 @@ namespace DataAccessLayer.Migrations
                     ShadowId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ShadowName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    ColorId = table.Column<int>(type: "int", nullable: false)
+                    ColorId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -247,32 +243,14 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Windows",
-                columns: table => new
-                {
-                    WindowId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ColorId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Windows", x => x.WindowId);
-                    table.ForeignKey(
-                        name: "FK_Windows_Colors_ColorId",
-                        column: x => x.ColorId,
-                        principalTable: "Colors",
-                        principalColumn: "ColorId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Contents",
                 columns: table => new
                 {
                     ContentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ContentName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    MaturityRatingId = table.Column<int>(type: "int", nullable: false)
+                    MaturityRatingId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -297,8 +275,8 @@ namespace DataAccessLayer.Migrations
                     PhoneNumber = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
                     DateOfRegistration = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AccessPin = table.Column<int>(type: "int", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false),
-                    PacketId = table.Column<int>(type: "int", nullable: false)
+                    PacketId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -318,7 +296,8 @@ namespace DataAccessLayer.Migrations
                     CastTitleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CastId = table.Column<int>(type: "int", nullable: false),
-                    TitleId = table.Column<int>(type: "int", nullable: false)
+                    TitleId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -328,13 +307,13 @@ namespace DataAccessLayer.Migrations
                         column: x => x.CastId,
                         principalTable: "Casts",
                         principalColumn: "CastId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_CastTitles_Titles_TitleId",
                         column: x => x.TitleId,
                         principalTable: "Titles",
                         principalColumn: "TitleId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -343,45 +322,41 @@ namespace DataAccessLayer.Migrations
                 {
                     SubtitleAppearanceId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    WindowId = table.Column<int>(type: "int", nullable: false),
-                    BackgroundId = table.Column<int>(type: "int", nullable: false),
+                    WindowColorId = table.Column<int>(type: "int", nullable: false),
+                    BackgroundColorId = table.Column<int>(type: "int", nullable: false),
                     FontId = table.Column<int>(type: "int", nullable: false),
                     ShadowId = table.Column<int>(type: "int", nullable: false),
-                    TextSizeId = table.Column<int>(type: "int", nullable: false)
+                    TextSizeId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SubtitleAppearances", x => x.SubtitleAppearanceId);
                     table.ForeignKey(
-                        name: "FK_SubtitleAppearances_Backgrounds_BackgroundId",
-                        column: x => x.BackgroundId,
-                        principalTable: "Backgrounds",
-                        principalColumn: "BackgroundId",
-                        onDelete: ReferentialAction.NoAction);
+                        name: "FK_SubtitleAppearances_Colors_BackgroundColorId",
+                        column: x => x.BackgroundColorId,
+                        principalTable: "Colors",
+                        principalColumn: "ColorId");
+                    table.ForeignKey(
+                        name: "FK_SubtitleAppearances_Colors_WindowColorId",
+                        column: x => x.WindowColorId,
+                        principalTable: "Colors",
+                        principalColumn: "ColorId");
                     table.ForeignKey(
                         name: "FK_SubtitleAppearances_Fonts_FontId",
                         column: x => x.FontId,
                         principalTable: "Fonts",
-                        principalColumn: "FontId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "FontId");
                     table.ForeignKey(
                         name: "FK_SubtitleAppearances_Shadows_ShadowId",
                         column: x => x.ShadowId,
                         principalTable: "Shadows",
-                        principalColumn: "ShadowId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "ShadowId");
                     table.ForeignKey(
                         name: "FK_SubtitleAppearances_TextSizes_TextSizeId",
                         column: x => x.TextSizeId,
                         principalTable: "TextSizes",
-                        principalColumn: "TextSizeId",
-                        onDelete: ReferentialAction.NoAction);
-                    table.ForeignKey(
-                        name: "FK_SubtitleAppearances_Windows_WindowId",
-                        column: x => x.WindowId,
-                        principalTable: "Windows",
-                        principalColumn: "WindowId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "TextSizeId");
                 });
 
             migrationBuilder.CreateTable(
@@ -391,7 +366,8 @@ namespace DataAccessLayer.Migrations
                     GenreContentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GenreId = table.Column<int>(type: "int", nullable: false),
-                    ContentId = table.Column<int>(type: "int", nullable: false)
+                    ContentId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -417,7 +393,8 @@ namespace DataAccessLayer.Migrations
                     StyleContentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StyleId = table.Column<int>(type: "int", nullable: false),
-                    ContentId = table.Column<int>(type: "int", nullable: false)
+                    ContentId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -443,7 +420,8 @@ namespace DataAccessLayer.Migrations
                     TypeContentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ContentId = table.Column<int>(type: "int", nullable: false),
-                    TypeId = table.Column<int>(type: "int", nullable: false)
+                    TypeId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -474,7 +452,8 @@ namespace DataAccessLayer.Migrations
                     EpisodeNo = table.Column<byte>(type: "tinyint", nullable: false),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
                     ContentId = table.Column<int>(type: "int", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -509,7 +488,8 @@ namespace DataAccessLayer.Migrations
                     CreditCardNo = table.Column<int>(type: "int", nullable: false),
                     ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Cvv = table.Column<byte>(type: "tinyint", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -529,7 +509,8 @@ namespace DataAccessLayer.Migrations
                     ContentCastTitleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CastTitleId = table.Column<int>(type: "int", nullable: false),
-                    ContentId = table.Column<int>(type: "int", nullable: false)
+                    ContentId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -561,7 +542,8 @@ namespace DataAccessLayer.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     LanguageId = table.Column<int>(type: "int", nullable: false),
                     MaturityRatingId = table.Column<int>(type: "int", nullable: false),
-                    SubtitleAppearanceId = table.Column<int>(type: "int", nullable: false)
+                    SubtitleAppearanceId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -599,7 +581,8 @@ namespace DataAccessLayer.Migrations
                     VideoLanguageId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     VideoId = table.Column<int>(type: "int", nullable: false),
-                    LanguageId = table.Column<int>(type: "int", nullable: false)
+                    LanguageId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -608,14 +591,12 @@ namespace DataAccessLayer.Migrations
                         name: "FK_VideoLanguages_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "LanguageId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "LanguageId");
                     table.ForeignKey(
                         name: "FK_VideoLanguages_Videos_VideoId",
                         column: x => x.VideoId,
                         principalTable: "Videos",
-                        principalColumn: "VideoId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "VideoId");
                 });
 
             migrationBuilder.CreateTable(
@@ -628,7 +609,8 @@ namespace DataAccessLayer.Migrations
                     InvoiceExplanation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     InvoiceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ServiceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreditCardId = table.Column<int>(type: "int", nullable: false)
+                    CreditCardId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -649,7 +631,8 @@ namespace DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProfileCommunicationSettingSelection = table.Column<bool>(type: "bit", nullable: false),
                     ProfileId = table.Column<int>(type: "int", nullable: false),
-                    CommunicationSettingId = table.Column<int>(type: "int", nullable: false)
+                    CommunicationSettingId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -675,7 +658,8 @@ namespace DataAccessLayer.Migrations
                     ProfileContentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProfileId = table.Column<int>(type: "int", nullable: false),
-                    ContentId = table.Column<int>(type: "int", nullable: false)
+                    ContentId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -684,14 +668,12 @@ namespace DataAccessLayer.Migrations
                         name: "FK_ProfileContents_Contents_ContentId",
                         column: x => x.ContentId,
                         principalTable: "Contents",
-                        principalColumn: "ContentId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "ContentId");
                     table.ForeignKey(
                         name: "FK_ProfileContents_Profiles_ProfileId",
                         column: x => x.ProfileId,
                         principalTable: "Profiles",
-                        principalColumn: "ProfileId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "ProfileId");
                 });
 
             migrationBuilder.CreateTable(
@@ -702,7 +684,8 @@ namespace DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PlaybackPlaybackSelection = table.Column<bool>(type: "bit", nullable: false),
                     PlaybackSettingId = table.Column<int>(type: "int", nullable: false),
-                    ProfileId = table.Column<int>(type: "int", nullable: false)
+                    ProfileId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -729,7 +712,8 @@ namespace DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProfileVideoRate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProfileId = table.Column<int>(type: "int", nullable: false),
-                    VideoId = table.Column<int>(type: "int", nullable: false)
+                    VideoId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -738,14 +722,12 @@ namespace DataAccessLayer.Migrations
                         name: "FK_ProfileVideoRatings_Profiles_ProfileId",
                         column: x => x.ProfileId,
                         principalTable: "Profiles",
-                        principalColumn: "ProfileId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "ProfileId");
                     table.ForeignKey(
                         name: "FK_ProfileVideoRatings_Videos_VideoId",
                         column: x => x.VideoId,
                         principalTable: "Videos",
-                        principalColumn: "VideoId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "VideoId");
                 });
 
             migrationBuilder.CreateTable(
@@ -756,7 +738,8 @@ namespace DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProfileVideoDateOfWached = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ProfileId = table.Column<int>(type: "int", nullable: false),
-                    VideoId = table.Column<int>(type: "int", nullable: false)
+                    VideoId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -765,20 +748,13 @@ namespace DataAccessLayer.Migrations
                         name: "FK_ProfileVideoWatchings_Profiles_ProfileId",
                         column: x => x.ProfileId,
                         principalTable: "Profiles",
-                        principalColumn: "ProfileId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "ProfileId");
                     table.ForeignKey(
                         name: "FK_ProfileVideoWatchings_Videos_VideoId",
                         column: x => x.VideoId,
                         principalTable: "Videos",
-                        principalColumn: "VideoId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "VideoId");
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Backgrounds_ColorId",
-                table: "Backgrounds",
-                column: "ColorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CastTitles_CastId",
@@ -916,9 +892,9 @@ namespace DataAccessLayer.Migrations
                 column: "StyleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubtitleAppearances_BackgroundId",
+                name: "IX_SubtitleAppearances_BackgroundColorId",
                 table: "SubtitleAppearances",
-                column: "BackgroundId");
+                column: "BackgroundColorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SubtitleAppearances_FontId",
@@ -936,9 +912,9 @@ namespace DataAccessLayer.Migrations
                 column: "TextSizeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubtitleAppearances_WindowId",
+                name: "IX_SubtitleAppearances_WindowColorId",
                 table: "SubtitleAppearances",
-                column: "WindowId");
+                column: "WindowColorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TypeContents_ContentId",
@@ -979,11 +955,6 @@ namespace DataAccessLayer.Migrations
                 name: "IX_Videos_LanguageId",
                 table: "Videos",
                 column: "LanguageId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Windows_ColorId",
-                table: "Windows",
-                column: "ColorId");
         }
 
         /// <inheritdoc />
@@ -1071,9 +1042,6 @@ namespace DataAccessLayer.Migrations
                 name: "Languages");
 
             migrationBuilder.DropTable(
-                name: "Backgrounds");
-
-            migrationBuilder.DropTable(
                 name: "Fonts");
 
             migrationBuilder.DropTable(
@@ -1081,9 +1049,6 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "TextSizes");
-
-            migrationBuilder.DropTable(
-                name: "Windows");
 
             migrationBuilder.DropTable(
                 name: "Packets");
