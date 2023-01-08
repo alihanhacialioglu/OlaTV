@@ -13,16 +13,16 @@ namespace EntityLayer.Concrete
         [Key]
         public int SubtitleAppearanceId { get; set; }
 
-        //Relation with Window
-        [ForeignKey("Color")]
+		//Relation with Window
         public int WindowColorId { get; set; }
+		public virtual Color WindowColor { get; set; }
 
-        //Relation with Background
-        [ForeignKey("Color")]
+		//Relation with Background
         public int BackgroundColorId { get; set; }
+		public virtual Color BackgroundColor { get; set; }
 
-        //Relation with Font
-        public int FontId { get; set; }
+		//Relation with Font
+		public int FontId { get; set; }
         public virtual Font Font { get; set; }
 
         //Relation with Shadow
