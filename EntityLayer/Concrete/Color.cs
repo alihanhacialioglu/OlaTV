@@ -21,7 +21,9 @@ namespace EntityLayer.Concrete
         //Relation with Shadow
         public virtual ICollection<Shadow> Shadows { get; set; }
 
-
-
-    }
+		public IEnumerable<SubtitleAppearance> SubtitleAppearances
+		=> SubtitleAppearances1.Concat(SubtitleAppearances2).Distinct();
+		public virtual ICollection<SubtitleAppearance> SubtitleAppearances1 { get; set; }
+		public virtual ICollection<SubtitleAppearance> SubtitleAppearances2 { get; set; }
+	}
 }
