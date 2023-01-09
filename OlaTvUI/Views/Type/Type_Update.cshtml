@@ -1,0 +1,29 @@
+﻿@using EntityLayer.Concrete
+@model EntityLayer.Concrete.Type
+@{
+	ViewData["Title"] = "Type_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Type_Update", "Type", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("Type ID")
+	<input class="form-control" type="text" value="@Model.TypeId" disabled />
+	@Html.TextBoxFor(m=>m.TypeId,new { @class = "form-control", @type = "hidden"})
+	<br />
+
+	@Html.Label("Type Name")
+	@Html.TextBoxFor(m=>m.TypeName,new { @class = "form-control"})
+	<br />
+
+	@Html.Label("Status")
+	@Html.DropDownList("IsDelete",
+	new SelectListItem[] {
+		new SelectListItem() { Text = "True", Value = "true", Selected = Model.IsDelete },
+		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.IsDelete }},
+	new { @class = "form-select"})
+	<br />
+
+	<input class="form-control btn btn-primary" type="submit" value="Type Update" />
+}
+
