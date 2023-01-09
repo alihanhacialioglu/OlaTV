@@ -48,12 +48,26 @@ namespace OlaTvUI.Controllers
         
         public IActionResult Cast_Delete(int id)
         {
-            Cast cast=castManager.GetById(id);
+            Cast cast = castManager.GetById(id);
+            castManager.Remove(cast);
+            return RedirectToAction("Cast_Index");
+        }
+        public IActionResult Cast_Activate(int id)
+        {
+            Cast cast = castManager.GetById(id);
+            cast.IsDelete = false;
+            castManager.Update(cast);
+            return RedirectToAction("Cast_Index");
+        }
+
+        public IActionResult Cast_Deactivate(int id)
+        {
+            Cast cast = castManager.GetById(id);
             cast.IsDelete = true;
             castManager.Update(cast);
             return RedirectToAction("Cast_Index");
         }
-        
+
     }   
 
 }

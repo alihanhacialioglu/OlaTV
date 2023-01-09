@@ -1,0 +1,26 @@
+﻿@using EntityLayer.Concrete
+@model Title
+@{
+    ViewData["Title"] = "Title_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Title_Add", "Title", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.Label("Title Name")
+    @Html.TextBoxFor(Cast=>Cast.TitleName,new { @class = "form-control"})
+
+        <br />
+    @Html.Label("Case")
+        <select class="form-control" name="IsDelete">
+
+            <option >True</option>
+            <option selected>False</option>
+
+        </select>
+        <br />
+        <input class=" btn btn-primary" type="submit" value="Add" />
+}
+
+

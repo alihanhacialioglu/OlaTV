@@ -1,0 +1,27 @@
+﻿@using EntityLayer.Concrete
+@model Title
+@{
+    ViewData["Title"] = "Title_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Cast Update</h3>
+@using (Html.BeginForm("Title_Update", "Title", FormMethod.Post, new { @class = "form-group" }))
+{
+    
+    @Html.TextBoxFor(m=>m.TitleId,new { @class = "form-control",@name="CastId",@type="hidden"})
+
+    @Html.Label("Title Name")
+    @Html.TextBoxFor(m=>m.TitleName,new { @class = "form-control" })
+
+             <br />
+    @Html.Label("Status")
+            <select class="form-control" name="IsDelete" >  
+
+                <option selected>True</option>
+                <option>False</option>
+
+            </select>
+            <br />
+            <input class="form-control btn btn-primary" type="submit" value="Cast Update" />
+}
