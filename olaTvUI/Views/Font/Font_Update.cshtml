@@ -1,30 +1,38 @@
 ﻿@using EntityLayer.Concrete
-@model Font
+@model FontModel
 @{
     ViewData["Title"] = "Font_Update";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 
-@using (Html.BeginForm("Font_Update", "Font", FormMethod.Post, new { @class = "form-group" }))
-{
+<label>Font Id</label>
+<input class="form-control" type="text" name="FontId" value="@Model.Font.FontId" disabled />
+@Html.TextBox("FontId",Model.Font.FontId,new { @class = "form-control",@type="hidden"} )
+<br />
 
-    @Html.TextBoxFor(Cast=>Cast.FontId,new { @class = "form-control",@name="CastId",@value="@Model.CastId",@type="hidden"})
+@Html.Label("Font Name")
+@Html.TextBox("FontName",Model.Font.FontName,new { @class = "form-control", @placeholder="Font Name"})
+<br />
 
-    @Html.Label("Font Name")
-    @Html.TextBoxFor(Cast=>Cast.FontName,new { @class = "form-control",@name="FontName",@value="@Model.FontName" })
-    <br />
-    @Html.Label("Color Name")
-    @Html.TextBoxFor(Cast=>Cast.Color.ColorName,new { @class = "form-control",@name="ColorName",@value="@Model.ColorName" })
-    <br />
-    @Html.Label("Durum")
-    <select class="form-control" name="IsDelete">
+@Html.Label("Color Name")
+<select name="ColorId" class="form-select">
+	<option disabled selected>@Model.Font.Color.ColorName</option>
+	@foreach (var color in Model.Colors)
+	{
+		<option value="@color.ColorId">@color.ColorName</option>
+	}
+</select>
+<br />
 
-        <option selected>True</option>
-        <option>False</option>
+@Html.Label("Status")
+@Html.DropDownList("IsDelete",
+	new SelectListItem[] {
+		new SelectListItem() { Text = "True", Value = "true", Selected = Model.Font.IsDelete },
+		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.Font.IsDelete }},
+	new { @class = "form-select"})
+<br />
 
-    </select>
-    <br />
-    <input class="form-control btn btn-primary" type="submit" value="Font Update" />
+<input class="form-control btn btn-primary" type="submit" value="Font Update" />
 }
 

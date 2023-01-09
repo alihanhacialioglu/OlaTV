@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+@model TextSize
+@{
+    ViewData["Title"] = "TextSize_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h3>Text Size Update</h3>
+@using (Html.BeginForm("TextSize_Update", "TextSize", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.TextBoxFor(textsize=>textsize.TextSizeId,new { @class = "form-control"})
+
+    @Html.Label("Text Size Name")
+    @Html.TextBoxFor(textsize=>textsize.TextSizeName,new { @class = "form-control"})
+    <br />
+    @Html.Label("Case")
+    <select class="form-control" name="IsDelete">
+
+        <option>True</option>
+        <option selected>False</option>
+
+    </select>
+    <br />
+    <input class="form-control btn btn-primary" type="submit" value="TextSize Update" />
+}
+

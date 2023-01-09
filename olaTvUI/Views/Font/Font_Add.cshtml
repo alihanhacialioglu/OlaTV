@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model Font
+@model FontModel
 @{
     ViewData["Title"] = "Font_Add";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,14 +9,20 @@
 {
 
     @Html.Label("Font Name")
-    @Html.TextBoxFor(Cast=>Cast.FontName,new { @class = "form-control",@name="FontName" })
+    @Html.TextBox("FontName","",new { @class = "form-control",@name="FontName" })
     <br />
-    @Html.Label("Color Name")
-    @Html.TextBoxFor(Cast=>Cast.Color.ColorName,new { @class = "form-control",@name="ColorName" })
-    <br />
-    @Html.Label("Durum")
-    <select class="form-control" name="IsDelete">
 
+    @Html.Label("Color Name")
+    <select name="colorId" class="form-select">
+        <option disabled selected>Select Color</option>
+        @foreach (var color in Model.Colors)
+        {
+            <option value="@color.ColorId">@color.ColorName</option>
+        }
+    </select>
+    <br />
+    @Html.Label("Case")
+    <select class="form-control" name="IsDelete">
         <option>True</option>
         <option selected>False</option>
 
