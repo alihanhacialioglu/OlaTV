@@ -11,7 +11,7 @@ namespace DataAccessLayer.Concrete
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
-        Context context = new Context();
+        OlaTvDBContext context = new OlaTvDBContext();
 
         DbSet<T> _objects;
 

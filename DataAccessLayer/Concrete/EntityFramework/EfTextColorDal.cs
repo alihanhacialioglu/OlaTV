@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfColorDal : GenericRepository<Color>, IColorDal
+    public class EfTextColorDal : GenericRepository<TextColor>, ITextColor
     {
     }
 }

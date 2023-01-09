@@ -28,7 +28,7 @@ namespace OlaTvUI
 
 			app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Background}/{action=Background_Index}/{id?}");
+				pattern: "{controller=Cast}/{action=Cast_Index}/{id?}");
 
 			app.Run();
 		}

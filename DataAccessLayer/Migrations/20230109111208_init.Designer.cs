@@ -4,16 +4,19 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace DataAccessLayer.Migrations
 {
-    [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(OlaTvDBContext))]
+    [Migration("20230109111208_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,27 +94,6 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Color", b =>
-                {
-                    b.Property<int>("ColorId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ColorId"));
-
-                    b.Property<string>("ColorName")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ColorId");
-
-                    b.ToTable("Colors");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.CommunicationSetting", b =>
@@ -225,32 +207,6 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("CreditCards");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Font", b =>
-                {
-                    b.Property<int>("FontId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FontId"));
-
-                    b.Property<int>("ColorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FontName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.HasKey("FontId");
-
-                    b.HasIndex("ColorId");
-
-                    b.ToTable("Fonts");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Genre", b =>
@@ -476,7 +432,10 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("ProfilePin")
                         .HasColumnType("int");
 
-                    b.Property<int>("SubtitleAppearanceId")
+                    b.Property<int>("TextColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TextSizeId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -488,7 +447,9 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("MaturityRatingId");
 
-                    b.HasIndex("SubtitleAppearanceId");
+                    b.HasIndex("TextColorId");
+
+                    b.HasIndex("TextSizeId");
 
                     b.HasIndex("UserId");
 
@@ -638,32 +599,6 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("ProfileVideoWatchings");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Shadow", b =>
-                {
-                    b.Property<int>("ShadowId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShadowId"));
-
-                    b.Property<int>("ColorId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ShadowName")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("ShadowId");
-
-                    b.HasIndex("ColorId");
-
-                    b.ToTable("Shadows");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.Style", b =>
                 {
                     b.Property<int>("StyleId")
@@ -711,45 +646,25 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("StyleContents");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.SubtitleAppearance", b =>
+            modelBuilder.Entity("EntityLayer.Concrete.TextColor", b =>
                 {
-                    b.Property<int>("SubtitleAppearanceId")
+                    b.Property<int>("TextColorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubtitleAppearanceId"));
-
-                    b.Property<int>("BackgroundColorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FontId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TextColorId"));
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
-                    b.Property<int>("ShadowId")
-                        .HasColumnType("int");
+                    b.Property<string>("TextColorName")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
-                    b.Property<int>("TextSizeId")
-                        .HasColumnType("int");
+                    b.HasKey("TextColorId");
 
-                    b.Property<int>("WindowColorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("SubtitleAppearanceId");
-
-                    b.HasIndex("BackgroundColorId");
-
-                    b.HasIndex("FontId");
-
-                    b.HasIndex("ShadowId");
-
-                    b.HasIndex("TextSizeId");
-
-                    b.HasIndex("WindowColorId");
-
-                    b.ToTable("SubtitleAppearances");
+                    b.ToTable("TextColors");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.TextSize", b =>
@@ -1019,17 +934,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Font", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.Color", "Color")
-                        .WithMany("Fonts")
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Color");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.GenreContent", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Content", "Content")
@@ -1074,9 +978,15 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EntityLayer.Concrete.SubtitleAppearance", "SubtitleAppearance")
+                    b.HasOne("EntityLayer.Concrete.TextColor", "TextColor")
                         .WithMany("Profiles")
-                        .HasForeignKey("SubtitleAppearanceId")
+                        .HasForeignKey("TextColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EntityLayer.Concrete.TextSize", "TextSize")
+                        .WithMany("Profiles")
+                        .HasForeignKey("TextSizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1090,7 +1000,9 @@ namespace DataAccessLayer.Migrations
 
                     b.Navigation("MaturityRating");
 
-                    b.Navigation("SubtitleAppearance");
+                    b.Navigation("TextColor");
+
+                    b.Navigation("TextSize");
 
                     b.Navigation("User");
                 });
@@ -1190,17 +1102,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Video");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Shadow", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.Color", "Color")
-                        .WithMany("Shadows")
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Color");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.StyleContent", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Content", "Content")
@@ -1218,49 +1119,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Content");
 
                     b.Navigation("Style");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.SubtitleAppearance", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.Color", "BackgroundColor")
-                        .WithMany("SubtitleAppearances1")
-                        .HasForeignKey("BackgroundColorId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("EntityLayer.Concrete.Font", "Font")
-                        .WithMany("SubtitleAppearances")
-                        .HasForeignKey("FontId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("EntityLayer.Concrete.Shadow", "Shadow")
-                        .WithMany("SubtitleAppearances")
-                        .HasForeignKey("ShadowId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("EntityLayer.Concrete.TextSize", "TextSize")
-                        .WithMany("SubtitleAppearances")
-                        .HasForeignKey("TextSizeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("EntityLayer.Concrete.Color", "WindowColor")
-                        .WithMany("SubtitleAppearances2")
-                        .HasForeignKey("WindowColorId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("BackgroundColor");
-
-                    b.Navigation("Font");
-
-                    b.Navigation("Shadow");
-
-                    b.Navigation("TextSize");
-
-                    b.Navigation("WindowColor");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.TypeContent", b =>
@@ -1354,17 +1212,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Videos");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Color", b =>
-                {
-                    b.Navigation("Fonts");
-
-                    b.Navigation("Shadows");
-
-                    b.Navigation("SubtitleAppearances1");
-
-                    b.Navigation("SubtitleAppearances2");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.CommunicationSetting", b =>
                 {
                     b.Navigation("ProfileCommunicationSettings");
@@ -1388,11 +1235,6 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("EntityLayer.Concrete.CreditCard", b =>
                 {
                     b.Navigation("InvoiceDetails");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Font", b =>
-                {
-                    b.Navigation("SubtitleAppearances");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Genre", b =>
@@ -1439,24 +1281,19 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("ProfileVideoWatchings");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.Shadow", b =>
-                {
-                    b.Navigation("SubtitleAppearances");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.Style", b =>
                 {
                     b.Navigation("StyleContents");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.SubtitleAppearance", b =>
+            modelBuilder.Entity("EntityLayer.Concrete.TextColor", b =>
                 {
                     b.Navigation("Profiles");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.TextSize", b =>
                 {
-                    b.Navigation("SubtitleAppearances");
+                    b.Navigation("Profiles");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Title", b =>

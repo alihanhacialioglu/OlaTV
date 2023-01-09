@@ -31,11 +31,15 @@ namespace EntityLayer.Concrete
         public int MaturityRatingId { get; set; }
         public virtual MaturityRating MaturityRating { get; set; }
 
-        //Relation with SubtitleAppearance
-        public int SubtitleAppearanceId { get; set; }
-        public virtual SubtitleAppearance SubtitleAppearance { get; set; }
+        //Relation with TextColor
+        public int TextColorId { get; set; }
+        public virtual TextColor TextColor { get; set; }
 
-		public bool IsDelete { get; set; }
+        //Relation with TextSize
+        public int TextSizeId { get; set; }
+        public virtual TextSize TextSize { get; set; }
+
+        public bool IsDelete { get; set; }
 
 		//Relation with ProfileContent
 		public virtual ICollection<ProfileContent> ProfileContents { get; set; }

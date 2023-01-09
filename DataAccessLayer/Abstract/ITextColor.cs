@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IShadowDal:IGenericDal<Shadow>
+    public interface ITextColor:IGenericDal<TextColor>
     {
     }
 }

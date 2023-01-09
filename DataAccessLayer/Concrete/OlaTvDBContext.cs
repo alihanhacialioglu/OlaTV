@@ -10,28 +10,26 @@ using Type = EntityLayer.Concrete.Type;
 
 namespace DataAccessLayer.Concrete
 {
-	public class Context : DbContext
+	public class OlaTvDBContext : DbContext
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			//optionsBuilder.UseLazyLoadingProxies().UseSqlServer (@"Server=(localdb)\MSSQLLocalDB;Database=OlaTvDB;Trusted_Connection=true");
+			optionsBuilder.UseLazyLoadingProxies().UseSqlServer (@"Server=(localdb)\MSSQLLocalDB;Database=OlaTvDB;Trusted_Connection=true");
 
-			optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Server=LAPTOP-7U5PUCF6;Initial Catalog=OlaTvDB;" +
-			   "Persist Security Info=False;User ID=sa;Password=6161;" +
-			   "MultipleActiveResultSets=False;Encrypt=False;" +
-			   "TrustServerCertificate=False;Connection Timeout=30;");
+			//optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Server=LAPTOP-7U5PUCF6;Initial Catalog=OlaTvDB;" +
+			//   "Persist Security Info=False;User ID=sa;Password=6161;" +
+			//   "MultipleActiveResultSets=False;Encrypt=False;" +
+			//   "TrustServerCertificate=False;Connection Timeout=30;");
 
 		}
 
 		public DbSet<Cast> Casts { get; set; }
 		public DbSet<CastTitle> CastTitles { get; set; }
 		public DbSet<Category> Categories { get; set; }
-		public DbSet<Color> Colors { get; set; }
 		public DbSet<CommunicationSetting> CommunicationSettings { get; set; }
 		public DbSet<Content> Contents { get; set; }
 		public DbSet<ContentCastTitle> ContentCastTitles { get; set; }
 		public DbSet<CreditCard> CreditCards { get; set; }
-		public DbSet<Font> Fonts { get; set; }
 		public DbSet<Genre> Genres { get; set; }
 		public DbSet<GenreContent> GenreContents { get; set; }
 		public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
@@ -45,10 +43,9 @@ namespace DataAccessLayer.Concrete
 		public DbSet<ProfilePlaybackSetting> ProfilePlaybackSettings { get; set; }
 		public DbSet<ProfileVideoRating> ProfileVideoRatings { get; set; }
 		public DbSet<ProfileVideoWatching> ProfileVideoWatchings { get; set; }
-		public DbSet<Shadow> Shadows { get; set; }
 		public DbSet<Style> Styles { get; set; }
 		public DbSet<StyleContent> StyleContents { get; set; }
-		public DbSet<SubtitleAppearance> SubtitleAppearances { get; set; }
+		public DbSet<TextColor> TextColors { get; set; }
 		public DbSet<TextSize> TextSizes { get; set; }
 		public DbSet<Title> Titles { get; set; }
 		public DbSet<Type> Types { get; set; }
@@ -59,42 +56,6 @@ namespace DataAccessLayer.Concrete
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			#region SubtitleAppearance
-
-			modelBuilder.Entity<Color>()
-				.Ignore(e => e.SubtitleAppearances);
-
-			var saBuilder = modelBuilder.Entity<SubtitleAppearance>();
-
-			saBuilder
-				.HasOne(s => s.BackgroundColor)
-				.WithMany(c => c.SubtitleAppearances1)
-				.HasForeignKey(s => s.BackgroundColorId)
-				.OnDelete(DeleteBehavior.NoAction);
-
-			saBuilder
-				.HasOne(s => s.WindowColor)
-				.WithMany(c => c.SubtitleAppearances2)
-				.HasForeignKey(s => s.WindowColorId)
-				.OnDelete(DeleteBehavior.NoAction);
-
-			saBuilder
-				.HasOne(b => b.Font)
-				.WithMany(a => a.SubtitleAppearances)
-				.OnDelete(DeleteBehavior.NoAction);
-
-			saBuilder
-				.HasOne(b => b.Shadow)
-				.WithMany(a => a.SubtitleAppearances)
-				.OnDelete(DeleteBehavior.NoAction);
-
-			saBuilder
-				.HasOne(b => b.TextSize)
-				.WithMany(a => a.SubtitleAppearances)
-				.OnDelete(DeleteBehavior.NoAction);
-
-			#endregion
-
 			#region VideoLanguage
 
 			var vlBuilder = modelBuilder.Entity<VideoLanguage>();

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class TextSize
+    public class TextColor
     {
         [Key]
-        public int TextSizeId { get; set; }
+        public int TextColorId { get; set; }
 
-        [StringLength(10)]
-        public string TextSizeName { get; set; }
-		public bool IsDelete { get; set; }
+        [StringLength(15)]
+        public string TextColorName { get; set; }
+        public bool IsDelete { get; set; }
 
 		//Relation with Profile
 		public virtual ICollection<Profile> Profiles { get; set; }

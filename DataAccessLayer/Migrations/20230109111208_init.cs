@@ -40,20 +40,6 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Colors",
-                columns: table => new
-                {
-                    ColorId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ColorName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Colors", x => x.ColorId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CommunicationSettings",
                 columns: table => new
                 {
@@ -159,6 +145,20 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TextColors",
+                columns: table => new
+                {
+                    TextColorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TextColorName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TextColors", x => x.TextColorId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TextSizes",
                 columns: table => new
                 {
@@ -198,48 +198,6 @@ namespace DataAccessLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Types", x => x.TypeId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Fonts",
-                columns: table => new
-                {
-                    FontId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FontName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    ColorId = table.Column<int>(type: "int", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Fonts", x => x.FontId);
-                    table.ForeignKey(
-                        name: "FK_Fonts_Colors_ColorId",
-                        column: x => x.ColorId,
-                        principalTable: "Colors",
-                        principalColumn: "ColorId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Shadows",
-                columns: table => new
-                {
-                    ShadowId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ShadowName = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
-                    ColorId = table.Column<int>(type: "int", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Shadows", x => x.ShadowId);
-                    table.ForeignKey(
-                        name: "FK_Shadows_Colors_ColorId",
-                        column: x => x.ColorId,
-                        principalTable: "Colors",
-                        principalColumn: "ColorId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -314,49 +272,6 @@ namespace DataAccessLayer.Migrations
                         principalTable: "Titles",
                         principalColumn: "TitleId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SubtitleAppearances",
-                columns: table => new
-                {
-                    SubtitleAppearanceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    WindowColorId = table.Column<int>(type: "int", nullable: false),
-                    BackgroundColorId = table.Column<int>(type: "int", nullable: false),
-                    FontId = table.Column<int>(type: "int", nullable: false),
-                    ShadowId = table.Column<int>(type: "int", nullable: false),
-                    TextSizeId = table.Column<int>(type: "int", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SubtitleAppearances", x => x.SubtitleAppearanceId);
-                    table.ForeignKey(
-                        name: "FK_SubtitleAppearances_Colors_BackgroundColorId",
-                        column: x => x.BackgroundColorId,
-                        principalTable: "Colors",
-                        principalColumn: "ColorId");
-                    table.ForeignKey(
-                        name: "FK_SubtitleAppearances_Colors_WindowColorId",
-                        column: x => x.WindowColorId,
-                        principalTable: "Colors",
-                        principalColumn: "ColorId");
-                    table.ForeignKey(
-                        name: "FK_SubtitleAppearances_Fonts_FontId",
-                        column: x => x.FontId,
-                        principalTable: "Fonts",
-                        principalColumn: "FontId");
-                    table.ForeignKey(
-                        name: "FK_SubtitleAppearances_Shadows_ShadowId",
-                        column: x => x.ShadowId,
-                        principalTable: "Shadows",
-                        principalColumn: "ShadowId");
-                    table.ForeignKey(
-                        name: "FK_SubtitleAppearances_TextSizes_TextSizeId",
-                        column: x => x.TextSizeId,
-                        principalTable: "TextSizes",
-                        principalColumn: "TextSizeId");
                 });
 
             migrationBuilder.CreateTable(
@@ -503,6 +418,58 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Profiles",
+                columns: table => new
+                {
+                    ProfileId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProfileName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    ProfilePin = table.Column<int>(type: "int", nullable: false),
+                    IsAnimationTv = table.Column<bool>(type: "bit", nullable: false),
+                    IsMarketingApproval = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    LanguageId = table.Column<int>(type: "int", nullable: false),
+                    MaturityRatingId = table.Column<int>(type: "int", nullable: false),
+                    TextColorId = table.Column<int>(type: "int", nullable: false),
+                    TextSizeId = table.Column<int>(type: "int", nullable: false),
+                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Profiles", x => x.ProfileId);
+                    table.ForeignKey(
+                        name: "FK_Profiles_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
+                        principalColumn: "LanguageId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Profiles_MaturityRatings_MaturityRatingId",
+                        column: x => x.MaturityRatingId,
+                        principalTable: "MaturityRatings",
+                        principalColumn: "MaturityRatingId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Profiles_TextColors_TextColorId",
+                        column: x => x.TextColorId,
+                        principalTable: "TextColors",
+                        principalColumn: "TextColorId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Profiles_TextSizes_TextSizeId",
+                        column: x => x.TextSizeId,
+                        principalTable: "TextSizes",
+                        principalColumn: "TextSizeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Profiles_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ContentCastTitles",
                 columns: table => new
                 {
@@ -526,51 +493,6 @@ namespace DataAccessLayer.Migrations
                         column: x => x.ContentId,
                         principalTable: "Contents",
                         principalColumn: "ContentId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Profiles",
-                columns: table => new
-                {
-                    ProfileId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProfileName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    ProfilePin = table.Column<int>(type: "int", nullable: false),
-                    IsAnimationTv = table.Column<bool>(type: "bit", nullable: false),
-                    IsMarketingApproval = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    LanguageId = table.Column<int>(type: "int", nullable: false),
-                    MaturityRatingId = table.Column<int>(type: "int", nullable: false),
-                    SubtitleAppearanceId = table.Column<int>(type: "int", nullable: false),
-                    IsDelete = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Profiles", x => x.ProfileId);
-                    table.ForeignKey(
-                        name: "FK_Profiles_Languages_LanguageId",
-                        column: x => x.LanguageId,
-                        principalTable: "Languages",
-                        principalColumn: "LanguageId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Profiles_MaturityRatings_MaturityRatingId",
-                        column: x => x.MaturityRatingId,
-                        principalTable: "MaturityRatings",
-                        principalColumn: "MaturityRatingId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Profiles_SubtitleAppearances_SubtitleAppearanceId",
-                        column: x => x.SubtitleAppearanceId,
-                        principalTable: "SubtitleAppearances",
-                        principalColumn: "SubtitleAppearanceId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Profiles_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -787,11 +709,6 @@ namespace DataAccessLayer.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Fonts_ColorId",
-                table: "Fonts",
-                column: "ColorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_GenreContents_ContentId",
                 table: "GenreContents",
                 column: "ContentId");
@@ -847,9 +764,14 @@ namespace DataAccessLayer.Migrations
                 column: "MaturityRatingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Profiles_SubtitleAppearanceId",
+                name: "IX_Profiles_TextColorId",
                 table: "Profiles",
-                column: "SubtitleAppearanceId");
+                column: "TextColorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Profiles_TextSizeId",
+                table: "Profiles",
+                column: "TextSizeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Profiles_UserId",
@@ -877,11 +799,6 @@ namespace DataAccessLayer.Migrations
                 column: "VideoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shadows_ColorId",
-                table: "Shadows",
-                column: "ColorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_StyleContents_ContentId",
                 table: "StyleContents",
                 column: "ContentId");
@@ -890,31 +807,6 @@ namespace DataAccessLayer.Migrations
                 name: "IX_StyleContents_StyleId",
                 table: "StyleContents",
                 column: "StyleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubtitleAppearances_BackgroundColorId",
-                table: "SubtitleAppearances",
-                column: "BackgroundColorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubtitleAppearances_FontId",
-                table: "SubtitleAppearances",
-                column: "FontId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubtitleAppearances_ShadowId",
-                table: "SubtitleAppearances",
-                column: "ShadowId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubtitleAppearances_TextSizeId",
-                table: "SubtitleAppearances",
-                column: "TextSizeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SubtitleAppearances_WindowColorId",
-                table: "SubtitleAppearances",
-                column: "WindowColorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TypeContents_ContentId",
@@ -1027,7 +919,10 @@ namespace DataAccessLayer.Migrations
                 name: "Titles");
 
             migrationBuilder.DropTable(
-                name: "SubtitleAppearances");
+                name: "TextColors");
+
+            migrationBuilder.DropTable(
+                name: "TextSizes");
 
             migrationBuilder.DropTable(
                 name: "Users");
@@ -1042,22 +937,10 @@ namespace DataAccessLayer.Migrations
                 name: "Languages");
 
             migrationBuilder.DropTable(
-                name: "Fonts");
-
-            migrationBuilder.DropTable(
-                name: "Shadows");
-
-            migrationBuilder.DropTable(
-                name: "TextSizes");
-
-            migrationBuilder.DropTable(
                 name: "Packets");
 
             migrationBuilder.DropTable(
                 name: "MaturityRatings");
-
-            migrationBuilder.DropTable(
-                name: "Colors");
         }
     }
 }
