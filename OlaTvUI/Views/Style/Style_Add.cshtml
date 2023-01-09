@@ -1,0 +1,25 @@
+﻿@using EntityLayer.Concrete
+@model Style
+@{
+	ViewData["Title"] = "Style_Add";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Style_Add", "Style", FormMethod.Post, new { @class = "form-group" }))
+{
+
+	@Html.Label("Style Name")
+	@Html.TextBoxFor(m=>m.StyleName,new { @class = "form-control", @placeholder="Style Name" })
+	<br />
+
+	@Html.Label("Status")
+	<select class="form-select" name="IsDelete">
+		<option selected>False</option>
+		<option>True</option>
+	</select>
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Add" />
+}
+
+
