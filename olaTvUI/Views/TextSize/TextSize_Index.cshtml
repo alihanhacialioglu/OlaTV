@@ -3,43 +3,46 @@
 @{
     ViewData["Title"] = "TextSize_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var i = 1;
 }
 
-<table class="table table-borderless">
+<table class="table table-striped table-hover">
     <thead>
         <tr>
+            <th>#</th>
+            <th>ID</th>
             <th>Text Size Name</th>
-            <th>Case</th>
+            <th>Status</th>
+            <th>Change Status</th>
+            <th>CRUD Operations</th>
             <th></th>
             <th></th>
-
         </tr>
-
     </thead>
-
     <tbody>
         @foreach (var item in Model)
         {
-
             <tr>
+                <th>@i</th>
+                <td>@item.TextSizeId</td>
                 <td>@item.TextSizeName</td>
                 <td>@item.IsDelete</td>
                 <td>
-                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.TextSizeId" data-bs-toggle="modal" data-bs-target="#decisionPopup"><i class="fa fa-trash" aria-hidden="true"></i> </button>
+                    <a href="/TextSize/TextSize_Activate/@item.TextSizeId" class="btn btn-outline-success text-center" style="margin-right:10px;">Activate <i class="fa fa-check"></i></a>
+                    <a href="/TextSize/TextSize_Deactivate/@item.TextSizeId" class="btn btn-outline-secondary text-center" style="margin-right:10px;">Deactivate <i class="fa fa-times" aria-hidden="true"></i></a>
                 </td>
                 <td>
-                    <a href="/TextSize/TextSize_Update/@item.TextSizeId" type="button" class="btn btn-outline-primary">Update</a>
+                    <a href="/TextSize/TextSize_Update/@item.TextSizeId" type="button" class="btn btn-outline-primary" style="margin-right:10px;">Update</a>
+                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.TextSizeId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
                 </td>
-
             </tr>
-
+            i++;
         }
-
-
     </tbody>
 </table>
+
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/TextSize/TextSize_Add" class="btn btn-success d-flex justify-content-center">Add<ion-icon name="add" style=" font-size:25px;"></ion-icon></a>
+    <a href="/TextSize/TextSize_Add" class="btn btn-success d-flex justify-content-center">Add Text Size<ion-icon name="add" style="font-size:25px; color:white; margin-left:10px;"></ion-icon></a>
 </div>
 
 <!-- Modal -->
@@ -69,7 +72,6 @@
         $('#decisionPopup').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var TextSizeId = button.attr('data-bs-whatever');
-            console.log(TextSizeId);
             var a = document.querySelector("#delete-btn");
             a.href = "/TextSize/TextSize_Delete/" + TextSizeId;
         });

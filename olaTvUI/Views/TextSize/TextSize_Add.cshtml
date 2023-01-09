@@ -1,26 +1,25 @@
 ﻿@using EntityLayer.Concrete
 @model TextSize
 @{
-    ViewData["Title"] = "TextSize_Add";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "TextSize_Add";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 @using (Html.BeginForm("TextSize_Add", "TextSize", FormMethod.Post, new { @class = "form-group" }))
 {
 
-    @Html.Label("Text Size Name")
-    @Html.TextBoxFor(textsize=>textsize.TextSizeName,new { @class = "form-control" })
+	@Html.Label("Text Size Name")
+	@Html.TextBoxFor(m=>m.TextSizeName,new { @class = "form-control", @placeholder="Text Size Name" })
+	<br />
 
-        <br />
-    @Html.Label("Durum")
-        <select class="form-control" name="IsDelete">
+	@Html.Label("Status")
+	<select class="form-select" name="IsDelete">
+		<option selected>False</option>
+		<option>True</option>
+	</select>
+	<br />
 
-            <option >True</option>
-            <option selected>False</option>
-
-        </select>
-        <br />
-        <input class=" btn btn-primary" type="submit" value="Add" />
+	<input class=" btn btn-primary" type="submit" value="Add" />
 }
 
 

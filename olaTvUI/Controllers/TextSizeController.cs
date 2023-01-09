@@ -22,7 +22,7 @@ namespace OlaTvUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult TextSize_Add(EntityLayer.Concrete.TextSize textSize) 
+        public IActionResult TextSize_Add(TextSize textSize) 
         {
             textSizeManager.Add(textSize);
             return RedirectToAction("TextSize_Index");
@@ -35,7 +35,7 @@ namespace OlaTvUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult TextSize_Update(EntityLayer.Concrete.TextSize textSize)
+        public IActionResult TextSize_Update(TextSize textSize)
         {
             textSizeManager.Update(textSize);
             return RedirectToAction("TextSize_Index");
@@ -44,14 +44,26 @@ namespace OlaTvUI.Controllers
         public IActionResult TextSize_Delete(int id) 
         {
             TextSize textsize=textSizeManager.GetById(id);
-            textsize.IsDelete = true;
-            textSizeManager.Update(textsize);
+            textSizeManager.Remove(textsize);
             return RedirectToAction("TextSize_Index");
         
         }
 
+		public IActionResult TextSize_Activate(int id)
+		{
+			TextSize textSize = textSizeManager.GetById(id);
+			textSize.IsDelete = false;
+			textSizeManager.Update(textSize);
+			return RedirectToAction("TextSize_Index");
+		}
 
+		public IActionResult TextSize_Deactivate(int id)
+		{
+			TextSize textSize = textSizeManager.GetById(id);
+			textSize.IsDelete = true;
+			textSizeManager.Update(textSize);
+			return RedirectToAction("TextSize_Index");
+		}
 
-
-    }
+	}
 }

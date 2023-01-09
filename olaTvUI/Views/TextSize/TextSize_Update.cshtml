@@ -1,28 +1,28 @@
 ﻿@using EntityLayer.Concrete
 @model TextSize
 @{
-    ViewData["Title"] = "TextSize_Update";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "TextSize_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-<h3>Text Size Update</h3>
 @using (Html.BeginForm("TextSize_Update", "TextSize", FormMethod.Post, new { @class = "form-group" }))
 {
+	@Html.Label("Text Size ID")
+	<input class="form-control" type="text" value="@Model.TextSizeId" disabled />
+	@Html.TextBoxFor(m=>m.TextSizeId,new { @class = "form-control", @type = "hidden"})
+	<br />
 
-    @Html.TextBoxFor(textsize=>textsize.TextSizeId,new { @class = "form-control"})
+	@Html.Label("Text Size Name")
+	@Html.TextBoxFor(m=>m.TextSizeName,new { @class = "form-control"})
+	<br />
 
-    @Html.Label("Text Size Name")
-    @Html.TextBoxFor(textsize=>textsize.TextSizeName,new { @class = "form-control"})
-    <br />
-    @Html.Label("Case")
-    <select class="form-control" name="IsDelete">
-
-        <option>True</option>
-        <option selected>False</option>
-
-    </select>
-    <br />
-    <input class="form-control btn btn-primary" type="submit" value="TextSize Update" />
+	@Html.Label("Status")
+	@Html.DropDownList("IsDelete",
+	new SelectListItem[] {
+		new SelectListItem() { Text = "True", Value = "true", Selected = Model.IsDelete },
+		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.IsDelete }},
+	new { @class = "form-select"})
+	<br />
+	<input class="form-control btn btn-primary" type="submit" value="Text Size Update" />
 }
 
