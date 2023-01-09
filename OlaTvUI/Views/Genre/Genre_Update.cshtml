@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+@model Genre
+@{
+	ViewData["Title"] = "Genre_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Genre_Update", "Genre", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("Genre ID")
+	<input class="form-control" type="text" value="@Model.GenreId" disabled />
+	@Html.TextBoxFor(m=>m.GenreId,new { @class = "form-control", @type = "hidden"})
+	<br />
+
+	@Html.Label("Genre Name")
+	@Html.TextBoxFor(m=>m.GenreName,new { @class = "form-control"})
+	<br />
+
+	@Html.Label("Status")
+	@Html.DropDownList("IsDelete",
+	new SelectListItem[] {
+		new SelectListItem() { Text = "True", Value = "true", Selected = Model.IsDelete },
+		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.IsDelete }},
+	new { @class = "form-select"})
+	<br />
+	<input class="form-control btn btn-primary" type="submit" value="Genre Update" />
+}
+
