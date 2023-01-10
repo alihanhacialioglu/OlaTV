@@ -41,5 +41,10 @@ namespace BusinessLayer.Manager
         {
            _castDal.Update(cast);
         }
+
+        public void Update(CastTitle casttitle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

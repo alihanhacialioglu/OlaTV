@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+@model Language
+@{
+    ViewData["Title"] = "Language_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Cast Update</h3>
+@using (Html.BeginForm("Language_Update", "Language", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.TextBoxFor(m=>m.LanguageId,new { @class = "form-control"})
+
+    @Html.Label("Name Surname")
+    @Html.TextBoxFor(m=>m.LanguageName,new { @class = "form-control"})
+
+    <br />
+    @Html.Label("Durum")
+    <select class="form-control" name="IsDelete">
+
+        <option selected>True</option>
+        <option>False</option>
+
+    </select>
+    <br />
+    <input class="form-control btn btn-primary" type="submit" value="Cast Update" />
+}
+

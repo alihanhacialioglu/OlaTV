@@ -1,0 +1,48 @@
+﻿@using EntityLayer.Concrete
+@model CastTitleModel
+@{
+    ViewData["Title"] = "CastTitle_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>CastTitle Update</h1>
+<br />
+
+@using (Html.BeginForm("CastTitle_Update", "CastTitle", FormMethod.Post, new { @class = "form-group" }))
+{
+    <label>CastTitle Id</label>
+    <input class="form-control" type="text" name="CastTitleId" value="@Model.CastTitle.CastTitleId" disabled />
+    @Html.TextBox("CastTitleId",Model.CastTitle.CastTitleId,new { @class = "form-control",@type="hidden"} )
+    <br />
+
+    @Html.Label("Cast Name Surname")
+    <select name="CastId" class="form-select">
+        <option value="@Model.CastTitle.Cast.CastId" >@Model.CastTitle.Cast.CastNameSurname</option>
+        @foreach (var cast in Model.Casts)
+        {
+            <option value="@cast.CastId">@cast.CastNameSurname</option>
+        }
+    </select>
+    <br />
+
+    @Html.Label("Title Name")
+    <select name="TitleId" class="form-select">
+        <option value="@Model.CastTitle.Title.TitleId">@Model.CastTitle.Title.TitleName</option>
+        @foreach (var t in Model.Titles)
+        {
+            <option value="@t.TitleId">@t.TitleName</option>
+        }
+    </select>
+    <br />
+
+    @Html.Label("Status")
+    @Html.DropDownList("IsDelete",
+	new SelectListItem[] {
+		new SelectListItem() { Text = "True", Value = "true", Selected = Model.CastTitle.IsDelete },
+		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.CastTitle.IsDelete }},
+	new { @class = "form-select"})
+    <br />
+
+    <input class="form-control btn btn-primary" type="submit" value="Cast Title Update" />
+}
+
