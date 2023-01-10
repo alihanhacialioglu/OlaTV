@@ -23,12 +23,6 @@ namespace EntityLayer.Concrete
 		//Relation with GenreContent
 		public virtual ICollection<GenreContent> GenreContents { get; set; }
 
-        //Relation with TypeContent
-        public virtual ICollection<TypeContent> TypeContents { get; set; }
-
-        //Relation with StyleContent
-        public virtual ICollection<StyleContent> StyleContents { get; set; }
-
         //Relation with ContentCastTitle
         public virtual ICollection<ContentCastTitle> ContentCastTitles { get; set; }
 
