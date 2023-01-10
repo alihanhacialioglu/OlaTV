@@ -5,9 +5,11 @@
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<h3>Maturity Rating Update Page</h3>
+<br />
 @using (Html.BeginForm("MaturityRating_Update", "MaturityRating", FormMethod.Post, new { @class = "form-group" }))
 {
-	@Html.Label("Maturity Rating ID")
+	@Html.Label("ID")
 	<input class="form-control" type="text" value="@Model.MaturityRatingId" disabled />
 	@Html.TextBoxFor(m=>m.MaturityRatingId,new { @class = "form-control", @type = "hidden"})
 	<br />

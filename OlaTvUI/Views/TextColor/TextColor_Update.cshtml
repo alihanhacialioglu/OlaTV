@@ -6,9 +6,12 @@
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+
+<h3>Text Color Update Page</h3>
+<br />
 @using (Html.BeginForm("TextColor_Update", "TextColor", FormMethod.Post, new { @class = "form-group" }))
 {
-	@Html.Label("Text Color ID")
+	@Html.Label("ID")
 	<input class="form-control" type="text" value="@Model.TextColorId" disabled />
 	@Html.TextBoxFor(m=>m.TextColorId,new { @class = "form-control", @type = "hidden"})
 	<br />

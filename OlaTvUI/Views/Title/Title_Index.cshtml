@@ -6,15 +6,13 @@
     var i = 1;
 }
 
-<table class="table table-striped table-hover">
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>#</th>
-            <th>ID</th>
+           
+            <th></th>
             <th>Title Name</th>
-            <th>Status</th>
-            <th>Change Status</th>
-            <th>CRUD Operations</th>
+            <th>Status</th>          
             <th></th>
             <th></th>
         </tr>
@@ -23,13 +21,12 @@
         @foreach (var item in Model)
         {
             <tr>
-                <th>@i</th>
-                <td>@item.TitleId</td>
+                <th>@i</th>                
                 <td>@item.TitleName</td>
                 <td>@item.IsDelete</td>
                 <td>
                     <a href="/Title/Title_Activate/@item.TitleId" class="btn btn-outline-success text-center" style="margin-right:10px;">Activate <i class="fa fa-check"></i></a>
-                    <a href="/Title/Title_Deactivate/@item.TitleId" class="btn btn-outline-secondary text-center" style="margin-right:10px;">Deactivate <i class="fa fa-times" aria-hidden="true"></i></a>
+                    <a href="/Title/Title_Deactivate/@item.TitleId" class="btn btn-outline-secondary text-center" style="margin-right:10px;">Deactivate <i class="fa fa-times" style="color:black"  aria-hidden="true"></i></a>
                 </td>
                 <td>
                     <a href="/Title/Title_Update/@item.TitleId" type="button" class="btn btn-outline-primary" style="margin-right:10px;">Update</a>

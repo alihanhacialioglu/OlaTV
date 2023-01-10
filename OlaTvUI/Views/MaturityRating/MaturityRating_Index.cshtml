@@ -10,13 +10,11 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <th>#</th>
-            <th>ID</th>
+            
+            <th></th>
             <th>Status Name</th>
-            <th>Maturity Explanation</th>
+            <th>Explanation</th>
             <th>Status</th>
-            <th>Change Status</th>
-            <th>CRUD Operations</th>
             <th></th>
             <th></th>
         </tr>
@@ -26,13 +24,12 @@
         {
             <tr>
                 <th>@i</th>
-                <td>@item.MaturityRatingId</td>
                 <td>@item.StatusName</td>
                 <td>@item.MaturityExplanation</td>
                 <td>@item.IsDelete</td>
                 <td>
                     <a href="/MaturityRating/MaturityRating_Activate/@item.MaturityRatingId" class="btn btn-outline-success text-center" style="margin-right:10px;">Activate <i class="fa fa-check"></i></a>
-                    <a href="/MaturityRating/MaturityRating_Deactivate/@item.MaturityRatingId" class="btn btn-outline-secondary text-center" style="margin-right:10px;">Deactivate <i class="fa fa-times" aria-hidden="true"></i></a>
+                    <a href="/MaturityRating/MaturityRating_Deactivate/@item.MaturityRatingId" class="btn btn-outline-secondary text-center" style="margin-right:10px;">Deactivate <i class="fa fa-times" style="color:black" aria-hidden="true"></i></a>
                 </td>
                 <td>
                     <a href="/MaturityRating/MaturityRating_Update/@item.MaturityRatingId" type="button" class="btn btn-outline-primary" style="margin-right:10px;">Update</a>

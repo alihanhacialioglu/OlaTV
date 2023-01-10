@@ -1,38 +1,36 @@
 ﻿@using EntityLayer.Concrete
-@model List<CastTitle>
+@model List<Category>
 @{
-    ViewData["Title"] = "CastTitle_Index";
+    ViewData["Title"] = "Category_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var i = 1;
 }
 
+
 <table class="table table-striped">
     <thead>
         <tr>
-            <th></th>            
-            <th>Name Surname</th>
-            <th>Title Name</th>
+            <th></th>          
+            <th>Category Name</th>
             <th>Status</th>
             <th></th>
-            <th></th>
-           
+            <th></th>            
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <th>@i</th>              
-                <td>@item.Cast.CastNameSurname</td>
-                <td>@item.Title.TitleName</td>
+                <th>@i</th>                
+                <td>@item.CategoryName</td>
                 <td>@item.IsDelete</td>
                 <td>
-                    <a href="/CastTitle/CastTitle_Activate/@item.CastTitleId" class="btn btn-outline-success text-center tik" style="margin-right:10px;">Activate <i class="fa fa-check" ></i></a>
-                    <a href="/CastTitle/CastTitle_Deactivate/@item.CastTitleId" class="btn btn-outline-secondary text-center carpi" style="margin-right:10px;">Deactivate <i class="fa fa-times " style="color:black" aria-hidden="true"></i></a>
+                    <a href="/Category/Category_Activate/@item.CategoryId" class="btn btn-outline-success text-center" style="margin-right:10px;">Activate <i class="fa fa-check"></i></a>
+                    <a href="/Category/Category_Deactivate/@item.CategoryId" class="btn btn-outline-secondary text-center" style="margin-right:10px;">Deactivate <i class="fa fa-times"style="color:black" aria-hidden="true"></i></a>
                 </td>
                 <td>
-                    <a href="/CastTitle/CastTitle_Update/@item.CastTitleId" type="button" class="btn btn-outline-primary" style="margin-right:10px;">Update</a>
-                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.CastTitleId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
+                    <a href="/Category/Category_Update/@item.CategoryId" type="button" class="btn btn-outline-primary" style="margin-right:10px;">Update</a>
+                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.CategoryId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
                 </td>
             </tr>
             i++;
@@ -41,7 +39,7 @@
 </table>
 
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/CastTitle/CastTitle_Add" class="btn btn-success d-flex justify-content-center">Add CastTitle<ion-icon name="add" style="font-size:25px; margin-left:10px;"></ion-icon></a>
+    <a href="/Category/Category_Add" class="btn btn-success d-flex justify-content-center">Add Cast<ion-icon name="add" style="font-size:25px; margin-left:10px;"></ion-icon></a>
 </div>
 
 <!-- Modal -->
@@ -70,10 +68,12 @@
     $(document).ready(function () {
         $('#decisionPopup').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var CastTitleId = button.attr('data-bs-whatever');
+            var CategoryId = button.attr('data-bs-whatever');
             var a = document.querySelector("#delete-btn");
-            a.href = "/CastTitle/CastTitle_Delete/" + CastTitleId;
+            a.href = "/Category/Category_Delete/" + CategoryId;
         });
     });
 </script>
+
+
 

@@ -7,25 +7,29 @@
 }
 
 
-    <h3>Cast Update</h3>
-    @using (Html.BeginForm("Cast_Update", "Cast", FormMethod.Post, new { @class = "form-group" }))
-    {
-       
-        @Html.TextBoxFor(m=>m.CastId,new { @class = "form-control"})
+<h3>Cast Update Page</h3>
+<br />
+@using (Html.BeginForm("Cast_Update", "Cast", FormMethod.Post, new { @class = "form-group" }))
+{
 
-        @Html.Label("Name Surname")
-        @Html.TextBoxFor(m=>m.CastNameSurname,new { @class = "form-control" })
-        
-         <br />
-        @Html.Label("Durum")
-        <select class="form-control" name="IsDelete" >  
-            
-            <option selected>True</option>
-            <option>False</option>
-                   
-        </select>
-        <br />
-        <input class="form-control btn btn-primary" type="submit" value="Cast Update" />
-    }
+    @Html.Label("ID")
+    <input class="form-control" type="text" value="@Model.CastId" disabled />
+    @Html.TextBoxFor(m=>m.CastId,new { @class = "form-control", @type = "hidden"})
+    <br />
+
+    @Html.Label("Name Surname")
+    @Html.TextBoxFor(m=>m.CastNameSurname,new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Status")
+    <select class="form-control" name="IsDelete">
+
+        <option selected>True</option>
+        <option>False</option>
+
+    </select>
+    <br />
+    <input class="form-control btn btn-primary" type="submit" value="Cast Update" />
+}
 
 
