@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
-@model List<Cast>
+@model List<Cast> 
+
 @{
     ViewData["Title"] = "Cast_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -42,7 +43,7 @@
 </table>
 
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/Cast/Cast_Add" class="btn btn-success d-flex justify-content-center">Add Cast<ion-icon name="add" style="font-size:25px; color:white; margin-left:10px;"></ion-icon></a>
+    <a href="/Cast/Cast_Add" class="btn btn-success d-flex justify-content-center">Add Cast<ion-icon name="add" style="font-size:25px; margin-left:10px;"></ion-icon></a>
 </div>
 
 <!-- Modal -->
@@ -55,8 +56,8 @@
                 <h1 class="modal-title" id="deleteLabel">Warning</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                Are you sure you want to delete?
+            <div class="modal-body">              
+               Are you sure you want to delete?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>

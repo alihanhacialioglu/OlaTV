@@ -1,0 +1,42 @@
+﻿@using EntityLayer.Concrete
+@model CastTitleModel
+@{
+    ViewData["Title"] = "CastTitle_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("CastTitle_Add", "CastTitle", FormMethod.Post, new { @class = "form-group" }))
+{
+
+   @Html.Label("Cast Name Surname")
+    <select name="CastId" class="form-select">
+        <option disabled selected>Select Cast</option>
+        @foreach (var cast in Model.Casts)
+        {
+            <option value="@cast.CastId">@cast.CastNameSurname</option>
+        }
+    </select>
+    <br />
+
+    @Html.Label("Title Name")
+    <select name="TitleId" class="form-select">
+        <option disabled selected>Select Title</option>
+        @foreach (var title in Model.Titles)
+        {
+            <option value="@title.TitleId">@title.TitleName</option>
+        }
+    </select>
+   
+
+    <br />
+    @Html.Label("Case")
+    <select class="form-control" name="IsDelete">
+
+        <option>True</option>
+        <option selected>False</option>
+
+    </select>
+    <br />
+    <input class=" btn btn-primary" type="submit" value="Add" />
+}
+

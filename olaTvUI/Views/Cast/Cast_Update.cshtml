@@ -11,10 +11,10 @@
     @using (Html.BeginForm("Cast_Update", "Cast", FormMethod.Post, new { @class = "form-group" }))
     {
        
-        @Html.TextBoxFor(Cast=>Cast.CastId,new { @class = "form-control",@name="CastId",@value="@Model.CastId",@type="hidden"})
+        @Html.TextBoxFor(m=>m.CastId,new { @class = "form-control"})
 
         @Html.Label("Name Surname")
-        @Html.TextBoxFor(Cast=>Cast.CastNameSurname,new { @class = "form-control",@name="CastNameSurname",@value="@Model.CastNameSurname" })
+        @Html.TextBoxFor(m=>m.CastNameSurname,new { @class = "form-control" })
         
          <br />
         @Html.Label("Durum")
