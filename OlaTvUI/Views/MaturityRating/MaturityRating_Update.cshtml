@@ -1,0 +1,32 @@
+﻿@using EntityLayer.Concrete
+@model MaturityRating
+@{
+	ViewData["Title"] = "MaturityRating_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("MaturityRating_Update", "MaturityRating", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("Maturity Rating ID")
+	<input class="form-control" type="text" value="@Model.MaturityRatingId" disabled />
+	@Html.TextBoxFor(m=>m.MaturityRatingId,new { @class = "form-control", @type = "hidden"})
+	<br />
+
+	@Html.Label("Status Name")
+	@Html.TextBoxFor(m=>m.StatusName,new { @class = "form-control"})
+	<br />
+
+	@Html.Label("Maturity Explanation")
+	@Html.TextBoxFor(m=>m.MaturityExplanation,new { @class = "form-control"})
+	<br />
+
+	@Html.Label("Status")
+	@Html.DropDownList("IsDelete",
+	new SelectListItem[] {
+		new SelectListItem() { Text = "True", Value = "true", Selected = Model.IsDelete },
+		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.IsDelete }},
+	new { @class = "form-select"})
+	<br />
+	<input class="form-control btn btn-primary" type="submit" value="Maturity Rating Update" />
+}
+
