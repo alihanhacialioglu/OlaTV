@@ -28,7 +28,7 @@ namespace OlaTvUI
 
 			app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Cast}/{action=Cast_Index}/{id?}");
+				pattern: "{controller=CastTitle}/{action=CastTitle_Index}/{id?}");
 
 			app.Run();
 		}
