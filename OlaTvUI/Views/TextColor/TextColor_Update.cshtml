@@ -7,7 +7,7 @@
 }
 
 
-<h3>Text Color Update Page</h3>
+<h2>TextColor Update Page</h2>
 <br />
 @using (Html.BeginForm("TextColor_Update", "TextColor", FormMethod.Post, new { @class = "form-group" }))
 {
@@ -20,14 +20,8 @@
 	@Html.TextBoxFor(m=>m.TextColorName,new { @class = "form-control"})
 	<br />
 
-	@Html.Label("Status")
-	@Html.DropDownList("IsDelete",
-	new SelectListItem[] {
-		new SelectListItem() { Text = "True", Value = "true", Selected = Model.IsDelete },
-		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.IsDelete }},
-	new { @class = "form-select"})
-	<br />
+	
 
-	<input class="form-control btn btn-primary" type="submit" value="Text Color Update" />
+	<input class=" btn btn-primary" type="submit" value=" Update" />
 }
 

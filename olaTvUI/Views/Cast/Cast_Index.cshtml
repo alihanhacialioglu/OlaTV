@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model List<Cast> 
+@model List<Cast>
 
 @{
     ViewData["Title"] = "Cast_Index";
@@ -7,30 +7,33 @@
     var i = 1;
 }
 
+<h2>Cast Page</h2>
+<br />
 <table class="table table-striped">
     <thead>
         <tr>
-            <th></th>          
+            <th></th>
             <th>Name Surname</th>
             <th>Status</th>
-            <th></th>
-            <th></th>
-            
+            <th>Status Change Buttons</th>
+            <th>Operations</th>
+
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <th>@i</th>               
+                <th>@i</th>
                 <td>@item.CastNameSurname</td>
                 <td>@item.IsDelete</td>
                 <td>
-                    <a href="/Cast/Cast_Activate/@item.CastId" class="btn btn-outline-success text-center" style="margin-right:10px;">Activate <i class="fa fa-check"></i></a>
-                    <a href="/Cast/Cast_Deactivate/@item.CastId" class="btn btn-outline-secondary text-center" style="margin-right:10px;">Deactivate <i class="fa fa-times" style="color:black" aria-hidden="true"></i></a>
+                    <a href="/Cast/Cast_Activate/@item.CastId" class="btn btn-outline-success text-center">Activate <i class="fa fa-check"></i></a>
+                    <a href="/Cast/Cast_Deactivate/@item.CastId" class="btn btn-outline-dark text-center">Deactivate <i class="fa fa-times" aria-hidden="true"></i></a>
+
                 </td>
                 <td>
-                    <a href="/Cast/Cast_Update/@item.CastId" type="button" class="btn btn-outline-primary" style="margin-right:10px;">Update</a>
+                    <a href="/Cast/Cast_Update/@item.CastId" type="button" class="btn btn-outline-primary">Update</a>              
                     <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.CastId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
                 </td>
             </tr>
@@ -40,7 +43,7 @@
 </table>
 
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/Cast/Cast_Add" class="btn btn-success d-flex justify-content-center">Add Cast<ion-icon name="add" style="font-size:25px; margin-left:10px;"></ion-icon></a>
+    <a href="/Cast/Cast_Add" class="btn btn-success d-flex justify-content-center">Add<ion-icon name="add" style="font-size:25px; margin-left:10px;"></ion-icon></a>
 </div>
 
 <!-- Modal -->
@@ -53,8 +56,8 @@
                 <h1 class="modal-title" id="deleteLabel">Warning</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">              
-               Are you sure you want to delete?
+            <div class="modal-body">
+                Are you sure you want to delete?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>

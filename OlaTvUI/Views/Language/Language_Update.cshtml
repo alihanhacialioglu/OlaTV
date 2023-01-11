@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>Language Update Page</h3>
+<h2>Language Update Page</h2>
 <br />
 @using (Html.BeginForm("Language_Update", "Language", FormMethod.Post, new { @class = "form-group" }))
 {
@@ -18,14 +18,7 @@
     @Html.TextBoxFor(m=>m.LanguageName,new { @class = "form-control"})
 
     <br />
-    @Html.Label("Status")
-    <select class="form-control" name="IsDelete">
-
-        <option selected>True</option>
-        <option>False</option>
-
-    </select>
-    <br />
-    <input class="form-control btn btn-primary" type="submit" value="Cast Update" />
+   
+    <input class=" btn btn-primary" type="submit" value=" Update" />
 }
 

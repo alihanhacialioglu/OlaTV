@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>GenreContent Update Page</h3>
+<h2>GenreContent Update Page</h2>
 <br />
 
 @using (Html.BeginForm("GenreContent_Update", "GenreContent", FormMethod.Post, new { @class = "form-group" }))
@@ -37,14 +37,8 @@
     </select>
     <br />
 
-    @Html.Label("Status")
-    @Html.DropDownList("IsDelete",
-	new SelectListItem[] {
-		new SelectListItem() { Text = "True", Value = "true", Selected = Model.GenreContent.IsDelete },
-		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.GenreContent.IsDelete }},
-	new { @class = "form-select"})
-    <br />
+   
 
-    <input class="form-control btn btn-primary" type="submit" value="Genre Content Update" />
+    <input class=" btn btn-primary" type="submit" value="Update" />
 }
 

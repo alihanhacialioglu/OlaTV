@@ -1,0 +1,40 @@
+﻿@using EntityLayer.Concrete
+@model Packet
+@{
+    ViewData["Title"] = "Packet_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Packet Adding Page</h2>
+<br />
+@using (Html.BeginForm("Packet_Add", "Packet", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.Label("Packet Name")
+    @Html.TextBoxFor(m=>m.PacketName,new { @class = "form-control" })
+    <br />
+
+    @Html.Label("View Count")
+    @Html.TextBoxFor(m=>m.ViewCount,new { @class = "form-control" })
+    <br />
+    @Html.Label("Price")
+    @Html.TextBoxFor(m=>m.PacketPrice,new { @class = "form-control" })
+    <br />
+    @Html.Label("Content Quality")
+    @Html.TextBoxFor(m=>m.PacketContentQuality,new { @class = "form-control" })
+    <br />
+    @Html.Label("Explanation")
+    @Html.TextBoxFor(m=>m.PacketExplanation,new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Status")
+    <select class="form-control" name="IsDelete">
+
+        <option>True</option>
+        <option selected>False</option>
+
+    </select>
+    <br />
+    <input class=" btn btn-primary" type="submit" value="Add" />
+}
+

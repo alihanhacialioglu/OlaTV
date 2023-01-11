@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>Title Update Page</h3>
+<h2>Title Update Page</h2>
 <br />
 @using (Html.BeginForm("Title_Update", "Title", FormMethod.Post, new { @class = "form-group" }))
 {
-    
-   @Html.Label("ID")
+
+    @Html.Label("ID")
     <input class="form-control" type="text" value="@Model.TitleId" disabled />
     @Html.TextBoxFor(m=>m.TitleId,new { @class = "form-control", @type = "hidden"})
     <br />
@@ -18,14 +18,7 @@
     @Html.Label("Title Name")
     @Html.TextBoxFor(m=>m.TitleName,new { @class = "form-control" })
 
-             <br />
-    @Html.Label("Status")
-            <select class="form-control" name="IsDelete" >  
+    <br />
 
-                <option selected>True</option>
-                <option>False</option>
-
-            </select>
-            <br />
-            <input class="form-control btn btn-primary" type="submit" value="Cast Update" />
+    <input class=" btn btn-primary" type="submit" value=" Update" />
 }

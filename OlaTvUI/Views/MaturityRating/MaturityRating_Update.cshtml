@@ -5,7 +5,7 @@
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>Maturity Rating Update Page</h3>
+<h2>Maturity Rating Update Page</h2>
 <br />
 @using (Html.BeginForm("MaturityRating_Update", "MaturityRating", FormMethod.Post, new { @class = "form-group" }))
 {
@@ -22,13 +22,6 @@
 	@Html.TextBoxFor(m=>m.MaturityExplanation,new { @class = "form-control"})
 	<br />
 
-	@Html.Label("Status")
-	@Html.DropDownList("IsDelete",
-	new SelectListItem[] {
-		new SelectListItem() { Text = "True", Value = "true", Selected = Model.IsDelete },
-		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.IsDelete }},
-	new { @class = "form-select"})
-	<br />
-	<input class="form-control btn btn-primary" type="submit" value="Maturity Rating Update" />
+	<input class=" btn btn-primary" type="submit" value=" Update" />
 }
 

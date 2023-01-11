@@ -6,14 +6,16 @@
     var i = 1;
 }
 
+<h2>Language Page</h2>
+<br />
 <table class="table table-striped ">
     <thead>
         <tr>
             <th></th>           
             <th>Language Name</th>
             <th>Status</th>           
-            <th></th>
-            <th></th>
+            <th>Status Change Buttons</th>
+            <th>Operations</th>
         </tr>
     </thead>
     <tbody>
@@ -24,11 +26,11 @@
                 <td>@item.LanguageName</td>
                 <td>@item.IsDelete</td>
                 <td>
-                    <a href="/Language/Language_Activate/@item.LanguageId" class="btn btn-outline-success text-center" style="margin-right:10px;">Activate <i class="fa fa-check"></i></a>
-                    <a href="/Language/Language_Deactivate/@item.LanguageId" class="btn btn-outline-secondary text-center" style="margin-right:10px;">Deactivate <i class="fa fa-times" style="color:black" aria-hidden="true"></i></a>
+                    <a href="/Language/Language_Activate/@item.LanguageId" class="btn btn-outline-success text-center" >Activate <i class="fa fa-check"></i></a>
+                    <a href="/Language/Language_Deactivate/@item.LanguageId" class="btn btn-outline-dark text-center" >Deactivate <i class="fa fa-times"  aria-hidden="true"></i></a>
                 </td>
                 <td>
-                    <a href="/Language/Language_Update/@item.LanguageId" type="button" class="btn btn-outline-primary" style="margin-right:10px;">Update</a>
+                    <a href="/Language/Language_Update/@item.LanguageId" type="button" class="btn btn-outline-primary" >Update</a>
                     <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.LanguageId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
                 </td>
             </tr>

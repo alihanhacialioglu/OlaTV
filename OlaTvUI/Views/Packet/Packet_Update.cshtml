@@ -1,0 +1,36 @@
+﻿@using EntityLayer.Concrete
+@model Packet
+@{
+    ViewData["Title"] = "Packet_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Packet Update Page</h2>
+<br />
+@using (Html.BeginForm("Packet_Update", "Packet", FormMethod.Post, new { @class = "form-group" }))
+{
+    @Html.Label("ID")
+    <input class="form-control" type="text" value="@Model.PacketId" disabled />
+    @Html.TextBoxFor(m=>m.PacketId,new { @class = "form-control", @type = "hidden"})
+    <br />
+
+    @Html.Label("Packet Name")
+    @Html.TextBoxFor(m=>m.PacketName,new { @class = "form-control" })
+    <br />
+
+    @Html.Label("View Count")
+    @Html.TextBoxFor(m=>m.ViewCount,new { @class = "form-control" })
+    <br />
+    @Html.Label("Price")
+    @Html.TextBoxFor(m=>m.PacketPrice,new { @class = "form-control" })
+    <br />
+    @Html.Label("Content Quality")
+    @Html.TextBoxFor(m=>m.PacketContentQuality,new { @class = "form-control" })
+    <br />
+    @Html.Label("Explanation")
+    @Html.TextBoxFor(m=>m.PacketExplanation,new { @class = "form-control" })
+    <br />
+
+    
+    <input class=" btn btn-primary" type="submit" value="Update" />
+}

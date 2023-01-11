@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>CastTitle Update Page</h3>
+<h2>CastTitle Update Page</h2>
 <br />
 
 @using (Html.BeginForm("CastTitle_Update", "CastTitle", FormMethod.Post, new { @class = "form-group" }))
@@ -37,14 +37,6 @@
     </select>
     <br />
 
-    @Html.Label("Status")
-    @Html.DropDownList("IsDelete",
-	new SelectListItem[] {
-		new SelectListItem() { Text = "True", Value = "true", Selected = Model.CastTitle.IsDelete },
-		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.CastTitle.IsDelete }},
-	new { @class = "form-select"})
-    <br />
-
-    <input class="form-control btn btn-primary" type="submit" value="Cast Title Update" />
+    <input class="btn btn-primary" type="submit" value="Update" />
 }
 

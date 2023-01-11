@@ -6,6 +6,8 @@
     var i = 1;
 }
 
+<h2>Title Page</h2>
+<br />
 <table class="table table-striped">
     <thead>
         <tr>
@@ -13,8 +15,8 @@
             <th></th>
             <th>Title Name</th>
             <th>Status</th>          
-            <th></th>
-            <th></th>
+            <th>Status Change Buttons</th>
+            <th>Operations</th>
         </tr>
     </thead>
     <tbody>
@@ -25,11 +27,11 @@
                 <td>@item.TitleName</td>
                 <td>@item.IsDelete</td>
                 <td>
-                    <a href="/Title/Title_Activate/@item.TitleId" class="btn btn-outline-success text-center" style="margin-right:10px;">Activate <i class="fa fa-check"></i></a>
-                    <a href="/Title/Title_Deactivate/@item.TitleId" class="btn btn-outline-secondary text-center" style="margin-right:10px;">Deactivate <i class="fa fa-times" style="color:black"  aria-hidden="true"></i></a>
+                    <a href="/Title/Title_Activate/@item.TitleId" class="btn btn-outline-success text-center" >Activate <i class="fa fa-check"></i></a>
+                    <a href="/Title/Title_Deactivate/@item.TitleId" class="btn btn-outline-dark text-center" >Deactivate <i class="fa fa-times"   aria-hidden="true"></i></a>
                 </td>
                 <td>
-                    <a href="/Title/Title_Update/@item.TitleId" type="button" class="btn btn-outline-primary" style="margin-right:10px;">Update</a>
+                    <a href="/Title/Title_Update/@item.TitleId" type="button" class="btn btn-outline-primary" >Update</a>
                     <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.TitleId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
                 </td>
             </tr>
@@ -39,7 +41,7 @@
 </table>
 
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/Title/Title_Add" class="btn btn-success d-flex justify-content-center">Add Title<ion-icon name="add" style="font-size:25px;  margin-left:10px;"></ion-icon></a>
+    <a href="/Title/Title_Add" class="btn btn-success d-flex justify-content-center">Add<ion-icon name="add" style="font-size:25px;  margin-left:10px;"></ion-icon></a>
 </div>
 
 <!-- Modal -->

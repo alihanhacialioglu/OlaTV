@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>Category Update Page</h3>
+<h2>Category Update Page</h2>
 <br />
 @using (Html.BeginForm("Category_Update", "Category", FormMethod.Post, new { @class = "form-group" }))
 {
@@ -17,14 +17,7 @@
     @Html.Label("Category Name")
     @Html.TextBoxFor(m=>m.CategoryName,new { @class = "form-control" })
 
+   
     <br />
-    @Html.Label("Status")
-    <select class="form-control" name="IsDelete">
-
-        <option selected>True</option>
-        <option>False</option>
-
-    </select>
-    <br />
-    <input class="form-control btn btn-primary" type="submit" value="Category Update" />
+    <input class=" btn btn-primary" type="submit" value=" Update" />
 }

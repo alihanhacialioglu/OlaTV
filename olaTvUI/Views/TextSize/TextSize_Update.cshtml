@@ -5,7 +5,7 @@
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h3>Text Size Update Page</h3>
+<h2>Text Size Update Page</h2>
 <br />
 @using (Html.BeginForm("TextSize_Update", "TextSize", FormMethod.Post, new { @class = "form-group" }))
 {
@@ -18,13 +18,7 @@
 	@Html.TextBoxFor(m=>m.TextSizeName,new { @class = "form-control"})
 	<br />
 
-	@Html.Label("Status")
-	@Html.DropDownList("IsDelete",
-	new SelectListItem[] {
-		new SelectListItem() { Text = "True", Value = "true", Selected = Model.IsDelete },
-		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.IsDelete }},
-	new { @class = "form-select"})
-	<br />
-	<input class="form-control btn btn-primary" type="submit" value="Text Size Update" />
+	
+	<input class=" btn btn-primary" type="submit" value=" Update" />
 }
 
