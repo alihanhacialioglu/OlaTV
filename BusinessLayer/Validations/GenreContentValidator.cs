@@ -12,8 +12,8 @@ namespace BusinessLayer.Validations
 	{
 		public GenreContentValidator()
 		{
-			RuleFor(m => m.Genre).NotEmpty();
-			RuleFor(m => m.Content).NotEmpty();
+			RuleFor(m => m.GenreId).NotEmpty();
+			RuleFor(m => m.ContentId).NotEmpty();
 		}
 	}
 }
