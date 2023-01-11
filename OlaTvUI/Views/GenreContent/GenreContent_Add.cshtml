@@ -1,0 +1,42 @@
+﻿@using EntityLayer.Concrete
+@model GenreContentModel
+@{
+	ViewData["Title"] = "GenreContent_Add";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("GenreContent_Add", "GenreContent", FormMethod.Post, new { @class = "form-group" }))
+{
+
+	@Html.Label("Genre Name")
+	<select name="CastId" class="form-select">
+		<option disabled selected>Select Genre</option>
+		@foreach (var genre in Model.Genres)
+		{
+			<option value="@genre.GenreId">@genre.GenreName</option>
+		}
+	</select>
+	@Html.ValidationMessageFor(m=>m.Genres.FirstOrDefault().GenreId,"",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Content Name")
+	<select name="ContentId" class="form-select">
+		<option disabled selected>Select Content</option>
+		@foreach (var content in Model.Contents)
+		{
+			<option value="@content.ContentId">@content.ContentName</option>
+		}
+	</select>
+	@Html.ValidationMessageFor(m=>m.Contents.FirstOrDefault().ContentId,"",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Status")
+	<select class="form-control" name="IsDelete">
+		<option selected>False</option>
+		<option>True</option>
+	</select>
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Add" />
+}
+

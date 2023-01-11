@@ -1,0 +1,50 @@
+﻿@using EntityLayer.Concrete
+@model GenreContentModel
+@{
+    ViewData["Title"] = "GenreContent_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>GenreContent Update Page</h3>
+<br />
+
+@using (Html.BeginForm("GenreContent_Update", "GenreContent", FormMethod.Post, new { @class = "form-group" }))
+{
+    <label>GenreContent Id</label>
+    <input class="form-control" type="text" name="GenreContentId" value="@Model.GenreContent.GenreContentId" disabled />
+    @Html.TextBox("GenreContentId",Model.GenreContent.GenreContentId,new { @class = "form-control",@type="hidden"} )
+    <br />
+
+    @Html.Label("Genre Name")
+    <select name="GenreId" class="form-select">
+        <option disabled value="@Model.GenreContent.Genre.GenreId">@Model.GenreContent.Genre.GenreName</option>
+        <option hidden value="@Model.GenreContent.Genre.GenreId">@Model.GenreContent.Genre.GenreName</option>
+        @foreach (var cast in Model.Genres)
+        {
+            <option value="@cast.GenreId">@cast.GenreName</option>
+        }
+    </select>
+    <br />
+
+    @Html.Label("Content Name")
+    <select name="ContentId" class="form-select">
+        <option disabled value="@Model.GenreContent.Content.ContentId">@Model.GenreContent.Content.ContentName</option>
+        <option hidden value="@Model.GenreContent.Content.ContentId">@Model.GenreContent.Content.ContentName</option>
+        @foreach (var t in Model.Contents)
+        {
+            <option value="@t.ContentId">@t.ContentName</option>
+        }
+    </select>
+    <br />
+
+    @Html.Label("Status")
+    @Html.DropDownList("IsDelete",
+	new SelectListItem[] {
+		new SelectListItem() { Text = "True", Value = "true", Selected = Model.GenreContent.IsDelete },
+		new SelectListItem() { Text = "False", Value = "false", Selected = !Model.GenreContent.IsDelete }},
+	new { @class = "form-select"})
+    <br />
+
+    <input class="form-control btn btn-primary" type="submit" value="Genre Content Update" />
+}
+
