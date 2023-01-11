@@ -17,7 +17,8 @@
 
     @Html.Label("Cast Name Surname")
     <select name="CastId" class="form-select">
-        <option value="@Model.CastTitle.Cast.CastId" >@Model.CastTitle.Cast.CastNameSurname</option>
+        <option disabled value="@Model.CastTitle.Cast.CastId">@Model.CastTitle.Cast.CastNameSurname</option>
+        <option hidden value="@Model.CastTitle.Cast.CastId" >@Model.CastTitle.Cast.CastNameSurname</option>
         @foreach (var cast in Model.Casts)
         {
             <option value="@cast.CastId">@cast.CastNameSurname</option>
@@ -27,7 +28,8 @@
 
     @Html.Label("Title Name")
     <select name="TitleId" class="form-select">
-        <option value="@Model.CastTitle.Title.TitleId">@Model.CastTitle.Title.TitleName</option>
+        <option disabled value="@Model.CastTitle.Title.TitleId">@Model.CastTitle.Title.TitleName</option>
+        <option hidden value="@Model.CastTitle.Title.TitleId">@Model.CastTitle.Title.TitleName</option>
         @foreach (var t in Model.Titles)
         {
             <option value="@t.TitleId">@t.TitleName</option>
