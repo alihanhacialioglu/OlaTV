@@ -20,9 +20,9 @@ namespace OlaTvUI.Controllers
         [HttpGet]
         public IActionResult User_Add()
         {
-            UserPacketModel userPacketModel = new UserPacketModel();
-            userPacketModel.UserModel = new User();
-            userPacketModel.PacketModel = packetManager.GetAll();
+            UserModel userPacketModel = new UserModel();
+            userPacketModel.User = new User();
+            userPacketModel.Packets = packetManager.GetAll();
             return View(userPacketModel);
         }
 
@@ -30,9 +30,9 @@ namespace OlaTvUI.Controllers
         public IActionResult User_Add(User user)
         {
             UserValidator userValidator = new UserValidator();
-            UserPacketModel userPacketModel = new UserPacketModel();
-            userPacketModel.UserModel = user;
-            userPacketModel.PacketModel = packetManager.GetAll();
+            UserModel userPacketModel = new UserModel();
+            userPacketModel.User = user;
+            userPacketModel.Packets = packetManager.GetAll();
             var result=userValidator.Validate(user);
 
             if (result.IsValid)
@@ -55,9 +55,9 @@ namespace OlaTvUI.Controllers
         public IActionResult User_Update(int id)
         {
             User user = userManager.GetById(id);
-            UserPacketModel userPacketModel = new UserPacketModel();
-            userPacketModel.UserModel = new User();
-            userPacketModel.PacketModel = packetManager.GetAll();
+            UserModel userPacketModel = new UserModel();
+            userPacketModel.User = new User();
+            userPacketModel.Packets = packetManager.GetAll();
             return View(user);
         }
         [HttpPost]
