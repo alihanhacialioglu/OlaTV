@@ -1,0 +1,81 @@
+﻿@using EntityLayer.Concrete
+@model List<Content>
+@{
+    ViewData["Title"] = "Content_Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var i = 1;
+}
+
+<h2>Cast Title Page</h2>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Content Name</th>
+            <th>Maturity Rating</th>
+            <th>Status</th>
+            <th>Status Change Buttons</th>
+            <th> Operations</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@i</th>
+                <td>@item.ContentName</td>
+                <td>@item.MaturityRating.StatusName</td>
+                <td>@item.IsDelete</td>
+                <td>
+                    <a href="/Content/Content_Activate/@item.ContentId" class="btn btn-outline-success text-center ">Activate <i class="fa fa-check"></i></a>
+                    <a href="/Content/Content_Deactivate/@item.ContentId" class="btn btn-outline-dark text-center ">Deactivate <i class="fa fa-times " aria-hidden="true"></i></a>
+                </td>
+                <td>
+                    <a href="/Content/Content_Update/@item.ContentId" type="button" class="btn btn-outline-primary">Update</a>
+                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.ContentId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
+
+<div class="text-center d-flex justify-content-start p-2">
+    <a href="/Content/Content_Add" class="btn btn-success d-flex justify-content-center">Add<ion-icon name="add" style="font-size:25px; margin-left:10px;"></ion-icon></a>
+</div>
+
+<!-- Modal -->
+@*#decisionPopup Model*@
+
+<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="deleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="deleteLabel">Warning</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <a id="delete-btn" href="" class="btn btn-success">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#decisionPopup').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var ContentId = button.attr('data-bs-whatever');
+            var a = document.querySelector("#delete-btn");
+            a.href = "/Content/Content_Delete/" + ContentId;
+        });
+    });
+</script>
+

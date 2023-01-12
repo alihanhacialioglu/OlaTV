@@ -1,0 +1,32 @@
+﻿@using EntityLayer.Concrete
+@model ContentModel
+@{
+	ViewData["Title"] = "Content_Add";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Content Adding Page</h2>
+<br />
+
+@using (Html.BeginForm("Content_Add", "Content", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("Content Name")
+	@Html.TextBoxFor(m=>m.Content.ContentName,"",new { @class = "form-control", @placeholder="Content Name" })
+	@Html.ValidationMessageFor(m=>m.Content.ContentName,"",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Maturity Rating")
+
+	@Html.DropDownListFor(m => m.Content.MaturityRatingId, new SelectList(Model.MaturityRatings, "MaturityRatingId", "StatusName"), "Select Maturity Rating", new { @class = "form-select" })
+	@Html.ValidationMessageFor(m=>m.MaturityRatings.FirstOrDefault().MaturityRatingId,"",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Status")
+	<select class="form-select" name="IsDelete">
+		<option selected>False</option>
+		<option>True</option>
+	</select>
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Add" />
+}
