@@ -1,0 +1,64 @@
+﻿@using EntityLayer.Concrete
+@model UserPacketModel
+@{
+    ViewData["Title"] = "User_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>User Update Page</h2>
+<br />
+@using (Html.BeginForm("User_Add", "User", FormMethod.Post, new { @class = "form-group" }))
+{
+    <label>User Id</label>
+    <input class="form-control" type="text" name="UserId" value="@Model.UserModel.UserId" disabled />
+    @Html.TextBoxFor(m=>m.UserModel.UserName,"",new { @class = "form-control",@type="hidden"} )
+    <br />
+
+    @Html.Label("User Name")
+    @Html.TextBoxFor(m=>m.UserModel.UserName,"",new { @class = "form-control"} )
+    @Html.ValidationMessageFor(m=>m.UserModel.UserName,"",new { @class ="text-danger" })
+    <br />
+
+    @Html.Label("Password")
+    @Html.TextBoxFor(m=>m.UserModel.Password,"",new { @class = "form-control"} )
+    @Html.ValidationMessageFor(m=>m.UserModel.Password,"",new { @class ="text-danger" })
+    <br />
+    @Html.Label("Email")
+    @Html.TextBoxFor(m=>m.UserModel.EmailAddress,"",new { @class = "form-control"} )
+    @Html.ValidationMessageFor(m=>m.UserModel.EmailAddress,"",new { @class ="text-danger" })
+    <br />
+    @Html.Label("Phone Number")
+    @Html.TextBoxFor(m=>m.UserModel.PhoneNumber,"",new { @class = "form-control"} )
+    @Html.ValidationMessageFor(m=>m.UserModel.PhoneNumber,"",new { @class ="text-danger" })
+    <br />
+    @Html.Label("Date Of Registration")
+    @Html.TextBoxFor(m=>m.UserModel.DateOfRegistration,"",new { @class = "form-control"} )
+    @Html.ValidationMessageFor(m=>m.UserModel.DateOfRegistration,"",new { @class ="text-danger" })
+    <br />
+    @Html.Label("Access Pin")
+    @Html.TextBoxFor(m=>m.UserModel.AccessPin,"",new { @class = "form-control"} )
+    @Html.ValidationMessageFor(m=>m.UserModel.AccessPin,"",new { @class ="text-danger" })
+    <br />
+    @Html.Label("Packet Name")
+    <select name="PacketId" class="form-select">
+        
+        @foreach (var cast in Model.PacketModel)
+        {
+            <option value="@cast.PacketId">@cast.PacketName</option>
+        }
+    </select>
+    @Html.ValidationMessageFor(m=>m.PacketModel.FirstOrDefault().PacketId,"",new { @class ="text-danger" })
+    <br />
+
+
+    @Html.Label("Status")
+    <select class="form-control" name="IsDelete">
+
+        <option>True</option>
+        <option selected>False</option>
+
+    </select>
+    <br />
+    <input class=" btn btn-primary" type="submit" value="Add" />
+}
+

@@ -1,22 +1,24 @@
 ﻿@using EntityLayer.Concrete
-@model List<Packet>
+@model List<User>
 @{
-    ViewData["Title"] = "Packet_Index";
+    ViewData["Title"] = "User_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     var i = 1;
 }
 
-<h2>Packet Page</h2>
+<h2>User Page</h2>
 <br />
-<table class="table table-striped" style="width:1300px;">
+<table class="table table-striped" style="width:1900px;">
     <thead>
         <tr>
             <th></th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>DateOfRegistration</th>
+            <th>AccessPin</th>
             <th>Packet Name</th>
-            <th>View Count</th>
-            <th>Price</th>
-            <th>Content Quality</th>
-            <th>Explanation</th>
             <th>Status</th>
             <th>Status Change Buttons</th>
             <th>Operations</th>
@@ -30,23 +32,26 @@
         {
             <tr>
                 <th>@i</th>
-                <td>@item.PacketName</td>
-                <td>@item.ViewCount</td>
-                <td>@item.PacketPrice</td>
-                <td>@item.PacketContentQuality</td>
-                <td>@item.PacketExplanation</td>
+                <td>@item.UserName</td>
+                <td>@item.Password</td>
+                <td>@item.EmailAddress</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.DateOfRegistration</td>
+                <td>@item.AccessPin</td>
+                <td>@item.Packet.PacketName</td>
                 <td>@item.IsDelete</td>
+               
                 <td>
-                    <a href="/Packet/Packet_Activate/@item.PacketId" class="btn btn-outline-success text-center">
+                    <a href="/User/User_Activate/@item.UserId" class="btn btn-outline-success text-center">
                         Activate <i class="fa fa-check"></i>
-                    </a>              
-                    <a href="/Packet/Packet_Deactivate/@item.PacketId" class="btn btn-outline-dark text-center">
+                    </a>
+                    <a href="/User/User_Deactivate/@item.UserId" class="btn btn-outline-dark text-center">
                         Deactivate <i class="fa fa-times"  aria-hidden="true"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="/Packet/Packet_Update/@item.PacketId" type="button" class="btn btn-outline-primary">Update</a>
-                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.PacketId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
+                    <a href="/User/User_Update/@item.UserId" type="button" class="btn btn-outline-primary">Update</a>
+                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.UserId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
                 </td>
             </tr>
             i++;
@@ -55,7 +60,7 @@
 </table>
 
 <div class="text-center d-flex justify-content-start p-2">
-    <a href="/Packet/Packet_Add" class="btn btn-success d-flex justify-content-center">Packet Add<ion-icon name="add" style="font-size:25px; margin-left:10px;"></ion-icon></a>
+    <a href="/User/User_Add" class="btn btn-success d-flex justify-content-center">Add<ion-icon name="add" style="font-size:25px; margin-left:10px;"></ion-icon></a>
 </div>
 
 <!-- Modal -->
@@ -84,9 +89,10 @@
     $(document).ready(function () {
         $('#decisionPopup').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var PacketId = button.attr('data-bs-whatever');
+            var UserId = button.attr('data-bs-whatever');
             var a = document.querySelector("#delete-btn");
-            a.href = "/Packete/Packet_Delete/" + PacketId;
+            a.href = "/User/User_Delete/" + UserId;
         });
     });
 </script>
+
