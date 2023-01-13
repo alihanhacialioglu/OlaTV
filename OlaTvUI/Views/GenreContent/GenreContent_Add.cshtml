@@ -11,24 +11,16 @@
 {
 
 	@Html.Label("Genre Name")
-	<select name="GenreId" class="form-select">
-		<option disabled selected>Select Genre</option>
-		@foreach (var genre in Model.Genres)
-		{
-			<option value="@genre.GenreId">@genre.GenreName</option>
-		}
-	</select>
+	@Html.DropDownListFor(m => m.GenreContent.GenreId, 
+		new SelectList(Model.Genres, "GenreId", "GenreName"), "Select Genre", 
+		new { @class = "form-select" })
 	@Html.ValidationMessageFor(m=>m.Genres.FirstOrDefault().GenreId,"",new { @class ="text-danger" })
 	<br />
 
 	@Html.Label("Content Name")
-	<select name="ContentId" class="form-select">
-		<option disabled selected>Select Content</option>
-		@foreach (var content in Model.Contents)
-		{
-			<option value="@content.ContentId">@content.ContentName</option>
-		}
-	</select>
+	@Html.DropDownListFor(m => m.GenreContent.ContentId, 
+		new SelectList(Model.Contents, "ContentId", "ContentName"), "Select Content", 
+		new { @class = "form-select" })
 	@Html.ValidationMessageFor(m=>m.Contents.FirstOrDefault().ContentId,"",new { @class ="text-danger" })
 	<br />
 
