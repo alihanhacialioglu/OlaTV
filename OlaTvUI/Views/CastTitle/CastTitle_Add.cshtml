@@ -12,10 +12,10 @@
 @using (Html.BeginForm("CastTitle_Add", "CastTitle", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("Cast Name Surname")
-	@Html.DropDownListFor(m => m.CastTitle.CastId,
-		new SelectList(Model.Casts, "CastId", "CastNameSurname"), "Select Cast",
-		new { @class = "form-select" })
-	@Html.ValidationMessageFor(m=>m.Casts.FirstOrDefault().CastId,"",new { @class ="text-danger" })
+		@Html.DropDownListFor(m => m.CastTitle.CastId,
+			new SelectList(Model.Casts, "CastId", "CastNameSurname"), "Select Cast",
+			new { @class = "form-select" })
+		@Html.ValidationMessageFor(m=>m.Casts.FirstOrDefault().CastId,"",new { @class ="text-danger" })
 	<br />
 
 	@Html.Label("Title Name")
@@ -23,13 +23,6 @@
 		new SelectList(Model.Titles, "TitleId", "TitleName"), "Select Genre",
 		new { @class = "form-select" })
 	@Html.ValidationMessageFor(m=>m.Titles.FirstOrDefault().TitleId,"",new { @class ="text-danger" })
-	<br />
-
-	@Html.Label("Status")
-	<select class="form-control" name="IsDelete">
-		<option selected>False</option>
-		<option>True</option>
-	</select>
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Add" />
