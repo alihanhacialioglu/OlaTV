@@ -12,8 +12,8 @@
 @using (Html.BeginForm("ContentCastTitle_Update", "ContentCastTitle", FormMethod.Post, new { @class = "form-group" }))
 {
     <label>ContentCastTitle Id</label>
-    <input class="form-control" type="text" name="ContentCastTitleId" value="@Model.ContentCastTitle.ContentCastTitleId" disabled />
-    @Html.TextBoxFor(m=>m.ContentCastTitle.ContentCastTitleId, new { @class = "form-control",@type="hidden"} )
+    @Html.HiddenFor(m => m.ContentCastTitle.ContentCastTitleId)
+    @Html.TextBoxFor(m=>m.ContentCastTitle.ContentCastTitleId, new { @class = "form-control", @disabled = "disabled"} )
     <br />
 
     @Html.Label("Content Name")
