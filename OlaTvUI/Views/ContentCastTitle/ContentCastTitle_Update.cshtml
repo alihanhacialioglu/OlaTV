@@ -1,0 +1,33 @@
+﻿@using EntityLayer.Concrete
+@model ContentCastTitleModel
+
+@{
+    ViewData["Title"] = "ContentCastTitle_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ContentCastTitle Update Page</h2>
+<br />
+
+@using (Html.BeginForm("ContentCastTitle_Update", "ContentCastTitle", FormMethod.Post, new { @class = "form-group" }))
+{
+    <label>ContentCastTitle Id</label>
+    <input class="form-control" type="text" name="ContentCastTitleId" value="@Model.ContentCastTitle.ContentCastTitleId" disabled />
+    @Html.TextBox("ContentCastTitleId",Model.ContentCastTitle.ContentCastTitleId, new { @class = "form-control",@type="hidden"} )
+    <br />
+
+    @Html.Label("Content Name")
+    @Html.DropDownListFor(m => m.ContentCastTitle.Content.ContentId, 
+        new SelectList(Model.Contents,"ContentId","ContentName", Model.ContentCastTitle.Content.ContentId), "Select Content", 
+        new { @class = "form-select" })
+    <br />
+
+    @Html.Label("CastTitle Name")
+    @Html.DropDownListFor(m => m.ContentCastTitle.CastTitle.CastTitleId, 
+        new SelectList(Model.CastTitles,"CastTitleId","CastTitleId", Model.ContentCastTitle.CastTitle.CastTitleId), "Select CastTitle", 
+        new { @class = "form-select" })
+    <br />
+
+    <input class=" btn btn-primary" type="submit" value="Update" />
+}
+

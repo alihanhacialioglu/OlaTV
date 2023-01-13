@@ -1,0 +1,36 @@
+﻿@using EntityLayer.Concrete
+@model ContentCastTitleModel
+@{
+	ViewData["Title"] = "ContentCastTitle_Add";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ContentCastTitle Adding Page</h2>
+<br />
+@using (Html.BeginForm("ContentCastTitle_Add", "ContentCastTitle", FormMethod.Post, new { @class = "form-group" }))
+{
+
+	@Html.Label("Content Name")
+	@Html.DropDownListFor(m => m.ContentCastTitle.ContentId,
+		new SelectList(Model.Contents, "ContentId", "ContentName"), "Select Content",
+		new { @class = "form-select" })
+	@Html.ValidationMessageFor(m=>m.Contents.FirstOrDefault().ContentId,"",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("CastTitle")
+	@Html.DropDownListFor(m => m.ContentCastTitle.CastTitleId,
+		new SelectList(Model.CastTitles, "CastTitleId", "CastTitleId"), "Select CastTitle",
+		new { @class = "form-select" })
+	@Html.ValidationMessageFor(m=>m.CastTitles.FirstOrDefault().CastTitleId,"",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Status")
+	<select class="form-control" name="IsDelete">
+		<option selected>False</option>
+		<option>True</option>
+	</select>
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Add" />
+}
+
