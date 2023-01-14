@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+@model VideoLanguageModel
+@{
+	ViewData["Title"] = "VideoLanguage_Add";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>VideoLanguage Adding Page</h2>
+<br />
+@using (Html.BeginForm("VideoLanguage_Add", "VideoLanguage", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("Video Url")
+	@Html.DropDownListFor(m => m.VideoLanguage.VideoId,
+		new SelectList(Model.Videos, "VideoId", "VideoUrl"), "Select Video Url",
+		new { @class = "form-select" })
+	@Html.ValidationMessage("VideoId", new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Subtitle Language")
+	@Html.DropDownListFor(m => m.VideoLanguage.LanguageId,
+		new SelectList(Model.Languages, "LanguageId", "LanguageName"), "Select Subtitle Language",
+		new { @class = "form-select" })
+	@Html.ValidationMessage("LanguageId",new { @class ="text-danger" })
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Add" />
+}
+

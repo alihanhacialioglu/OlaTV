@@ -1,0 +1,42 @@
+﻿@using EntityLayer.Concrete
+@model VideoLanguageModel
+@{
+    ViewData["Title"] = "VideoLanguage_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>VideoLanguage Update Page</h2>
+<br />
+
+@using (Html.BeginForm("VideoLanguage_Update", "VideoLanguage", FormMethod.Post, new { @class = "form-group" }))
+{
+    @Html.Label("VideoLanguage ID")
+    @Html.Hidden("VideoLanguageId", Model.VideoLanguage.VideoLanguageId)
+    @Html.TextBox("VideoLanguageId", Model.VideoLanguage.VideoLanguageId, new { @class = "form-control",@disabled="disabled"} )
+    <br />
+
+    @Html.Label("Video Url")
+    <select name="VideoId" class="form-select">
+        <option disabled value="@Model.VideoLanguage.Video.VideoId">@Model.VideoLanguage.Video.VideoUrl</option>
+        <option hidden value="@Model.VideoLanguage.Video.VideoId">@Model.VideoLanguage.Video.VideoUrl</option>
+        @foreach (var cast in Model.Videos)
+        {
+            <option value="@cast.VideoId">@cast.VideoUrl</option>
+        }
+    </select>
+    <br />
+
+    @Html.Label("Subtitle Language Name")
+    <select name="LanguageId" class="form-select">
+        <option disabled value="@Model.VideoLanguage.Language.LanguageId">@Model.VideoLanguage.Language.LanguageName</option>
+        <option hidden value="@Model.VideoLanguage.Language.LanguageId">@Model.VideoLanguage.Language.LanguageName</option>
+        @foreach (var t in Model.Languages)
+        {
+            <option value="@t.LanguageId">@t.LanguageName</option>
+        }
+    </select>
+    <br />
+
+    <input class=" btn btn-primary" type="submit" value="Update" />
+}
+
