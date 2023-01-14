@@ -1,0 +1,38 @@
+﻿@using EntityLayer.Concrete
+@model ProfileVideoWatchingModel
+@{
+	ViewData["Title"] = "ProfileVideoWatching_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ProfileVideoWatching Update Page</h2>
+<br />
+
+@using (Html.BeginForm("ProfileVideoWatching_Update", "ProfileVideoWatching", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("ProfileVideoWatching ID")
+	@Html.HiddenFor(m => m.ProfileVideoWatching.ProfileVideoWatchingId)
+	@Html.TextBoxFor(m => m.ProfileVideoWatching.ProfileVideoWatchingId, new { @class = "form-control", @disabled = "disabled"} )
+	<br />
+
+	@Html.Label("Date Of Watched")
+	@Html.TextBoxFor(m=>m.ProfileVideoWatching.ProfileVideoDateOfWached, Model.ProfileVideoWatching.ProfileVideoDateOfWached.ToString("yyyy-MM-dd"), new { @class = "form-control", @type = "date" })
+	<br />
+
+	@Html.Label("Profile")
+	@Html.DropDownListFor(m => m.ProfileVideoWatching.ProfileId,
+		new SelectList(Model.Profiles, "ProfileId", "ProfileName"), "Select Profile",
+		new { @class = "form-select" })
+	@Html.ValidationMessage("ProfileId",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Video")
+	@Html.DropDownListFor(m => m.ProfileVideoWatching.VideoId,
+	new SelectList(Model.Videos, "VideoId", "VideoUrl"), "Select Video",
+		new { @class = "form-select" })
+	@Html.ValidationMessage("VideoId",new { @class ="text-danger" })
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Update" />
+}
+
