@@ -1,0 +1,33 @@
+﻿@using EntityLayer.Concrete
+@model ProfileVideoRatingModel
+@{
+	ViewData["Title"] = "ProfileVideoRating_Add";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ProfileVideoRating Adding Page</h2>
+<br />
+@using (Html.BeginForm("ProfileVideoRating_Add", "ProfileVideoRating", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("Rate")
+	@Html.TextBoxFor(m=>m.ProfileVideoRating.ProfileVideoRate, new { @class = "form-control" })
+	@Html.ValidationMessage("ProfileVideoRate",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Profile")
+	@Html.DropDownListFor(m => m.ProfileVideoRating.ProfileId,
+		new SelectList(Model.Profiles, "ProfileId", "ProfileName"), "Select Profile",
+		new { @class = "form-select" })
+	@Html.ValidationMessage("ProfileId",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Video")
+	@Html.DropDownListFor(m => m.ProfileVideoRating.VideoId,
+	new SelectList(Model.Videos, "VideoId", "VideoUrl"), "Select Video",
+		new { @class = "form-select" })
+	@Html.ValidationMessage("VideoId",new { @class ="text-danger" })
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Add" />
+}
+

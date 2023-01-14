@@ -1,0 +1,37 @@
+﻿@using EntityLayer.Concrete
+@model ProfileVideoRatingModel
+@{
+	ViewData["Title"] = "ProfileVideoRating_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ProfileVideoRating Update Page</h2>
+<br />
+
+@using (Html.BeginForm("ProfileVideoRating_Update", "ProfileVideoRating", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("ProfileVideoRating ID")
+	@Html.HiddenFor(m => m.ProfileVideoRating.ProfileVideoRatingId)
+	@Html.TextBoxFor(m => m.ProfileVideoRating.ProfileVideoRatingId, new { @class = "form-control", @disabled = "disabled"} )
+	<br />
+
+	@Html.Label("Date Of Watched")
+	@Html.TextBoxFor(m=>m.ProfileVideoRating.ProfileVideoRate, new { @class = "form-control"})
+	@Html.ValidationMessage("ProfileVideoRate",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Profile")
+	@Html.DropDownListFor(m => m.ProfileVideoRating.ProfileId,
+		new SelectList(Model.Profiles, "ProfileId", "ProfileName"),
+		new { @class = "form-select" })
+	<br />
+
+	@Html.Label("Video")
+	@Html.DropDownListFor(m => m.ProfileVideoRating.VideoId,
+	new SelectList(Model.Videos, "VideoId", "VideoUrl"),
+		new { @class = "form-select" })
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Update" />
+}
+
