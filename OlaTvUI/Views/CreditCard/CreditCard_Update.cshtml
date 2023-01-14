@@ -1,0 +1,51 @@
+﻿@using EntityLayer.Concrete
+@model CreditCardModel
+@{
+    ViewData["Title"] = "CreditCard_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CreditCard Update Page</h2>
+<br />
+@using (Html.BeginForm("CreditCard_Update", "CreditCard", FormMethod.Post, new { @class = "form-group" }))
+{
+    <label>InvoiceDetail Id</label>
+    @Html.HiddenFor(m => m.CreditCard.CreditCardId)
+    @Html.TextBoxFor(m=>m.CreditCard.CreditCardId, new { @class = "form-control", @disabled = "disabled"} )
+    @Html.ValidationMessage("CreditCardId",new { @class ="text-danger" })
+
+    <br />
+
+    @Html.Label("CreditCardHolder")
+    @Html.TextBoxFor(m=>m.CreditCard.CreditCardHolder,"",new { @class = "form-control"} )
+    @Html.ValidationMessage("CreditCardHolder",new { @class ="text-danger" })
+
+    <br />
+
+    @Html.Label("CreditCardNo")
+    @Html.TextBoxFor(m=>m.CreditCard.CreditCardNo,"",new { @class = "form-control"} )
+    @Html.ValidationMessage("CreditCardNo",new { @class ="text-danger" })
+
+    <br />
+    @Html.Label("ExpirationDate")
+    <br />
+    @Html.TextBoxFor(m=>m.CreditCard.ExpirationDate,"",new { @style = "height:40px;width:170px;",@type="date"} )
+    @Html.ValidationMessage("ExpirationDate",new { @class ="text-danger" })
+    <br />
+    <br />
+    @Html.Label("Cvv")
+    @Html.TextBoxFor(m=>m.CreditCard.Cvv,"",new { @class = "form-control"} )
+    @Html.ValidationMessage("Cvv",new { @class ="text-danger" })
+
+    <br />
+
+    @Html.Label("User Name")
+    @Html.DropDownListFor(m => m.CreditCard.UserId,
+        new SelectList(Model.Users,"UserId","UserName", Model.CreditCard.UserId), "Select User Name",
+        new { @class = "form-select" })
+   
+    <br />
+
+    <input class=" btn btn-primary" type="submit" value="Update" />
+}
+

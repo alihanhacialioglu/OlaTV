@@ -11,30 +11,27 @@
 {
 
     @Html.Label("Packet Name")
-    @Html.TextBoxFor(m=>m.PacketName,new { @class = "form-control" })
+    @Html.TextBoxFor(m=>m.PacketName,"",new { @class = "form-control" })
+    @Html.ValidationMessage("PacketName",new { @class ="text-danger" })
     <br />
 
     @Html.Label("View Count")
-    @Html.TextBoxFor(m=>m.ViewCount,new { @class = "form-control" })
+    @Html.TextBoxFor(m=>m.ViewCount,"",new { @class = "form-control" })
+    @Html.ValidationMessage("ViewCount",new { @class ="text-danger" })
     <br />
     @Html.Label("Price")
-    @Html.TextBoxFor(m=>m.PacketPrice,new { @class = "form-control" })
+    @Html.TextBoxFor(m=>m.PacketPrice,"",new { @class = "form-control" })
+    @Html.ValidationMessage("PacketPrice",new { @class ="text-danger" })
     <br />
     @Html.Label("Content Quality")
-    @Html.TextBoxFor(m=>m.PacketContentQuality,new { @class = "form-control" })
+    @Html.TextBoxFor(m=>m.PacketContentQuality,"",new { @class = "form-control" })
+    @Html.ValidationMessage("PacketContentQuality",new { @class ="text-danger" })
     <br />
     @Html.Label("Explanation")
-    @Html.TextBoxFor(m=>m.PacketExplanation,new { @class = "form-control" })
+    @Html.TextBoxFor(m=>m.PacketExplanation,"",new { @class = "form-control" })
+    @Html.ValidationMessage("PacketExplanation",new { @class ="text-danger" })
     <br />
 
-    @Html.Label("Status")
-    <select class="form-control" name="IsDelete">
-
-        <option>True</option>
-        <option selected>False</option>
-
-    </select>
-    <br />
     <input class=" btn btn-primary" type="submit" value="Add" />
 }
 

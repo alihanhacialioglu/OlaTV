@@ -12,23 +12,22 @@
 @using (Html.BeginForm("Content_Update", "Content", FormMethod.Post, new { @class = "form-group" }))
 {
     <label>Content Id</label>
-    <input class="form-control" type="text" name="ContentId" value="@Model.Content.ContentId" disabled />
-    @Html.TextBox("ContentId",Model.Content.ContentId,new { @class = "form-control",@type="hidden"} )
+    @Html.HiddenFor(m => m.Content.ContentId)
+    @Html.TextBoxFor(m=>m.Content.ContentId,new { @class = "form-control", @disabled = "disabled"})
+    
     <br />
 
     @Html.Label("Content Name")
     @Html.TextBoxFor(m=>m.Content.ContentName,new { @class = "form-control"})
+    @Html.ValidationMessage("ContentName",new { @class ="text-danger" })
+
     <br />
 
     @Html.Label("Maturity Rating")
-    <select name="TitleId" class="form-select">
-        <option disabled value="@Model.Content.MaturityRating.MaturityRatingId">@Model.Content.MaturityRating.StatusName</option>
-        <option hidden value="@Model.Content.MaturityRating.MaturityRatingId">@Model.Content.MaturityRating.StatusName</option>
-        @foreach (var t in Model.MaturityRatings)
-        {
-            <option value="@t.MaturityRatingId">@t.StatusName</option>
-        }
-    </select>
+    @Html.DropDownListFor(m => m.Content.MaturityRatingId,
+		new SelectList(Model.MaturityRatings, "MaturityRatingId", "StatusName"), "Select Maturity Rating",
+		new { @class = "form-select" })
+    
     <br />
 
     <input class="btn btn-primary" type="submit" value="Update" />

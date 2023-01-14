@@ -12,13 +12,8 @@
 
 	@Html.Label("Text Color Name")
 	@Html.TextBoxFor(m=>m.TextColorName,new { @class = "form-control", @placeholder="Text Color Name" })
-	<br />
+	@Html.ValidationMessage("TextColorName",new { @class ="text-danger" })
 
-	@Html.Label("Status")
-	<select class="form-select" name="IsDelete">
-		<option selected>False</option>
-		<option>True</option>
-	</select>
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Add" />

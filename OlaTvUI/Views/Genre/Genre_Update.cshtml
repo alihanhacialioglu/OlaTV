@@ -9,12 +9,14 @@
 @using (Html.BeginForm("Genre_Update", "Genre", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("ID")
-	<input class="form-control" type="text" value="@Model.GenreId" disabled />
-	@Html.TextBoxFor(m=>m.GenreId,new { @class = "form-control", @type = "hidden"})
+	@Html.HiddenFor(m => m.GenreId)
+	@Html.TextBoxFor(m=>m.GenreId,new { @class = "form-control", @disabled = "disabled"})
 	<br />
 
 	@Html.Label("Genre Name")
 	@Html.TextBoxFor(m=>m.GenreName,new { @class = "form-control"})
+	@Html.ValidationMessage("GenreId",new { @class ="text-danger" })
+
 	<br />
 
 	

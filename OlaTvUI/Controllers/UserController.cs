@@ -20,20 +20,20 @@ namespace OlaTvUI.Controllers
         [HttpGet]
         public IActionResult User_Add()
         {
-            UserModel userPacketModel = new UserModel();
-            userPacketModel.User = new User();
-            userPacketModel.Packets = packetManager.GetAll();
-            return View(userPacketModel);
+            UserModel userModel = new UserModel();
+            userModel.User = new User();
+            userModel.Packets = packetManager.GetAll();
+            return View(userModel);
         }
 
         [HttpPost]
         public IActionResult User_Add(User user)
         {
             UserValidator userValidator = new UserValidator();
-            UserModel userPacketModel = new UserModel();
-            userPacketModel.User = user;
-            userPacketModel.Packets = packetManager.GetAll();
-            var result=userValidator.Validate(user);
+            UserModel userModel = new UserModel();
+            userModel.User = user;
+            userModel.Packets = packetManager.GetAll();
+            var result = userValidator.Validate(user);
 
             if (result.IsValid)
             {
@@ -46,32 +46,50 @@ namespace OlaTvUI.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View(userPacketModel);
+                return View(userModel);
             }
         }
-            
+
 
         [HttpGet]
         public IActionResult User_Update(int id)
         {
             User user = userManager.GetById(id);
-            UserModel userPacketModel = new UserModel();
-            userPacketModel.User = new User();
-            userPacketModel.Packets = packetManager.GetAll();
-            return View(user);
+            UserModel userModel = new UserModel();
+            userModel.User = user;
+            userModel.Packets = packetManager.GetAll();
+            return View(userModel);
         }
+
         [HttpPost]
         public IActionResult User_Update(User user)
         {
-            userManager.Update(user);
-            return View(user);
+            UserValidator userValidator = new UserValidator();
+            UserModel userModel = new UserModel();
+            userModel.User = user;
+            userModel.Packets = packetManager.GetAll();
+            var result = userValidator.Validate(user);
+
+            if (result.IsValid)
+            {
+                userManager.Update(user);
+                return RedirectToAction("User_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View(userModel);
+            }
         }
 
         public IActionResult User_Delete(int id)
         {
-            User user=userManager.GetById(id);
+            User user = userManager.GetById(id);
             userManager.Remove(user);
-            return View();
+            return View("User_Index");
         }
 
         public IActionResult User_Activate(int id)

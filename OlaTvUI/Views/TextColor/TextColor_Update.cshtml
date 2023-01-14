@@ -12,15 +12,14 @@
 @using (Html.BeginForm("TextColor_Update", "TextColor", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("ID")
-	<input class="form-control" type="text" value="@Model.TextColorId" disabled />
-	@Html.TextBoxFor(m=>m.TextColorId,new { @class = "form-control", @type = "hidden"})
+	@Html.HiddenFor(m => m.TextColorId)
+	@Html.TextBoxFor(m=>m.TextColorId,new { @class = "form-control", @disabled = "disabled"})
 	<br />
 
 	@Html.Label("Text Color Name")
 	@Html.TextBoxFor(m=>m.TextColorName,new { @class = "form-control"})
+	@Html.ValidationMessage("TextColorName",new { @class ="text-danger" })
 	<br />
-
-	
 
 	<input class=" btn btn-primary" type="submit" value=" Update" />
 }

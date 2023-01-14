@@ -10,15 +10,14 @@
 @using (Html.BeginForm("TextSize_Update", "TextSize", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("Text Size ID")
-	<input class="form-control" type="text" value="@Model.TextSizeId" disabled />
-	@Html.TextBoxFor(m=>m.TextSizeId,new { @class = "form-control", @type = "hidden"})
+	@Html.HiddenFor(m => m.TextSizeId)
+	@Html.TextBoxFor(m=>m.TextSizeId,new { @class = "form-control", @disabled = "disabled"})
 	<br />
 
 	@Html.Label("Text Size Name")
 	@Html.TextBoxFor(m=>m.TextSizeName,new { @class = "form-control"})
 	<br />
 
-	
 	<input class=" btn btn-primary" type="submit" value=" Update" />
 }
 

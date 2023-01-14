@@ -13,15 +13,8 @@
 
     @Html.Label("Name Surname")
     @Html.TextBoxFor(m=>m.CastNameSurname,new { @class = "form-control" })
+    @Html.ValidationMessage("CastNameSurname",new { @class ="text-danger" })
 
-    <br />
-    @Html.Label("Status")
-    <select class="form-control" name="IsDelete">
-
-        <option>True</option>
-        <option selected>False</option>
-
-    </select>
     <br />
     <input class=" btn btn-primary" type="submit" value="Add" />
 }

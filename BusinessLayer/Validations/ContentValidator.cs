@@ -12,10 +12,10 @@ namespace BusinessLayer.Validations
 	{
 		public ContentValidator()
 		{
-			RuleFor(m => m.ContentName).NotEmpty();
+			RuleFor(m => m.ContentName).NotEmpty().WithMessage("this field cannot be left blank");
 			RuleFor(m => m.ContentName).MaximumLength(25);
 
-			RuleFor(m => m.MaturityRatingId).NotEmpty();
+			RuleFor(m => m.MaturityRatingId).NotEmpty().WithMessage("this field cannot be left blank");
 		}
 	}
 }

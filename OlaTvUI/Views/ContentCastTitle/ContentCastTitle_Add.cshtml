@@ -14,23 +14,19 @@
 	@Html.DropDownListFor(m => m.ContentCastTitle.ContentId,
 		new SelectList(Model.Contents, "ContentId", "ContentName"), "Select Content",
 		new { @class = "form-select" })
-	@Html.ValidationMessageFor(m=>m.Contents.FirstOrDefault().ContentId,"",new { @class ="text-danger" })
+	@Html.ValidationMessage("ContentId",new { @class ="text-danger" })
+
 	<br />
 
 	@Html.Label("CastTitle")
 	@Html.DropDownListFor(m => m.ContentCastTitle.CastTitleId,
 		new SelectList(Model.CastTitles, "CastTitleId", "CastTitleId"), "Select CastTitle",
 		new { @class = "form-select" })
-	@Html.ValidationMessageFor(m=>m.CastTitles.FirstOrDefault().CastTitleId,"",new { @class ="text-danger" })
+	@Html.ValidationMessage("CastTitleId",new { @class ="text-danger" })
+
 	<br />
 
-	@Html.Label("Status")
-	<select class="form-control" name="IsDelete">
-		<option selected>False</option>
-		<option>True</option>
-	</select>
-	<br />
-
+	
 	<input class=" btn btn-primary" type="submit" value="Add" />
 }
 

@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Manager;
+using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Text;
 
 namespace OlaTvUI.Controllers
 {
@@ -22,10 +24,23 @@ namespace OlaTvUI.Controllers
 
 		[HttpPost] 
 		public IActionResult Title_Add(Title title) 
-		{			
-			titleManager.Add(title);
-			return RedirectToAction("Title_Index");
-		}
+		{
+            TitleValidator validator = new TitleValidator();
+            var result = validator.Validate(title);
+            if (result.IsValid)
+            {
+                titleManager.Add(title);
+                return RedirectToAction("Title_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+        }
 
 		[HttpGet]
 		public IActionResult Title_Update(int id) 
@@ -35,10 +50,23 @@ namespace OlaTvUI.Controllers
 		}
 		[HttpPost]
 		public IActionResult Title_Update(Title title) 
-		{ 
-			titleManager.Update(title);
-			return RedirectToAction("Title_Index");
-		}
+		{
+            TitleValidator validator = new TitleValidator();
+            var result = validator.Validate(title);
+            if (result.IsValid)
+            {
+                titleManager.Update(title);
+                return RedirectToAction("Title_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+        }
 
 		public IActionResult Title_Delete(int id) 
 		{

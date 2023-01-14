@@ -12,17 +12,11 @@
 
     @Html.Label("Title Name")
     @Html.TextBoxFor(Cast=>Cast.TitleName,new { @class = "form-control"})
+    @Html.ValidationMessage("TitleName",new { @class ="text-danger" })
 
-        <br />
-    @Html.Label("Case")
-        <select class="form-control" name="IsDelete">
+    <br />
 
-            <option >True</option>
-            <option selected>False</option>
-
-        </select>
-        <br />
-        <input class=" btn btn-primary" type="submit" value="Add" />
+    <input class=" btn btn-primary" type="submit" value="Add" />
 }
 
 

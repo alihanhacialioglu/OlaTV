@@ -20,7 +20,7 @@ namespace OlaTvUI.Controllers
 		[HttpGet]
 		public IActionResult CastTitle_Add()
 		{
-			CastTitleModel castTitleModel = new CastTitleModel();
+            CastTitleModel castTitleModel = new CastTitleModel();
 			castTitleModel.CastTitle = new CastTitle();
 			castTitleModel.Casts = castManager.GetAll();
 			castTitleModel.Titles = titleManager.GetAll();
@@ -29,7 +29,7 @@ namespace OlaTvUI.Controllers
 		[HttpPost]
 		public IActionResult CastTitle_Add(CastTitle castTitle)
 		{
-			CastTitleModel castTitleModel = new CastTitleModel();
+            CastTitleModel castTitleModel = new CastTitleModel();
 			castTitleModel.CastTitle = castTitle;
 			castTitleModel.Casts = castManager.GetAll();
 			castTitleModel.Titles = titleManager.GetAll();
@@ -50,10 +50,11 @@ namespace OlaTvUI.Controllers
 			}
 		}
 
-		public IActionResult CastTitle_Update(int id)
+        [HttpGet]
+        public IActionResult CastTitle_Update(int id)
 		{
-			CastTitle castTitle = castTitleManager.GetById(id);
-			CastTitleModel castTitleModel = new CastTitleModel();
+            CastTitle castTitle = castTitleManager.GetById(id);
+            CastTitleModel castTitleModel = new CastTitleModel();
 			castTitleModel.CastTitle = castTitle;
 			castTitleModel.Casts = castManager.GetAll();
 			castTitleModel.Titles = titleManager.GetAll();
@@ -69,7 +70,7 @@ namespace OlaTvUI.Controllers
 
 		public IActionResult CastTitle_Activate(int id)
 		{
-			CastTitle castTitle = castTitleManager.GetById(id);
+            CastTitle castTitle = castTitleManager.GetById(id);
 			castTitle.IsDelete = false;
 			castTitleManager.Update(castTitle);
 			return RedirectToAction("CastTitle_Index");
@@ -77,7 +78,7 @@ namespace OlaTvUI.Controllers
 
 		public IActionResult CastTitle_Deactivate(int id)
 		{
-			CastTitle castTitle = castTitleManager.GetById(id);
+            CastTitle castTitle = castTitleManager.GetById(id);
 			castTitle.IsDelete = true;
 			castTitleManager.Update(castTitle);
 			return RedirectToAction("CastTitle_Index");
@@ -85,7 +86,7 @@ namespace OlaTvUI.Controllers
 
 		public IActionResult CastTitle_Delete(int id)
 		{
-			CastTitle castTitle = castTitleManager.GetById(id);
+            CastTitle castTitle = castTitleManager.GetById(id);
 			castTitleManager.Remove(castTitle);
 			return RedirectToAction("CastTitle_Index");
 		}

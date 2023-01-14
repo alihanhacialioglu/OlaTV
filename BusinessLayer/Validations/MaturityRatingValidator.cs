@@ -12,8 +12,8 @@ namespace BusinessLayer.Validations
 	{
 		public MaturityRatingValidator()
 		{
-			RuleFor(m => m.StatusName).NotEmpty();
-			RuleFor(m => m.MaturityExplanation).NotEmpty();
+			RuleFor(m => m.StatusName).NotEmpty().WithMessage("this field cannot be left blank");
+			RuleFor(m => m.MaturityExplanation).NotEmpty().WithMessage("this field cannot be left blank");
 		}
 	}
 }

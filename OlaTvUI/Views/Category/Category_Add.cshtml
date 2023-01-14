@@ -13,16 +13,10 @@
 
     @Html.Label("Category Name")
     @Html.TextBoxFor(m=>m.CategoryName,new { @class = "form-control" })
+    @Html.ValidationMessage("CategoryName",new { @class ="text-danger" })
 
-            <br />
-    @Html.Label("Status")
-            <select class="form-control" name="IsDelete">
+    <br />
 
-                <option>True</option>
-                <option selected>False</option>
-
-            </select>
-            <br />
-            <input class=" btn btn-primary" type="submit" value="Add" />
+    <input class=" btn btn-primary" type="submit" value="Add" />
 }
 

@@ -13,22 +13,17 @@
 {
 
     @Html.Label("ID")
-    <input class="form-control" type="text" value="@Model.CastId" disabled />
-    @Html.TextBoxFor(m=>m.CastId,new { @class = "form-control", @type = "hidden"})
+    @Html.HiddenFor(m => m.CastId)
+    @Html.TextBoxFor(m=>m.CastId,new { @class = "form-control", @disabled = "disabled"})
+
     <br />
 
     @Html.Label("Name Surname")
     @Html.TextBoxFor(m=>m.CastNameSurname,new { @class = "form-control" })
+    @Html.ValidationMessage("CastNameSurname",new { @class ="text-danger" })
 
     <br />
-    @Html.Label("Status")
-    <select class="form-control" name="IsDelete">
 
-        <option selected>True</option>
-        <option>False</option>
-
-    </select>
-    <br />
     <input class=" btn btn-primary" type="submit" value="Update" />
 }
 

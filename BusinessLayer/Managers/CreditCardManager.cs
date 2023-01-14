@@ -23,7 +23,7 @@ namespace BusinessLayer.Manager
 
         public List<CreditCard> GetAll()
         {
-            throw new NotImplementedException();
+            return _creditCardDal.GetAll();
         }
 
         public CreditCard GetById(int id)

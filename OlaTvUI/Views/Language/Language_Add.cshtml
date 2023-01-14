@@ -13,15 +13,10 @@
 
     @Html.Label("Language Name")
     @Html.TextBoxFor(m=>m.LanguageName,new { @class = "form-control" })
+    @Html.ValidationMessage("LanguageName",new { @class ="text-danger" })
 
-        <br />
-    @Html.Label("Status")
-        <select class="form-control" name="IsDelete">
 
-            <option>True</option>
-            <option selected>False</option>
+    <br />
 
-        </select>
-        <br />
-        <input class=" btn btn-primary" type="submit" value="Add" />
+    <input class=" btn btn-primary" type="submit" value="Add" />
 }

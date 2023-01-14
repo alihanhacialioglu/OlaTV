@@ -12,13 +12,8 @@
 
 	@Html.Label("Text Size Name")
 	@Html.TextBoxFor(m=>m.TextSizeName,new { @class = "form-control", @placeholder="Text Size Name" })
-	<br />
+	@Html.ValidationMessage("TextSizeName",new { @class ="text-danger" })
 
-	@Html.Label("Status")
-	<select class="form-select" name="IsDelete">
-		<option selected>False</option>
-		<option>True</option>
-	</select>
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Add" />

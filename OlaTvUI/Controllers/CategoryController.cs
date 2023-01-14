@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Manager;
+using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -23,8 +24,21 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult Category_Add(Category category)
         {
-            categoryManager.Add(category);
-            return RedirectToAction("Category_Index");
+            CategoryValidator validator = new CategoryValidator();
+            var result = validator.Validate(category);
+            if (result.IsValid)
+            {
+                categoryManager.Add(category);
+                return RedirectToAction("Category_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
 
         [HttpGet]
@@ -37,8 +51,21 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult Category_Update(Category category)
         {
-            categoryManager.Update(category);
-            return RedirectToAction("Category_Index");
+            CategoryValidator validator = new CategoryValidator();
+            var result = validator.Validate(category);
+            if (result.IsValid)
+            {
+                categoryManager.Update(category);
+                return RedirectToAction("Category_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
 
         public ActionResult Category_Delete(int id)

@@ -42,10 +42,11 @@ namespace OlaTvUI.Controllers
 			}
 		}
 
+		[HttpGet]
 		public IActionResult MaturityRating_Update(int id)
 		{
-			MaturityRating textsize = maturityRatingManager.GetById(id);
-			return View(textsize);
+			MaturityRating maturityRating = maturityRatingManager.GetById(id);
+			return View(maturityRating);
 		}
 
 		[HttpPost]

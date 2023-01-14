@@ -13,60 +13,48 @@
 {
 	@Html.Label("Video ID")
 	<input class="form-control" type="text" name="VideoId" value="@Model.Video.VideoId" disabled />
-	@Html.TextBox("VideoId",Model.Video.VideoId, new { @class = "form-control", @type = "hidden"} )
+	@Html.TextBoxFor(m=>m.Video.VideoId,new { @class = "form-control", @type = "hidden"} )
 	<br />
-
 	@Html.Label("Video Url")
-	@Html.TextBox("VideoUrl",Model.Video.VideoUrl,new { @class = "form-control", @placeholder="Video Url" })
+	@Html.TextBoxFor(m=>m.Video.VideoUrl,"",new { @class = "form-control", @placeholder="Video Url" })
 	@Html.ValidationMessage("VideoUrl",new { @class ="text-danger" })
 	<br />
 
 	@Html.Label("Release Date")
-	@Html.TextBox("ReleaseDate",Model.Video.ReleaseDate.ToString("yyyy-MM-dd"),new { @class = "form-control", @type = "date", @placeholder="Release Date" })
+	<br />
+	@Html.TextBoxFor(m=>m.Video.ReleaseDate,"",new { @style = "height:40px;width:170px;margin-left:10px;",@type = "date", @placeholder="Release Date" })
 	@Html.ValidationMessage("ReleaseDate",new { @class ="text-danger" })
 	<br />
-
+	<br />
 	@Html.Label("Season No")
-	@Html.TextBox("SeasonNo","1",new { @class = "form-control", @type = "number", @placeholder="Season No" })
+	@Html.TextBoxFor(m=>m.Video.SeasonNo,"1",new { @style = "height:30px;width:50px;margin-left:10px;", @type = "number" })
 	@Html.ValidationMessage("SeasonNo",new { @class ="text-danger" })
 	<br />
-
+	<br />
 	@Html.Label("Episode No")
-	@Html.TextBox("EpisodeNo","1",new { @class = "form-control", @type = "number", @placeholder="Episode No" })
+	@Html.TextBoxFor(m=>m.Video.EpisodeNo,"1",new { @style = "height:30px;width:50px;margin-left:10px;", @type = "number" })
 	@Html.ValidationMessage("EpisodeNo",new { @class ="text-danger" })
 	<br />
-
+	<br />
 	@Html.Label("Language")
-	<select name="LanguageId" class="form-select">
-		<option disabled value="@Model.Video.Language.LanguageId">@Model.Video.Language.LanguageName</option>
-		<option hidden value="@Model.Video.Language.LanguageId">@Model.Video.Language.LanguageName</option>
-		@foreach (var item in Model.Languages)
-		{
-			<option value="@item.LanguageId">@item.LanguageName</option>
-		}
-	</select>
+	@Html.DropDownListFor(m => m.Video.LanguageId,
+		new SelectList(Model.Languages, "LanguageId", "LanguageName"),
+		new { @class = "form-select" })
+	
 	<br />
 
-	@Html.Label("Content")
-	<select name="ContentId" class="form-select">
-		<option disabled value="@Model.Video.Content.ContentId">@Model.Video.Content.ContentName</option>
-		<option hidden value="@Model.Video.Content.ContentId">@Model.Video.Content.ContentName</option>
-		@foreach (var item in Model.Contents)
-		{
-			<option value="@item.ContentId">@item.ContentName</option>
-		}
-	</select>
+	@Html.Label("Content Name")
+	@Html.DropDownListFor(m => m.Video.ContentId,
+		new SelectList(Model.Contents, "ContentId", "ContentName"),
+		new { @class = "form-select" })
+	
 	<br />
 
-	@Html.Label("Category")
-	<select name="CategoryId" class="form-select">
-		<option disabled value="@Model.Video.Category.CategoryId">@Model.Video.Category.CategoryName</option>
-		<option hidden value="@Model.Video.Category.CategoryId">@Model.Video.Category.CategoryName</option>
-		@foreach (var item in Model.Categories)
-		{
-			<option value="@item.CategoryId">@item.CategoryName</option>
-		}
-	</select>
+	@Html.Label("Category Name")
+	@Html.DropDownListFor(m => m.Video.CategoryId,
+		new SelectList(Model.Categories, "CategoryId", "CategoryName"),
+		new { @class = "form-select" })
+	
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Update" />

@@ -51,8 +51,8 @@ namespace OlaTvUI.Controllers
 				return View(contentCastTitleModel);
 			}
 		}
-
-		public IActionResult ContentCastTitle_Update(int id)
+        [HttpGet]
+        public IActionResult ContentCastTitle_Update(int id)
 		{
 			ContentCastTitle contentCastTitle = contentCastTitleManager.GetById(id);
 			ContentCastTitleModel contentCastTitleModel = new ContentCastTitleModel();

@@ -15,14 +15,16 @@
 		@Html.DropDownListFor(m => m.CastTitle.CastId,
 			new SelectList(Model.Casts, "CastId", "CastNameSurname"), "Select Cast",
 			new { @class = "form-select" })
-		@Html.ValidationMessageFor(m=>m.Casts.FirstOrDefault().CastId,"",new { @class ="text-danger" })
+	@Html.ValidationMessage("CastId",new { @class ="text-danger" })
+
 	<br />
 
 	@Html.Label("Title Name")
 	@Html.DropDownListFor(m => m.CastTitle.TitleId,
 		new SelectList(Model.Titles, "TitleId", "TitleName"), "Select Genre",
 		new { @class = "form-select" })
-	@Html.ValidationMessageFor(m=>m.Titles.FirstOrDefault().TitleId,"",new { @class ="text-danger" })
+	@Html.ValidationMessage("TitleId",new { @class ="text-danger" })
+
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Add" />

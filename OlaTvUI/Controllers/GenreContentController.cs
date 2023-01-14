@@ -51,8 +51,8 @@ namespace OlaTvUI.Controllers
 				return View(genreContentModel);
 			}
 		}
-
-		public IActionResult GenreContent_Update(int id)
+        [HttpGet]
+        public IActionResult GenreContent_Update(int id)
 		{
 			GenreContent genreContent = genreContentManager.GetById(id);
 			GenreContentModel genreContentModel = new GenreContentModel();

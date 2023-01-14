@@ -6,6 +6,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+
+
 <h2>User Adding Page</h2>
 <br />
 
@@ -13,46 +15,41 @@
 {
     @Html.Label("User Name")
     @Html.TextBoxFor(m=>m.User.UserName,"",new { @class = "form-control"} )
-    @Html.ValidationMessageFor(m=>m.User.UserName,"",new { @class ="text-danger" })
+    @Html.ValidationMessage("UserName",new { @class ="text-danger" })
     <br />
 
     @Html.Label("Password")
-    @Html.TextBoxFor(m=>m.User.Password,"",new { @class = "form-control"} )
-    @Html.ValidationMessageFor(m=>m.User.Password,"",new { @class ="text-danger" })
+    @Html.TextBoxFor(m=>m.User.Password,"",new { @class = "form-control",@type="password"} )
+    @Html.ValidationMessage("Password",new { @class ="text-danger" })
     <br />
 
     @Html.Label("Email")
-    @Html.TextBoxFor(m=>m.User.EmailAddress,"",new { @class = "form-control"} )
-    @Html.ValidationMessageFor(m=>m.User.EmailAddress,"",new { @class ="text-danger" })
+    @Html.TextBoxFor(m=>m.User.EmailAddress,"",new { @class = "form-control",@type="email",@placeholder="example@example.com"} )
+    @Html.ValidationMessage("EmailAddress",new { @class ="text-danger" })
     <br />
 
     @Html.Label("Phone Number")
-    @Html.TextBoxFor(m=>m.User.PhoneNumber,"",new { @class = "form-control"} )
-    @Html.ValidationMessageFor(m=>m.User.PhoneNumber,"",new { @class ="text-danger" })
+    @Html.TextBoxFor(m=>m.User.PhoneNumber,"",new { @class = "form-control" ,@type="tel",@placeholder="example:0555 555 55 55"} )
+    @Html.ValidationMessage("PhoneNumber",new { @class ="text-danger" })
     <br />
 
     @Html.Label("Date Of Registration")
-    @Html.TextBoxFor(m=>m.User.DateOfRegistration,"",new { @class = "form-control"} )
-    @Html.ValidationMessageFor(m=>m.User.DateOfRegistration,"",new { @class ="text-danger" })
+    <br />
+    @Html.TextBoxFor(m=>m.User.DateOfRegistration,"",new { @style = "height:40px;width:170px;",@type="datetime-local"} )
+    @Html.ValidationMessage("DateOfRegistration",new { @class ="text-danger" })
+    <br />
     <br />
 
     @Html.Label("Access Pin")
     @Html.TextBoxFor(m=>m.User.AccessPin,"",new { @class = "form-control"} )
-    @Html.ValidationMessageFor(m=>m.User.AccessPin,"",new { @class ="text-danger" })
+    @Html.ValidationMessage("AccessPin",new { @class ="text-danger" })
     <br />
 
     @Html.Label("Packet Name")
     @Html.DropDownListFor(m => m.User.PacketId, 
         new SelectList(Model.Packets, "PacketId", "PacketName"), "Select Packet", 
         new { @class = "form-control" })
-    @Html.ValidationMessageFor(m=>m.Packets.FirstOrDefault().PacketId,"",new { @class ="text-danger" })
-    <br />
-
-    @Html.Label("Status")
-    <select class="form-control" name="IsDelete">
-        <option selected>False</option>
-        <option>True</option>
-    </select>
+    @Html.ValidationMessage("PacketId",new { @class ="text-danger" })
     <br />
 
     <input class=" btn btn-primary" type="submit" value="Add" />

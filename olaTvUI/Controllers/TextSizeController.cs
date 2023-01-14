@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Manager;
+using BusinessLayer.Validations;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -24,10 +26,23 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult TextSize_Add(TextSize textSize) 
         {
-            textSizeManager.Add(textSize);
-            return RedirectToAction("TextSize_Index");
+            TextSizeValidator validator = new TextSizeValidator();
+            var result = validator.Validate(textSize);
+            if (result.IsValid)
+            {
+                textSizeManager.Add(textSize);
+                return RedirectToAction("TextColor_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
-
+        [HttpGet]
         public IActionResult TextSize_Update(int id) 
         {
             TextSize textsize =textSizeManager.GetById(id);
@@ -37,8 +52,21 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult TextSize_Update(TextSize textSize)
         {
-            textSizeManager.Update(textSize);
-            return RedirectToAction("TextSize_Index");
+            TextSizeValidator validator = new TextSizeValidator();
+            var result = validator.Validate(textSize);
+            if (result.IsValid)
+            {
+                textSizeManager.Update(textSize);
+                return RedirectToAction("TextSize_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
 
         public IActionResult TextSize_Delete(int id) 

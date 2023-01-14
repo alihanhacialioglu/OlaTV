@@ -12,8 +12,8 @@ namespace BusinessLayer.Validations
     {
         public CastTitleValidator()
         {
-            RuleFor(m=>m.CastId).NotEmpty();
-            RuleFor(m=>m.TitleId).NotEmpty();
+            RuleFor(m=>m.CastId).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m=>m.TitleId).NotEmpty().WithMessage("this field cannot be left blank");
         }
     }
 }

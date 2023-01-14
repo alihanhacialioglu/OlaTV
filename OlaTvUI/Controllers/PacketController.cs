@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Manager;
+using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Resources;
@@ -25,9 +26,22 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult Packet_Add(Packet packet)
         {
-            packetManager.Add(packet);
-
-            return RedirectToAction("Packet_Index");
+            PacketValidator validator= new PacketValidator();
+            var result=validator.Validate(packet);
+            if (result.IsValid)
+            {
+                packetManager.Add(packet);
+                return RedirectToAction("Packet_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+           
         }
 
         [HttpGet]
@@ -40,9 +54,21 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult Packet_Update(Packet packet)
         {
-            packetManager.Update(packet);
-
-            return RedirectToAction("Packet_Index");
+            PacketValidator validator = new PacketValidator();
+            var result = validator.Validate(packet);
+            if (result.IsValid)
+            {
+                packetManager.Update(packet);
+                return RedirectToAction("Packet_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
 
         public IActionResult Packet_Delete(int id)

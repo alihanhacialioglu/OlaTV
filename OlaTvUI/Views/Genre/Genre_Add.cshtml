@@ -10,14 +10,9 @@
 {
 
 	@Html.Label("Genre Name")
-	@Html.TextBoxFor(m=>m.GenreName,new { @class = "form-control", @placeholder="Genre Name" })
-	<br />
+	@Html.TextBoxFor(m=>m.GenreName,"",new { @class = "form-control", @placeholder="Genre Name" })
+	@Html.ValidationMessage("GenreName",new { @class ="text-danger" })
 
-	@Html.Label("Status")
-	<select class="form-select" name="IsDelete">
-		<option selected>False</option>
-		<option>True</option>
-	</select>
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Add" />

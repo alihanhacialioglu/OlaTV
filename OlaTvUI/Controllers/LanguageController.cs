@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Manager;
+using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +24,24 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult Language_Add(Language language )
         {
-            languageManager.Add(language);
-            return RedirectToAction("Language_Index");
+            LanguageValidator validator = new LanguageValidator();
+            var result = validator.Validate(language);
+            if (result.IsValid)
+            {
+                languageManager.Add(language);
+                return RedirectToAction("Language_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
 
+        [HttpGet]
         public IActionResult Language_Update(int id) 
         {
             Language language=languageManager.GetById(id);
@@ -37,14 +52,27 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult Language_Update(Language language)
         {
-            languageManager.Update(language);
-            return RedirectToAction("Language_Index");
+            LanguageValidator validator = new LanguageValidator();
+            var result = validator.Validate(language);
+            if (result.IsValid)
+            {
+                languageManager.Update(language);
+                return RedirectToAction("Language_Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
         public IActionResult Language_Delete(int id)
         {
             Language language = languageManager.GetById(id);
             languageManager.Remove(language);
-            return RedirectToAction("Cast_Index");
+            return RedirectToAction("Language_Index");
         }
         public IActionResult Language_Activate(int id)
         {

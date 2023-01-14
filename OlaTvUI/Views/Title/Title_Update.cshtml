@@ -11,12 +11,13 @@
 {
 
     @Html.Label("ID")
-    <input class="form-control" type="text" value="@Model.TitleId" disabled />
-    @Html.TextBoxFor(m=>m.TitleId,new { @class = "form-control", @type = "hidden"})
+    @Html.HiddenFor(m => m.TitleId)
+    @Html.TextBoxFor(m=>m.TitleId,new { @class = "form-control", @disabled = "disabled"})
     <br />
 
     @Html.Label("Title Name")
     @Html.TextBoxFor(m=>m.TitleName,new { @class = "form-control" })
+    @Html.ValidationMessage("TitleName",new { @class ="text-danger" })
 
     <br />
 

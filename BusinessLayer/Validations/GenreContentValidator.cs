@@ -12,8 +12,8 @@ namespace BusinessLayer.Validations
 	{
 		public GenreContentValidator()
 		{
-			RuleFor(m => m.GenreId).NotEmpty();
-			RuleFor(m => m.ContentId).NotEmpty();
+			RuleFor(m => m.GenreId).NotEmpty().WithMessage("this field cannot be left blank");
+			RuleFor(m => m.ContentId).NotEmpty().WithMessage("this field cannot be left blank");
 		}
 	}
 }

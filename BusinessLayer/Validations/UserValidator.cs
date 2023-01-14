@@ -12,13 +12,13 @@ namespace BusinessLayer.Validations
     {
         public UserValidator()
         {
-            RuleFor(m => m.UserName).NotEmpty();
-            RuleFor(m => m.Password).NotEmpty();
-            RuleFor(m => m.EmailAddress).NotEmpty();
-            RuleFor(m => m.PhoneNumber).NotEmpty();
-            RuleFor(m => m.DateOfRegistration).NotEmpty();
-            RuleFor(m => m.AccessPin).NotEmpty();
-            RuleFor(m => m.PacketId).NotEmpty();
+            RuleFor(m => m.UserName).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.Password).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.EmailAddress).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.PhoneNumber).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.DateOfRegistration).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.AccessPin).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.PacketId).NotEmpty().WithMessage("this field cannot be left blank");
 
         }
     }

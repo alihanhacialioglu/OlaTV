@@ -50,8 +50,8 @@ namespace OlaTvUI.Controllers
 				return View(contentModel);
 			}
 		}
-
-		public IActionResult Content_Update(int id)
+        [HttpGet]
+        public IActionResult Content_Update(int id)
 		{
 			Content content = contentManager.GetById(id);
 			ContentModel contentModel = new ContentModel();

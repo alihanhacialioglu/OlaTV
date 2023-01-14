@@ -11,30 +11,21 @@
 @using (Html.BeginForm("GenreContent_Update", "GenreContent", FormMethod.Post, new { @class = "form-group" }))
 {
     <label>GenreContent Id</label>
-    <input class="form-control" type="text" name="GenreContentId" value="@Model.GenreContent.GenreContentId" disabled />
-    @Html.TextBox("GenreContentId",Model.GenreContent.GenreContentId,new { @class = "form-control",@type="hidden"} )
+    @Html.HiddenFor(m => m.GenreContent.GenreContentId)
+    @Html.TextBoxFor(m=>m.GenreContent.GenreContentId,new { @class = "form-control", @disabled = "disabled"})
     <br />
 
     @Html.Label("Genre Name")
-    <select name="GenreId" class="form-select">
-        <option disabled value="@Model.GenreContent.Genre.GenreId">@Model.GenreContent.Genre.GenreName</option>
-        <option hidden value="@Model.GenreContent.Genre.GenreId">@Model.GenreContent.Genre.GenreName</option>
-        @foreach (var cast in Model.Genres)
-        {
-            <option value="@cast.GenreId">@cast.GenreName</option>
-        }
-    </select>
+   @Html.DropDownListFor(m => m.GenreContent.GenreId, 
+		new SelectList(Model.Genres, "GenreId", "GenreName"),  
+		new { @class = "form-select" })
     <br />
 
     @Html.Label("Content Name")
-    <select name="ContentId" class="form-select">
-        <option disabled value="@Model.GenreContent.Content.ContentId">@Model.GenreContent.Content.ContentName</option>
-        <option hidden value="@Model.GenreContent.Content.ContentId">@Model.GenreContent.Content.ContentName</option>
-        @foreach (var t in Model.Contents)
-        {
-            <option value="@t.ContentId">@t.ContentName</option>
-        }
-    </select>
+   @Html.DropDownListFor(m => m.GenreContent.ContentId, 
+		new SelectList(Model.Contents, "ContentId", "ContentName"),
+		new { @class = "form-select" })
+
     <br />
 
    

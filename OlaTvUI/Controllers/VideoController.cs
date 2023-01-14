@@ -53,7 +53,7 @@ namespace OlaTvUI.Controllers
                 return View(videoModel);
             }
         }
-
+        [HttpGet]
         public IActionResult Video_Update(int id)
         {
             Video video = videoManager.GetById(id);
