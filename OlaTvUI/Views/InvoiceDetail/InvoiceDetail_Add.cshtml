@@ -12,34 +12,30 @@
 {
 
     @Html.Label("Total Price")
-    @Html.TextBoxFor(m=>m.InvoiceDetail.TotalPrice,"",new { @class = "form-control"} )
-    @Html.ValidationMessage("TotalPrice",new { @class ="text-danger" })
-
+    @Html.TextBoxFor(m=>m.InvoiceDetail.TotalPrice, new { @class = "form-control"} )
+    @Html.ValidationMessage("TotalPrice", new { @class ="text-danger" })
     <br />
 
     @Html.Label("Invoice Explanation")
-    @Html.TextBoxFor(m=>m.InvoiceDetail.InvoiceExplanation,"",new { @class = "form-control"} )
-    @Html.ValidationMessage("InvoiceExplanation",new { @class ="text-danger" })
+    @Html.TextBoxFor(m=>m.InvoiceDetail.InvoiceExplanation,new { @class = "form-control"} )
+    @Html.ValidationMessage("InvoiceExplanation", new { @class ="text-danger" })
     <br />
-    <br />
+
     @Html.Label("Invoice Date")
-    <br />
-    @Html.TextBoxFor(m=>m.InvoiceDetail.InvoiceDate,"",new {@style = "height:40px;width:170px;",@type="datetime-local"} )
+    @Html.TextBoxFor(m=>m.InvoiceDetail.InvoiceDate, DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "form-control", @style = "height:40px;width:170px;",@type="date"} )
     @Html.ValidationMessage("InvoiceDate",new { @class ="text-danger" })
     <br />
-    <br />
+
     @Html.Label("Service Date")
-    <br />
-    @Html.TextBoxFor(m=>m.InvoiceDetail.ServiceDate,"",new {@style = "height:40px;width:170px;",@type="datetime-local"} )
-    @Html.ValidationMessage("ServiceDate",new { @class ="text-danger" })
-    <br />
+    @Html.TextBoxFor(m=>m.InvoiceDetail.ServiceDate, DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "form-control", @style = "height:40px;width:170px;",@type="date"} )
+    @Html.ValidationMessage("ServiceDate", new { @class ="text-danger" })
     <br />
    
     @Html.Label("CreditCardHolder")
-    @Html.DropDownListFor(m => m.InvoiceDetail.CreditCardId, new SelectList(Model.CreditCards, 
-        "CreditCardId", "CreditCardHolder"), "Select CreditCard Holder", new { @class = "form-control" })
-    @Html.ValidationMessage("CreditCardId",new { @class ="text-danger" })
-
+    @Html.DropDownListFor(m => m.InvoiceDetail.CreditCardId, 
+        new SelectList(Model.CreditCards, "CreditCardId", "CreditCardHolder"), "Select CreditCard Holder", 
+        new { @class = "form-control" })
+    @Html.ValidationMessage("CreditCardId", new { @class ="text-danger" })
     <br />
 
     <input class=" btn btn-primary" type="submit" value="Add" />

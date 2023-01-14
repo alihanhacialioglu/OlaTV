@@ -8,6 +8,7 @@
 
 <h2>ProfileVideoWatching Page</h2>
 <br />
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -26,7 +27,7 @@
         {
             <tr>
                 <th>@i</th>
-                <td>@item.ProfileVideoDateOfWached</td>
+                <td>@item.ProfileVideoDateOfWached.ToShortDateString()</td>
                 <td>@item.Profile.ProfileName</td>
                 <td>@item.Video.VideoUrl</td>
                 <td>@item.IsDelete</td>

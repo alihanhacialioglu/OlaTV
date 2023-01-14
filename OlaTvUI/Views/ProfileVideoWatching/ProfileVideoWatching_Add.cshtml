@@ -10,7 +10,7 @@
 @using (Html.BeginForm("ProfileVideoWatching_Add", "ProfileVideoWatching", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("Date Of Watched")
-	@Html.TextBoxFor(m=>m.ProfileVideoWatching.ProfileVideoDateOfWached,DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "form-control", @type = "date" })
+	@Html.TextBoxFor(m=>m.ProfileVideoWatching.ProfileVideoDateOfWached,DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "form-control", @style = "height:40px;width:170px;", @type = "date" })
 	<br />
 
 	@Html.Label("Profile")

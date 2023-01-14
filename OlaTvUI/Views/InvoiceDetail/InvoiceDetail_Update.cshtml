@@ -25,11 +25,11 @@
     @Html.ValidationMessage("InvoiceExplanation",new { @class ="text-danger" })
     <br />
     @Html.Label("Invoice Date")
-    @Html.TextBoxFor(m=>m.InvoiceDetail.InvoiceDate,"",new { @class = "form-control"} )
+    @Html.TextBoxFor(m=>m.InvoiceDetail.InvoiceDate, Model.InvoiceDetail.InvoiceDate.ToShortDateString(), new { @class = "form-control"} )
     @Html.ValidationMessage("InvoiceDate",new { @class ="text-danger" })
     <br />
     @Html.Label("Service Date")
-    @Html.TextBoxFor(m=>m.InvoiceDetail.ServiceDate,"",new { @class = "form-control"} )
+    @Html.TextBoxFor(m=>m.InvoiceDetail.ServiceDate, Model.InvoiceDetail.ServiceDate.ToShortDateString(), new { @class = "form-control"} )
     @Html.ValidationMessage("ServiceDate",new { @class ="text-danger" })
     <br />
 

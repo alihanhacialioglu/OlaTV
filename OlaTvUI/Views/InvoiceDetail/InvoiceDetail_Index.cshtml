@@ -20,9 +20,6 @@
             <th>Status</th>
             <th>Status Change Buttons</th>
             <th>Operations</th>
-
-
-
         </tr>
     </thead>
     <tbody>
@@ -32,11 +29,10 @@
                 <th>@i</th>
                 <td>@item.TotalPrice</td>
                 <td>@item.InvoiceExplanation</td>
-                <td>@item.InvoiceDate.ToString("dd-MM-yyyy")</td>
-                <td>@item.ServiceDate.ToString("dd-MM-yyyy")</td>
+                <td>@item.InvoiceDate.ToShortDateString()</td>
+                <td>@item.ServiceDate.ToShortDateString()</td>
                 <td>@item.CreditCard.CreditCardHolder</td>
                 <td>@item.IsDelete</td>
-
                 <td>
                     <a href="/InvoiceDetail/InvoiceDetail_Activate/@item.InvoiceDetailId" class="btn btn-outline-success text-center">
                         Activate <i class="fa fa-check"></i>

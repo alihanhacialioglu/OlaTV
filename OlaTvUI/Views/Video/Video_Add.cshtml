@@ -17,23 +17,20 @@
 	<br />
 
 	@Html.Label("Release Date")
-	<br />
-	@Html.TextBoxFor(m=>m.Video.ReleaseDate,"",new {@class="text-center",@style = "height:40px;width:170px;", @type = "date" })
+	@Html.TextBoxFor(m=>m.Video.ReleaseDate, DateTime.Now.ToString("yyyy-MM-dd") ,new { @class="form-control",@style = "height:40px;width:170px;", @type = "date" })
 	@Html.ValidationMessage("ReleaseDate",new { @class ="text-danger" })
 	<br />
-	<br />
+
 	@Html.Label("Season No")
-	<br />
-	@Html.TextBoxFor(m=>m.Video.SeasonNo,"1",new {@class="text-center", @style = "height:30px;width:70px;", @type = "number"})
+	@Html.TextBoxFor(m=>m.Video.SeasonNo,"1",new {@class="form-control", @style = "height:30px;width:70px;", @type = "number"})
 	@Html.ValidationMessage("SeasonNo",new { @class ="text-danger" })
 	<br />
-	<br />
+
 	@Html.Label("Episode No")
-	<br />
-	@Html.TextBoxFor(m=>m.Video.EpisodeNo,"1",new {@class="text-center", @style = "height:30px;width:70px;", @type = "number" })
+	@Html.TextBoxFor(m=>m.Video.EpisodeNo,"1",new {@class="form-control", @style = "height:30px;width:70px;", @type = "number" })
 	@Html.ValidationMessage("EpisodeNo",new { @class ="text-danger" })
 	<br />
-	<br />
+
 	@Html.Label("Language")
 	@Html.DropDownListFor(m => m.Video.LanguageId,
 		new SelectList(Model.Languages, "LanguageId", "LanguageName"), "Select Language",
