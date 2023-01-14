@@ -1,0 +1,72 @@
+﻿@using EntityLayer.Concrete
+@model ProfileModel
+
+@{
+	ViewData["Title"] = "Profile_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Profile Update Page</h2>
+<br />
+
+@using (Html.BeginForm("Profile_Update", "Profile", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("Profile ID")
+	@Html.HiddenFor(m => m.Profile.ProfileId)
+	@Html.TextBoxFor(m => m.Profile.ProfileId,new { @class = "form-control", @disabled = "disabled"} )
+	<br />
+
+	@Html.LabelFor(m=>m.Profile.ProfileName, "Profile Name", new { @class = "form-label"})
+	@Html.TextBoxFor(m=>m.Profile.ProfileName,new { @class = "form-control"})
+	@Html.ValidationMessage("ProfileName", new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Profile Pin")
+	@Html.TextBoxFor(m=>m.Profile.ProfilePin,new { @class = "form-control"})
+	@Html.ValidationMessage("ProfilePin", new { @class ="text-danger" })
+	<br />
+
+	<div class="form-check form-switch">
+		@Html.CheckBoxFor(m=>m.Profile.IsAnimationTv, new { @class = "form-check-input" })
+		@Html.LabelFor(m=>m.Profile.IsAnimationTv, "Animation Tv", new { @class = "form-check-label" })
+	</div>
+	<br />
+
+	<div class="form-check form-switch">
+		@Html.CheckBoxFor(m=>m.Profile.IsMarketingApproval, new { @class = "form-check-input" })
+		@Html.LabelFor(m=>m.Profile.IsMarketingApproval, "Marketing Approval", new { @class = "form-check-label" })
+	</div>
+	<br />
+
+	@Html.Label("User")
+	@Html.DropDownListFor(m => m.Profile.UserId,
+		new SelectList(Model.Users, "UserId", "UserName"), "Select User",
+		new { @class = "form-select" })
+	<br />
+
+	@Html.Label("Language")
+	@Html.DropDownListFor(m => m.Profile.LanguageId,
+	new SelectList(Model.Languages, "LanguageId", "LanguageName"), "Select Language",
+		new { @class = "form-select" })
+	<br />
+
+	@Html.Label("Maturity Rating")
+	@Html.DropDownListFor(m => m.Profile.MaturityRatingId,
+		new SelectList(Model.MaturityRatings, "MaturityRatingId", "StatusName"), "Select Maturity Rating",
+		new { @class = "form-select" })
+	<br />
+
+	@Html.Label("Text Color")
+	@Html.DropDownListFor(m => m.Profile.TextColorId,
+		new SelectList(Model.TextColors, "TextColorId", "TextColorName"), "Select Text Color",
+		new { @class = "form-select" })
+	<br />
+
+	@Html.Label("Text Size")
+	@Html.DropDownListFor(m => m.Profile.TextSizeId,
+		new SelectList(Model.TextSizes, "TextSizeId", "TextSizeName"), "Select Text Size",
+		new { @class = "form-select" })
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Update" />
+}
