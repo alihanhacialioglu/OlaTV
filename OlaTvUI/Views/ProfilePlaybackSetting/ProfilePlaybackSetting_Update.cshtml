@@ -1,0 +1,41 @@
+﻿@using EntityLayer.Concrete
+@model ProfilePlaybackSettingModel
+
+@{
+	ViewData["Title"] = "ProfilePlaybackSetting_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ProfilePlaybackSetting Update Page</h2>
+<br />
+
+@using (Html.BeginForm("ProfilePlaybackSetting_Update", "ProfilePlaybackSetting", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("ProfilePlaybackSetting ID")
+	@Html.HiddenFor(m => m.ProfilePlaybackSetting.ProfilePlaybackSettingId)
+	@Html.TextBoxFor(m => m.ProfilePlaybackSetting.ProfilePlaybackSettingId, new { @class = "form-control", @disabled = "disabled"} )
+	<br />
+
+	<div class="form-check form-switch">
+		@Html.CheckBoxFor(m=>m.ProfilePlaybackSetting.PlaybackPlaybackSelection, new { @class = "form-check-input" })
+		@Html.LabelFor(m=>m.ProfilePlaybackSetting.PlaybackPlaybackSelection, "Selection", new { @class = "form-check-label" })
+	</div>
+	<br />
+
+	@Html.Label("Profile")
+	@Html.DropDownListFor(m => m.ProfilePlaybackSetting.ProfileId,
+		new SelectList(Model.Profiles, "ProfileId", "ProfileName"),
+		new { @class = "form-select" })
+	@Html.ValidationMessage("ProfileId",new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Playback Setting Name")
+	@Html.DropDownListFor(m => m.ProfilePlaybackSetting.PlaybackSettingId,
+		new SelectList(Model.PlaybackSettings, "PlaybackSettingId", "PlaybackSettingName"),
+		new { @class = "form-select" })
+	@Html.ValidationMessage("PlaybackSettingId",new { @class ="text-danger" })
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Update" />
+}
+
