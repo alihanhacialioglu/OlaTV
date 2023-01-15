@@ -9,7 +9,7 @@
 <br />
 @using (Html.BeginForm("MaturityRating_Update", "MaturityRating", FormMethod.Post, new { @class = "form-group" }))
 {
-	@Html.Label("ID")
+	@Html.Label("MaturityRating Id")
 	@Html.HiddenFor(m => m.MaturityRatingId)
 	@Html.TextBoxFor(m=>m.MaturityRatingId,new { @class = "form-control", @disabled = "disabled"})
 

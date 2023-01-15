@@ -36,7 +36,7 @@ namespace BusinessLayer.Manager
             return _creditCardDal.Get(cc=>cc.CreditCardHolder==name);
         }
 
-        public CreditCard GetByNo(int no)
+        public CreditCard GetByNo(string no)
         {
             return _creditCardDal.Get(cc => cc.CreditCardNo == no);
         }

@@ -11,7 +11,7 @@
 <br />
 @using (Html.BeginForm("TextColor_Update", "TextColor", FormMethod.Post, new { @class = "form-group" }))
 {
-	@Html.Label("ID")
+	@Html.Label(" TextColor Id")
 	@Html.HiddenFor(m => m.TextColorId)
 	@Html.TextBoxFor(m=>m.TextColorId,new { @class = "form-control", @disabled = "disabled"})
 	<br />

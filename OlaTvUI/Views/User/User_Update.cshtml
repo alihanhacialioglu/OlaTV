@@ -9,7 +9,7 @@
 <br />
 @using (Html.BeginForm("User_Update", "User", FormMethod.Post, new { @class = "form-group" }))
 {
-    <label>User Id</label>
+    @Html.Label("User Id")
     <input class="form-control" type="text" name="UserId" value="@Model.User.UserId" disabled />
     @Html.TextBoxFor(m=>m.User.UserId,"",new { @class = "form-control", @type = "hidden"} )
     <br />

@@ -1,0 +1,31 @@
+﻿@using EntityLayer.Concrete
+@model ProfileContentModel
+@{
+    ViewData["Title"] = "ProfileContent_Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ProfileContent Update Page</h2>
+<br />
+@using (Html.BeginForm("ProfileContent_Update", "ProfileContent", FormMethod.Post, new { @class = "form-group" }))
+{
+    @Html.Label("ProfileContent ID")
+    <input class="form-control" type="text" name="ProfileContentId" value="@Model.ProfileContent.ProfileContentId" disabled />
+    @Html.TextBoxFor(m=>m.ProfileContent.ProfileContentId,new { @class = "form-control", @type = "hidden"} )
+    <br />
+
+    @Html.Label("Profile Name")
+    @Html.DropDownListFor(m => m.ProfileContent.ProfileId,
+		new SelectList(Model.Profiles, "ProfileId", "ProfileName"),
+		new { @class = "form-select" })
+    <br />
+
+    @Html.Label("Content Name")
+    @Html.DropDownListFor(m => m.ProfileContent.ContentId,
+		new SelectList(Model.Contents, "ContentId", "ContentName"),
+		new { @class = "form-select" })
+    <br />
+
+    <input class=" btn btn-primary" type="submit" value="Update" />
+}
+

@@ -12,8 +12,8 @@ namespace BusinessLayer.Validations
 	{
 		public ProfileVideoWatchingValidator()
 		{
-			RuleFor(m => m.ProfileId).NotEmpty().WithMessage("Profile cannot be empty");
-			RuleFor(m => m.VideoId).NotEmpty().WithMessage("Video cannot be empty");
+			RuleFor(m => m.ProfileId).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.VideoId).NotEmpty().WithMessage("this field cannot be left blank");
 		}
 	}
 }

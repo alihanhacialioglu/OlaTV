@@ -11,7 +11,7 @@
 
 @using (Html.BeginForm("Video_Update", "Video", FormMethod.Post, new { @class = "form-group" }))
 {
-	@Html.Label("Video ID")
+	@Html.Label("Video Id")
 	<input class="form-control" type="text" name="VideoId" value="@Model.Video.VideoId" disabled />
 	@Html.TextBoxFor(m=>m.Video.VideoId,new { @class = "form-control", @type = "hidden"} )
 	<br />

@@ -10,7 +10,7 @@
 @using (Html.BeginForm("Title_Update", "Title", FormMethod.Post, new { @class = "form-group" }))
 {
 
-    @Html.Label("ID")
+    @Html.Label("Title Id")
     @Html.HiddenFor(m => m.TitleId)
     @Html.TextBoxFor(m=>m.TitleId,new { @class = "form-control", @disabled = "disabled"})
     <br />

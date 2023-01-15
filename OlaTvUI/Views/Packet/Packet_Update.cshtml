@@ -9,7 +9,7 @@
 <br />
 @using (Html.BeginForm("Packet_Update", "Packet", FormMethod.Post, new { @class = "form-group" }))
 {
-    @Html.Label("ID")
+    @Html.Label("Packet Id")
     @Html.HiddenFor(m => m.PacketId)
     @Html.TextBoxFor(m=>m.PacketId,new { @class = "form-control", @disabled = "disabled"})
     <br />

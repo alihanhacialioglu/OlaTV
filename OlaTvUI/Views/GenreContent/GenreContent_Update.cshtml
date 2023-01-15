@@ -10,25 +10,25 @@
 
 @using (Html.BeginForm("GenreContent_Update", "GenreContent", FormMethod.Post, new { @class = "form-group" }))
 {
-    <label>GenreContent Id</label>
+    @Html.Label("GenreContent Id")
     @Html.HiddenFor(m => m.GenreContent.GenreContentId)
     @Html.TextBoxFor(m=>m.GenreContent.GenreContentId,new { @class = "form-control", @disabled = "disabled"})
     <br />
 
     @Html.Label("Genre Name")
-   @Html.DropDownListFor(m => m.GenreContent.GenreId, 
-		new SelectList(Model.Genres, "GenreId", "GenreName"),  
+    @Html.DropDownListFor(m => m.GenreContent.GenreId,
+		new SelectList(Model.Genres, "GenreId", "GenreName"),
 		new { @class = "form-select" })
     <br />
 
     @Html.Label("Content Name")
-   @Html.DropDownListFor(m => m.GenreContent.ContentId, 
+    @Html.DropDownListFor(m => m.GenreContent.ContentId,
 		new SelectList(Model.Contents, "ContentId", "ContentName"),
 		new { @class = "form-select" })
 
     <br />
 
-   
+
 
     <input class=" btn btn-primary" type="submit" value="Update" />
 }

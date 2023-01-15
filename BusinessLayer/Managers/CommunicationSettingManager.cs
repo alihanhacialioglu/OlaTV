@@ -25,7 +25,7 @@ namespace BusinessLayer.Manager
 
         public List<CommunicationSetting> GetAll()
         {
-            throw new NotImplementedException();
+            return _communicationSettingDal.GetAll();
         }
 
         public CommunicationSetting GetById(int id)

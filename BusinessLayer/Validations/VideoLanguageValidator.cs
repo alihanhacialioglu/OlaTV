@@ -12,8 +12,8 @@ namespace BusinessLayer.Validations
 	{
 		public VideoLanguageValidator()
 		{
-			RuleFor(m => m.VideoId).NotEmpty().WithMessage("Video cannot be empty");
-			RuleFor(m => m.LanguageId).NotEmpty().WithMessage("Subtitle Language cannot be empty");
-		}
+			RuleFor(m => m.VideoId).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.LanguageId).NotEmpty().WithMessage("this field cannot be left blank");
+        }
 	}
 }

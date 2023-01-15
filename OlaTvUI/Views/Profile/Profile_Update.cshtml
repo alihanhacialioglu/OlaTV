@@ -40,31 +40,31 @@
 
 	@Html.Label("User")
 	@Html.DropDownListFor(m => m.Profile.UserId,
-		new SelectList(Model.Users, "UserId", "UserName"), "Select User",
+		new SelectList(Model.Users, "UserId", "UserName"),
 		new { @class = "form-select" })
 	<br />
 
 	@Html.Label("Language")
 	@Html.DropDownListFor(m => m.Profile.LanguageId,
-	new SelectList(Model.Languages, "LanguageId", "LanguageName"), "Select Language",
+	new SelectList(Model.Languages, "LanguageId", "LanguageName"), 
 		new { @class = "form-select" })
 	<br />
 
 	@Html.Label("Maturity Rating")
 	@Html.DropDownListFor(m => m.Profile.MaturityRatingId,
-		new SelectList(Model.MaturityRatings, "MaturityRatingId", "StatusName"), "Select Maturity Rating",
+		new SelectList(Model.MaturityRatings, "MaturityRatingId", "StatusName"), 
 		new { @class = "form-select" })
 	<br />
 
 	@Html.Label("Text Color")
 	@Html.DropDownListFor(m => m.Profile.TextColorId,
-		new SelectList(Model.TextColors, "TextColorId", "TextColorName"), "Select Text Color",
+		new SelectList(Model.TextColors, "TextColorId", "TextColorName"),
 		new { @class = "form-select" })
 	<br />
 
 	@Html.Label("Text Size")
 	@Html.DropDownListFor(m => m.Profile.TextSizeId,
-		new SelectList(Model.TextSizes, "TextSizeId", "TextSizeName"), "Select Text Size",
+		new SelectList(Model.TextSizes, "TextSizeId", "TextSizeName"),
 		new { @class = "form-select" })
 	<br />
 

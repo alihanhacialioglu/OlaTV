@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm("ProfileVideoWatching_Update", "ProfileVideoWatching", FormMethod.Post, new { @class = "form-group" }))
 {
-	@Html.Label("ProfileVideoWatching ID")
+	@Html.Label("ProfileVideoWatching Id")
 	@Html.HiddenFor(m => m.ProfileVideoWatching.ProfileVideoWatchingId)
 	@Html.TextBoxFor(m => m.ProfileVideoWatching.ProfileVideoWatchingId, new { @class = "form-control", @disabled = "disabled"} )
 	<br />

@@ -12,9 +12,9 @@ namespace BusinessLayer.Validations
 	{
 		public ProfileVideoRatingValidator()
 		{
-			RuleFor(m => m.ProfileVideoRate).NotEmpty().WithMessage("Rate cannot be empty");
-			RuleFor(m => m.ProfileId).NotEmpty().WithMessage("Profile cannot be empty");
-			RuleFor(m => m.VideoId).NotEmpty().WithMessage("Video cannot be empty");
+			RuleFor(m => m.ProfileVideoRate).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.ProfileId).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.VideoId).NotEmpty().WithMessage("this field cannot be left blank");
 		}
 	}
 }

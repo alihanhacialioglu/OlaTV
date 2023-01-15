@@ -9,7 +9,7 @@
 <br />
 @using (Html.BeginForm("CreditCard_Update", "CreditCard", FormMethod.Post, new { @class = "form-group" }))
 {
-	@Html.Label("InvoiceDetail Id")
+	@Html.Label("CreditCard Id")
 	@Html.HiddenFor(m => m.CreditCard.CreditCardId)
 	@Html.TextBoxFor(m=>m.CreditCard.CreditCardId, new { @class = "form-control", @disabled = "disabled"} )
 	@Html.ValidationMessage("CreditCardId", new { @class ="text-danger" })
@@ -38,7 +38,7 @@
 
 	@Html.Label("User Name")
 	@Html.DropDownListFor(m => m.CreditCard.UserId,
-        new SelectList(Model.Users,"UserId","UserName", Model.CreditCard.UserId), "Select User Name",
+        new SelectList(Model.Users,"UserId","UserName", Model.CreditCard.UserId),
         new { @class = "form-select" })
 	<br />
 

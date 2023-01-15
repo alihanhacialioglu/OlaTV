@@ -15,7 +15,7 @@ namespace BusinessLayer.Services
         List<CreditCard> GetAll();
 
         CreditCard GetById(int id);
-        CreditCard GetByNo(int no);
+        CreditCard GetByNo(string no);
         CreditCard GetByName(string name);
     }
 }

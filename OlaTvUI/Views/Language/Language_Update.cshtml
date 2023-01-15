@@ -10,7 +10,7 @@
 @using (Html.BeginForm("Language_Update", "Language", FormMethod.Post, new { @class = "form-group" }))
 {
 
-    @Html.Label("ID")
+    @Html.Label("Language Id")
     @Html.HiddenFor(m => m.LanguageId)
     @Html.TextBoxFor(m=>m.LanguageId,new { @class = "form-control", @disabled = "disabled"})
     <br />
