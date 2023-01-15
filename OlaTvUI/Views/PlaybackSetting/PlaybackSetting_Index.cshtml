@@ -1,0 +1,83 @@
+﻿@using EntityLayer.Concrete
+@model List<PlaybackSetting>
+
+@{
+    ViewData["Title"] = "PlaybackSetting_Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var i = 1;
+}
+
+<h2>Playback Setting Page</h2>
+<br />
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Playback Setting Name</th>
+            <th>Explanation</th>
+            <th>Status</th>
+            <th>Status Change Buttons</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@i</th>
+                <td>@item.PlaybackSettingName</td>
+                <td>@item.PlaybackSettingExplanation</td>
+                <td>@item.IsDelete</td>
+                <td>
+                    <a href="/PlaybackSetting/PlaybackSetting_Activate/@item.PlaybackSettingId" class="btn btn-outline-success text-center">Activate <i class="fa fa-check"></i></a>
+                    <a href="/PlaybackSetting/PlaybackSetting_Deactivate/@item.PlaybackSettingId" class="btn btn-outline-dark text-center">Deactivate <i class="fa fa-times" aria-hidden="true"></i></a>
+                </td>
+                <td>
+                    <a href="/PlaybackSetting/PlaybackSetting_Update/@item.PlaybackSettingId" type="button" class="btn btn-outline-primary">Update</a>
+                    <button type="button" class="btn btn-outline-danger text-center" data-bs-whatever="@item.PlaybackSettingId" data-bs-toggle="modal" data-bs-target="#decisionPopup">Delete</button>
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
+
+<div class="text-center d-flex justify-content-start p-2">
+    <a href="/PlaybackSetting/PlaybackSetting_Add" class="btn btn-success d-flex justify-content-center">Add<ion-icon name="add" style="font-size:25px; color:white; margin-left:10px;"></ion-icon></a>
+</div>
+
+<!-- Modal -->
+@*#decisionPopup Model*@
+
+<div class="modal fade" id="decisionPopup" tabindex="=-1" aria-labelledby="deleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="deleteLabel">Warning</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <a id="delete-btn" href="" class="btn btn-success">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#decisionPopup').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var PlaybackSettingId = button.attr('data-bs-whatever');
+            var a = document.querySelector("#delete-btn");
+            a.href = "/PlaybackSetting/PlaybackSetting_Delete/" + PlaybackSettingId;
+        });
+    });
+</script>
+
+

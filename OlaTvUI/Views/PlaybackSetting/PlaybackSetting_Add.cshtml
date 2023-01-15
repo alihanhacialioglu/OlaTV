@@ -1,0 +1,27 @@
+﻿@using EntityLayer.Concrete
+@model PlaybackSetting
+@{
+	ViewData["Title"] = "PlaybackSetting_Add";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Playback Setting Adding Page</h2>
+<br />
+
+@using (Html.BeginForm("PlaybackSetting_Add", "PlaybackSetting", FormMethod.Post, new { @class = "form-group" }))
+{
+
+	@Html.Label("Playback Setting Name")
+	@Html.TextBoxFor(m=>m.PlaybackSettingName, new { @class = "form-control" })
+	@Html.ValidationMessage("PlaybackSettingName", new { @class ="text-danger" })
+	<br />
+
+	@Html.Label("Playback Setting Explanation")
+	@Html.TextBoxFor(m=>m.PlaybackSettingExplanation, new { @class = "form-control"})
+	@Html.ValidationMessage("PlaybackSettingExplanation", new { @class ="text-danger" })
+	<br />
+
+	<input class=" btn btn-primary" type="submit" value="Add" />
+}
+
+
