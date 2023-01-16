@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model GenreContentModel
+
 @{
 	ViewData["Title"] = "GenreContent_Add";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,13 +10,11 @@
 <br />
 @using (Html.BeginForm("GenreContent_Add", "GenreContent", FormMethod.Post, new { @class = "form-group" }))
 {
-
 	@Html.Label("Genre Name")
 	@Html.DropDownListFor(m => m.GenreContent.GenreId, 
 		new SelectList(Model.Genres, "GenreId", "GenreName"), "Select Genre", 
 		new { @class = "form-select" })
 	@Html.ValidationMessage("GenreId",new { @class ="text-danger" })
-
 	<br />
 
 	@Html.Label("Content Name")
@@ -23,7 +22,6 @@
 		new SelectList(Model.Contents, "ContentId", "ContentName"), "Select Content", 
 		new { @class = "form-select" })
 	@Html.ValidationMessage("ContentId",new { @class ="text-danger" })
-
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Add" />

@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model TextSize
+
 @{
 	ViewData["Title"] = "TextSize_Update";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,6 +8,7 @@
 
 <h2>Text Size Update Page</h2>
 <br />
+
 @using (Html.BeginForm("TextSize_Update", "TextSize", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("Text Size ID")
@@ -16,6 +18,7 @@
 
 	@Html.Label("Text Size Name")
 	@Html.TextBoxFor(m=>m.TextSizeName,new { @class = "form-control"})
+	@Html.ValidationMessage("TextSizeName",new { @class ="text-danger" })
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value=" Update" />

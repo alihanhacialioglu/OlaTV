@@ -16,7 +16,7 @@
 	@Html.TextBoxFor(m => m.Profile.ProfileId,new { @class = "form-control", @disabled = "disabled"} )
 	<br />
 
-	@Html.LabelFor(m=>m.Profile.ProfileName, "Profile Name", new { @class = "form-label"})
+	@Html.Label("Profile Name")
 	@Html.TextBoxFor(m=>m.Profile.ProfileName,new { @class = "form-control"})
 	@Html.ValidationMessage("ProfileName", new { @class ="text-danger" })
 	<br />

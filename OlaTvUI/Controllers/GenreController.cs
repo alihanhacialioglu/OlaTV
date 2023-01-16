@@ -31,7 +31,7 @@ namespace OlaTvUI.Controllers
             if (result.IsValid)
             {
                 genreManager.Add(genre);
-                return RedirectToAction("MaturityRating_Index");
+                return RedirectToAction("Genre_Index");
             }
             else
             {
@@ -57,7 +57,7 @@ namespace OlaTvUI.Controllers
             var result = validator.Validate(genre);
             if (result.IsValid)
             {
-                genreManager.Add(genre);
+                genreManager.Update(genre);
                 return RedirectToAction("Genre_Index");
             }
             else

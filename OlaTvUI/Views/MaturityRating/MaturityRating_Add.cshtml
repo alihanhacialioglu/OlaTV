@@ -7,19 +7,18 @@
 
 <h2>MaturityRating Adding Page</h2>
 <br />
+
 @using (Html.BeginForm("MaturityRating_Add", "MaturityRating", FormMethod.Post, new { @class = "form-group" }))
 {
-
 	@Html.Label("Status Name")
-	@Html.TextBoxFor(m=>m.StatusName,new { @class = "form-control", @placeholder="Status Name" })
+	@Html.TextBoxFor(m=>m.StatusName,new { @class = "form-control"})
 	@Html.ValidationMessage("StatusName",new { @class ="text-danger" })
 	<br />
 
 	@Html.Label("Maturity Explanation")
-	@Html.TextBoxFor(m=>m.MaturityExplanation,new { @class = "form-control", @placeholder="Maturity Explanation" })
+	@Html.TextBoxFor(m=>m.MaturityExplanation,new { @class = "form-control" })
 	@Html.ValidationMessage("MaturityExplanation",new { @class ="text-danger" })
 	<br />
-
 
 	<input class=" btn btn-primary" type="submit" value="Add" />
 }

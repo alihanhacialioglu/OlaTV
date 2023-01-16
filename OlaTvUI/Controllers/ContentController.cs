@@ -11,7 +11,7 @@ namespace OlaTvUI.Controllers
 	{
 		ContentManager contentManager = new ContentManager(new EfContentDal());
 		MaturityRatingManager maturityRatingManager = new MaturityRatingManager(new EfMaturityRatingDal());
-		
+
 		public IActionResult Content_Index()
 		{
 			var contents = contentManager.GetAll();
@@ -50,8 +50,8 @@ namespace OlaTvUI.Controllers
 				return View(contentModel);
 			}
 		}
-        [HttpGet]
-        public IActionResult Content_Update(int id)
+		[HttpGet]
+		public IActionResult Content_Update(int id)
 		{
 			Content content = contentManager.GetById(id);
 			ContentModel contentModel = new ContentModel();
@@ -64,8 +64,24 @@ namespace OlaTvUI.Controllers
 		[HttpPost]
 		public IActionResult Content_Update(Content content)
 		{
-			contentManager.Update(content);
-			return RedirectToAction("Content_Index");
+			ContentModel contentModel = new ContentModel();
+			contentModel.Content = content;
+			contentModel.MaturityRatings = maturityRatingManager.GetAll();
+			ContentValidator validator = new ContentValidator();
+			var result = validator.Validate(content);
+			if (result.IsValid)
+			{
+				contentManager.Update(content);
+				return RedirectToAction("Content_Index");
+			}
+			else
+			{
+				foreach (var item in result.Errors)
+				{
+					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+				}
+				return View(contentModel);
+			}
 		}
 
 		public IActionResult Content_Delete(int id)

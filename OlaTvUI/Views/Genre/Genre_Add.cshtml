@@ -1,18 +1,19 @@
 ﻿@using EntityLayer.Concrete
 @model Genre
+
 @{
 	ViewData["Title"] = "Genre_Add";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <h2>Genre Adding Page</h2>
 <br />
+
 @using (Html.BeginForm("Genre_Add", "Genre", FormMethod.Post, new { @class = "form-group" }))
 {
-
 	@Html.Label("Genre Name")
-	@Html.TextBoxFor(m=>m.GenreName,"",new { @class = "form-control", @placeholder="Genre Name" })
-	@Html.ValidationMessage("GenreName",new { @class ="text-danger" })
-
+	@Html.TextBoxFor(m=>m.GenreName, new { @class = "form-control" })
+	@Html.ValidationMessage("GenreName", new { @class = "text-danger" })
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Add" />

@@ -89,7 +89,7 @@ namespace OlaTvUI.Controllers
         {
             User user = userManager.GetById(id);
             userManager.Remove(user);
-            return View("User_Index");
+            return RedirectToAction("User_Index");
         }
 
         public IActionResult User_Activate(int id)

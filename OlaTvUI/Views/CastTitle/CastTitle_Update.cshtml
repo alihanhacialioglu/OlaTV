@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model CastTitleModel
+
 @{
     ViewData["Title"] = "CastTitle_Update";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -13,18 +14,17 @@
     @Html.Label("CastTitle Id")
     @Html.HiddenFor(m => m.CastTitle.CastTitleId)
     @Html.TextBoxFor(m=>m.CastTitle.CastTitleId,new { @class = "form-control" , @disabled = "disabled"})
-
     <br />
 
     @Html.Label("Cast Name Surname")
     @Html.DropDownListFor(m => m.CastTitle.CastId,
-			new SelectList(Model.Casts, "CastId", "CastNameSurname"), "Select Cast",
+			new SelectList(Model.Casts, "CastId", "CastNameSurname"),
 			new { @class = "form-select" })
     <br />
 
     @Html.Label("Title Name")
     @Html.DropDownListFor(m => m.CastTitle.TitleId,
-		new SelectList(Model.Titles, "TitleId", "TitleName"), "Select Genre",
+		new SelectList(Model.Titles, "TitleId", "TitleName"),
 		new { @class = "form-select" })
     <br />
 

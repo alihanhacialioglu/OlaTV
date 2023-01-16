@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model MaturityRating
+
 @{
 	ViewData["Title"] = "MaturityRating_Update";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,24 +8,22 @@
 
 <h2>Maturity Rating Update Page</h2>
 <br />
+
 @using (Html.BeginForm("MaturityRating_Update", "MaturityRating", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("MaturityRating Id")
 	@Html.HiddenFor(m => m.MaturityRatingId)
 	@Html.TextBoxFor(m=>m.MaturityRatingId,new { @class = "form-control", @disabled = "disabled"})
-
 	<br />
 
 	@Html.Label("Status Name")
 	@Html.TextBoxFor(m=>m.StatusName,new { @class = "form-control"})
 	@Html.ValidationMessage("StatusName",new { @class ="text-danger" })
-
 	<br />
 
 	@Html.Label("Maturity Explanation")
 	@Html.TextBoxFor(m=>m.MaturityExplanation,new { @class = "form-control"})
 	@Html.ValidationMessage("MaturityExplanation",new { @class ="text-danger" })
-
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value=" Update" />

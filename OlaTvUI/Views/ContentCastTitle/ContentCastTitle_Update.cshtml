@@ -20,16 +20,12 @@
     @Html.DropDownListFor(m => m.ContentCastTitle.ContentId, 
         new SelectList(Model.Contents,"ContentId","ContentName", Model.ContentCastTitle.ContentId),
         new { @class = "form-select" })
-	
-
     <br />
 
     @Html.Label("CastTitle Name")
     @Html.DropDownListFor(m => m.ContentCastTitle.CastTitleId, 
         new SelectList(Model.CastTitles,"CastTitleId","CastTitleId", Model.ContentCastTitle.CastTitleId), 
         new { @class = "form-select" })
-    
-
     <br />
 
     <input class=" btn btn-primary" type="submit" value="Update" />

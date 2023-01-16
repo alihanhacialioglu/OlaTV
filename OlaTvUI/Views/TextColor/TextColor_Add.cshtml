@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model TextColor
+
 @{
 	ViewData["Title"] = "TextColor_Add";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,13 +8,12 @@
 
 <h2>TextColor Adding Page</h2>
 <br />
+
 @using (Html.BeginForm("TextColor_Add", "TextColor", FormMethod.Post, new { @class = "form-group" }))
 {
-
 	@Html.Label("Text Color Name")
 	@Html.TextBoxFor(m=>m.TextColorName,new { @class = "form-control", @placeholder="Text Color Name" })
 	@Html.ValidationMessage("TextColorName",new { @class ="text-danger" })
-
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Add" />

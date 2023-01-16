@@ -17,8 +17,7 @@
     <br />
 
     @Html.Label("Release Date")
-    <br />
-    @Html.TextBoxFor(m=>m.Video.ReleaseDate, DateTime.Now.ToString("dd-mm-yyyy") ,new {@style = "height:40px;width:170px;", @type = "date" })
+    @Html.TextBoxFor(m=>m.Video.ReleaseDate, DateTime.Now.ToString("yyyy-MM-dd") ,new { @class = "form-control", @style = "height:40px;width:170px;", @type = "date" })
     @Html.ValidationMessage("ReleaseDate",new { @class ="text-danger" })
     <br />
 

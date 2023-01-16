@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model PlaybackSetting
+
 @{
 	ViewData["Title"] = "PlaybackSetting_Add";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -10,7 +11,6 @@
 
 @using (Html.BeginForm("PlaybackSetting_Add", "PlaybackSetting", FormMethod.Post, new { @class = "form-group" }))
 {
-
 	@Html.Label("Playback Setting Name")
 	@Html.TextBoxFor(m=>m.PlaybackSettingName, new { @class = "form-control" })
 	@Html.ValidationMessage("PlaybackSettingName", new { @class ="text-danger" })

@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model CommunicationSetting
+
 @{
     ViewData["Title"] = "CommunicationSetting_Update";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,6 +8,7 @@
 
 <h2>CommunicationSetting Update Page</h2>
 <br />
+
 @using (Html.BeginForm("CommunicationSetting_Update", "CommunicationSetting", FormMethod.Post, new { @class = "form-group" }))
 {
     @Html.Label("CommunicationSetting Id")
@@ -17,12 +19,11 @@
     @Html.Label("CommunicationSetting Name")
     @Html.TextBoxFor(m=>m.CommunicationSettingName,new { @class = "form-control" })
     @Html.ValidationMessage("CommunicationSettingName",new { @class ="text-danger" })
-
     <br />
+
     @Html.Label("CommunicationSetting Explanation")
     @Html.TextBoxFor(m=>m.CommunicationSettingExplanation,new { @class = "form-control" })
     @Html.ValidationMessage("CommunicationSettingExplanation",new { @class ="text-danger" })
-
     <br />
 
     <input class=" btn btn-primary" type="submit" value="Update" />

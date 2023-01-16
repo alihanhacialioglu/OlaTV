@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model ProfileVideoWatchingModel
+
 @{
 	ViewData["Title"] = "ProfileVideoWatching_Add";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,6 +8,7 @@
 
 <h2>ProfileVideoWatching Adding Page</h2>
 <br />
+
 @using (Html.BeginForm("ProfileVideoWatching_Add", "ProfileVideoWatching", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("Date Of Watched")

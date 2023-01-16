@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model ProfileVideoWatchingModel
+
 @{
 	ViewData["Title"] = "ProfileVideoWatching_Update";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -21,16 +22,14 @@
 
 	@Html.Label("Profile")
 	@Html.DropDownListFor(m => m.ProfileVideoWatching.ProfileId,
-		new SelectList(Model.Profiles, "ProfileId", "ProfileName"), "Select Profile",
+		new SelectList(Model.Profiles, "ProfileId", "ProfileName"),
 		new { @class = "form-select" })
-	@Html.ValidationMessage("ProfileId",new { @class ="text-danger" })
 	<br />
 
 	@Html.Label("Video")
 	@Html.DropDownListFor(m => m.ProfileVideoWatching.VideoId,
-	new SelectList(Model.Videos, "VideoId", "VideoUrl"), "Select Video",
+	new SelectList(Model.Videos, "VideoId", "VideoUrl"),
 		new { @class = "form-select" })
-	@Html.ValidationMessage("VideoId",new { @class ="text-danger" })
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value="Update" />

@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model Cast
+
 @{
     ViewData["Title"] = "Cast_Add";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -10,12 +11,11 @@
 
 @using (Html.BeginForm("Cast_Add", "Cast", FormMethod.Post, new { @class = "form-group" }))
 {
-
     @Html.Label("Name Surname")
     @Html.TextBoxFor(m=>m.CastNameSurname,new { @class = "form-control" })
     @Html.ValidationMessage("CastNameSurname",new { @class ="text-danger" })
-
     <br />
+
     <input class=" btn btn-primary" type="submit" value="Add" />
 }
 

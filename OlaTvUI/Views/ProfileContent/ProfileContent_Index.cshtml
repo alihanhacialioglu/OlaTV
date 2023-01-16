@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model List<ProfileContent>
+
 @{
     ViewData["Title"] = "ProfileContent_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -18,7 +19,6 @@
             <th>Status</th>
             <th>Status Change Buttons</th>
             <th>Operations</th>
-
         </tr>
     </thead>
     <tbody>
@@ -68,14 +68,13 @@
     </div>
 </div>
 
-
 <script>
     $(document).ready(function () {
         $('#decisionPopup').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var ProfileContentId = button.attr('data-bs-whatever');
             var a = document.querySelector("#delete-btn");
-            a.href = "/ProfilePlaybackSetting/ProfilePlaybackSetting_Delete/" + ProfileContentId;
+            a.href = "/ProfileContent/ProfileContent_Delete/" + ProfileContentId;
         });
     });
 </script>

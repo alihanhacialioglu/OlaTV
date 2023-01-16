@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model VideoLanguageModel
+
 @{
 	ViewData["Title"] = "VideoLanguage_Add";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,6 +8,7 @@
 
 <h2>VideoLanguage Adding Page</h2>
 <br />
+
 @using (Html.BeginForm("VideoLanguage_Add", "VideoLanguage", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("Video Url")
