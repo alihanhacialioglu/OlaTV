@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer.Abstract;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class CastTitle
+    public class CastTitle : BaseEntity
     {
         [Key]
         public int CastTitleId { get; set; }
