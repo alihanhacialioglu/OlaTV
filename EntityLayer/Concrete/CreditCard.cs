@@ -26,7 +26,7 @@ namespace EntityLayer.Concrete
 		public bool IsDelete { get; set; }
 
 		//Relation with InvoiceDetail
-		public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
+		public virtual ICollection<CheckDetail> CheckDetails { get; set; }
 
 
     }

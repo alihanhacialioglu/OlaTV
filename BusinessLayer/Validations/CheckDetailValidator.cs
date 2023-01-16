@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Validations
 {
-    public class InvoiceDetailValidator:AbstractValidator<InvoiceDetail>
+    public class CheckDetailValidator:AbstractValidator<CheckDetail>
     {
-        public InvoiceDetailValidator()
+        public CheckDetailValidator()
         {
             RuleFor(m => m.TotalPrice).NotEmpty().WithMessage("this field cannot be left blank");
-            RuleFor(m => m.InvoiceExplanation).NotEmpty().WithMessage("this field cannot be left blank");
-            RuleFor(m => m.InvoiceDate).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.CheckExplanation).NotEmpty().WithMessage("this field cannot be left blank");
+            RuleFor(m => m.CheckDate).NotEmpty().WithMessage("this field cannot be left blank");
             RuleFor(m => m.ServiceDate).NotEmpty().WithMessage("this field cannot be left blank");
             RuleFor(m => m.CreditCardId).NotEmpty().WithMessage("this field cannot be left blank");
             RuleFor(m => m.IsDelete).NotEmpty().WithMessage("this field cannot be left blank");

@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(OlaTvDBContext))]
-    partial class OlaTvDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230116062935_Rename_InvoiceDetail_CheckDetail")]
+    partial class RenameInvoiceDetailCheckDetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,7 +128,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("CreditCardId");
 
-                    b.ToTable("CheckDetails");
+                    b.ToTable("InvoiceDetails");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.CommunicationSetting", b =>

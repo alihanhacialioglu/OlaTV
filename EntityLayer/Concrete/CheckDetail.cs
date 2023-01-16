@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class InvoiceDetail
+    public class CheckDetail
     {
         [Key]
-        public int InvoiceDetailId { get; set; }
+        public int CheckDetailId { get; set; }
 
         public float TotalPrice { get; set; }
 
         [StringLength(100)]
-        public string InvoiceExplanation { get; set; }
-        public DateTime InvoiceDate { get; set; }
+        public string CheckExplanation { get; set; }
+        public DateTime CheckDate { get; set; }
         public DateTime ServiceDate { get; set; }
 
 

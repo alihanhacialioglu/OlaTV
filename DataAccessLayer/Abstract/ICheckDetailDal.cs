@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IInvoiceDetailDal:IGenericDal<InvoiceDetail>
+    public interface ICheckDetailDal:IGenericDal<CheckDetail>
     {
     }
 }

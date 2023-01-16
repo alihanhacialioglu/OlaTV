@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete.EntityFramework
 {
-    public class EfInvoiceDetailDal : GenericRepository<InvoiceDetail>, IInvoiceDetailDal
+    public class EfCheckDetailDal : GenericRepository<CheckDetail>, ICheckDetailDal
     {
     }
 }
