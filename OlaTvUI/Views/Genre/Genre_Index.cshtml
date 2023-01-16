@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model List<Genre>
+
 @{
     ViewData["Title"] = "Genre_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,16 +9,15 @@
 
 <h2>Genre Page</h2>
 <br />
+
 <table class="table table-striped ">
     <thead>
         <tr>
-           
             <th></th>
             <th>Genre Name</th>
             <th>Status</th>
             <th>Status Change Buttons</th>
             <th>Operations</th>
-            
         </tr>
     </thead>
     <tbody>

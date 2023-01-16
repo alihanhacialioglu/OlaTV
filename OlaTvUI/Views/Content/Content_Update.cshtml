@@ -14,20 +14,17 @@
     @Html.Label("Content Id")
     @Html.HiddenFor(m => m.Content.ContentId)
     @Html.TextBoxFor(m=>m.Content.ContentId,new { @class = "form-control", @disabled = "disabled"})
-    
     <br />
 
     @Html.Label("Content Name")
     @Html.TextBoxFor(m=>m.Content.ContentName,new { @class = "form-control"})
     @Html.ValidationMessage("ContentName",new { @class ="text-danger" })
-
     <br />
 
     @Html.Label("Maturity Rating")
     @Html.DropDownListFor(m => m.Content.MaturityRatingId,
-		new SelectList(Model.MaturityRatings, "MaturityRatingId", "StatusName"), "Select Maturity Rating",
+		new SelectList(Model.MaturityRatings, "MaturityRatingId", "StatusName"),
 		new { @class = "form-select" })
-    
     <br />
 
     <input class="btn btn-primary" type="submit" value="Update" />

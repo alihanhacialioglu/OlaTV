@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model PlaybackSetting
+
 @{
 	ViewData["Title"] = "PlaybackSetting_Update";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -13,19 +14,16 @@
 	@Html.Label("PlaybackSetting ID")
 	@Html.HiddenFor(m => m.PlaybackSettingId)
 	@Html.TextBoxFor(m=>m.PlaybackSettingId, new { @class = "form-control", @disabled = "disabled"})
-
 	<br />
 
 	@Html.Label("Playback Setting Name")
 	@Html.TextBoxFor(m=>m.PlaybackSettingName, new { @class = "form-control"})
 	@Html.ValidationMessage("PlaybackSettingName",new { @class ="text-danger" })
-
 	<br />
 
 	@Html.Label("Playback Setting Explanation")
 	@Html.TextBoxFor(m=>m.PlaybackSettingExplanation, new { @class = "form-control"})
 	@Html.ValidationMessage("PlaybackSettingExplanation",new { @class ="text-danger" })
-
 	<br />
 
 	<input class=" btn btn-primary" type="submit" value=" Update" />

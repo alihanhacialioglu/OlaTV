@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model ProfileVideoRatingModel
+
 @{
 	ViewData["Title"] = "ProfileVideoRating_Update";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -15,7 +16,7 @@
 	@Html.TextBoxFor(m => m.ProfileVideoRating.ProfileVideoRatingId, new { @class = "form-control", @disabled = "disabled"} )
 	<br />
 
-	@Html.Label("Date Of Watched")
+	@Html.Label("Rate")
 	@Html.TextBoxFor(m=>m.ProfileVideoRating.ProfileVideoRate, new { @class = "form-control"})
 	@Html.ValidationMessage("ProfileVideoRate",new { @class ="text-danger" })
 	<br />

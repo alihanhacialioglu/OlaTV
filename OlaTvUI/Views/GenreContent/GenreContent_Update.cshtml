@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model GenreContentModel
+
 @{
     ViewData["Title"] = "GenreContent_Update";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -25,10 +26,7 @@
     @Html.DropDownListFor(m => m.GenreContent.ContentId,
 		new SelectList(Model.Contents, "ContentId", "ContentName"),
 		new { @class = "form-select" })
-
     <br />
-
-
 
     <input class=" btn btn-primary" type="submit" value="Update" />
 }

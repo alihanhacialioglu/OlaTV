@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model List<Packet>
+
 @{
     ViewData["Title"] = "Packet_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -20,9 +21,6 @@
             <th>Status</th>
             <th>Status Change Buttons</th>
             <th>Operations</th>
-
-
-
         </tr>
     </thead>
     <tbody>
@@ -86,7 +84,7 @@
             var button = $(event.relatedTarget);
             var PacketId = button.attr('data-bs-whatever');
             var a = document.querySelector("#delete-btn");
-            a.href = "/Packete/Packet_Delete/" + PacketId;
+            a.href = "/Packet/Packet_Delete/" + PacketId;
         });
     });
 </script>

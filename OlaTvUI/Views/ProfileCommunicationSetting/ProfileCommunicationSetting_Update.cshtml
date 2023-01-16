@@ -1,36 +1,39 @@
 ﻿@using EntityLayer.Concrete
 @model ProfileCommunicationSettingModel
+
 @{
-    ViewData["Title"] = "ProfileCommunicationSetting_Update";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "ProfileCommunicationSetting_Update";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>ProfileCommunicationSetting Update Page</h2>
 <br />
+
 @using (Html.BeginForm("ProfileCommunicationSetting_Update", "ProfileCommunicationSetting", FormMethod.Post, new { @class = "form-group" }))
 {
-    @Html.Label("ProfileCommunicationSetting ID")
-            <input class="form-control" type="text" name="ProfileCommunicationSettingId" value="@Model.ProfileCommunicationSetting.ProfileCommunicationSettingId" disabled />
-    @Html.TextBoxFor(m=>m.ProfileCommunicationSetting.ProfileCommunicationSettingId,new { @class = "form-control", @type = "hidden"} )
-            <br />
+	@Html.Label("ProfileCommunicationSetting ID")
+	@Html.HiddenFor(m => m.ProfileCommunicationSetting.ProfileCommunicationSettingId)
+	@Html.TextBoxFor(m=>m.ProfileCommunicationSetting.ProfileCommunicationSettingId,new { @class = "form-control", @disabled = "disabled"} )
+	<br />
 
-    @Html.Label("ProfileCommunicationSettingSelection")
-    @Html.TextBoxFor(m=>m.ProfileCommunicationSetting.ProfileCommunicationSettingSelection,"",new { @class = "form-control" })
-    @Html.ValidationMessage("ProfileCommunicationSettingSelection",new { @class ="text-danger" })
-            <br />
+	<div class="form-check form-switch">
+		@Html.CheckBoxFor(m=>m.ProfileCommunicationSetting.ProfileCommunicationSettingSelection, new { @class = "form-check-input" })
+		@Html.LabelFor(m=>m.ProfileCommunicationSetting.ProfileCommunicationSettingSelection, "Selection", new { @class = "form-check-label" })
+	</div>
+	<br />
 
-    @Html.Label("Profile Name")
-    @Html.DropDownListFor(m => m.ProfileCommunicationSetting.ProfileId,
+	@Html.Label("Profile Name")
+	@Html.DropDownListFor(m => m.ProfileCommunicationSetting.ProfileId,
 		new SelectList(Model.Profiles, "ProfileId", "ProfileName"),
 		new { @class = "form-select" })
-            <br />
+	<br />
 
-    @Html.Label("CommunicationSetting Name")
-    @Html.DropDownListFor(m => m.ProfileCommunicationSetting.CommunicationSettingId,
+	@Html.Label("CommunicationSetting Name")
+	@Html.DropDownListFor(m => m.ProfileCommunicationSetting.CommunicationSettingId,
 		new SelectList(Model.CommunicationSettings, "CommunicationSettingId", "CommunicationSettingName"),
 		new { @class = "form-select" })
-            <br />
+	<br />
 
-            <input class=" btn btn-primary" type="submit" value="Update" />
+	<input class=" btn btn-primary" type="submit" value="Update" />
 }
 

@@ -1,11 +1,14 @@
 ﻿@using EntityLayer.Concrete
 @model Genre
+
 @{
 	ViewData["Title"] = "Genre_Update";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <h2>Genre Update Page</h2>
 <br />
+
 @using (Html.BeginForm("Genre_Update", "Genre", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("Genre Id")
@@ -15,11 +18,9 @@
 
 	@Html.Label("Genre Name")
 	@Html.TextBoxFor(m=>m.GenreName,new { @class = "form-control"})
-	@Html.ValidationMessage("GenreId",new { @class ="text-danger" })
-
+	@Html.ValidationMessage("GenreName",new { @class ="text-danger" })
 	<br />
 
-	
-	<input class=" btn btn-primary" type="submit" value=" Update" />
+	<input class=" btn btn-primary" type="submit" value="Update" />
 }
 

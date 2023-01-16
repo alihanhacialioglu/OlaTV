@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model List<User>
+
 @{
     ViewData["Title"] = "User_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -22,9 +23,6 @@
             <th>Status</th>
             <th>Status Change Buttons</th>
             <th>Operations</th>
-
-
-
         </tr>
     </thead>
     <tbody>
@@ -36,7 +34,7 @@
                 <td>@item.Password</td>
                 <td>@item.EmailAddress</td>
                 <td>@item.PhoneNumber</td>
-                <td>@item.DateOfRegistration.ToShortDateString()</td>
+                <td>@item.DateOfRegistration.ToString("yyyy-MM-dd hh:mm")</td>
                 <td>@item.AccessPin</td>
                 <td>@item.Packet.PacketName</td>
                 <td>@item.IsDelete</td>

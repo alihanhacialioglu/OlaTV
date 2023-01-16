@@ -6,22 +6,19 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
 <h2>Cast Update Page</h2>
 <br />
+
 @using (Html.BeginForm("Cast_Update", "Cast", FormMethod.Post, new { @class = "form-group" }))
 {
-
     @Html.Label("Cast Id")
     @Html.HiddenFor(m => m.CastId)
     @Html.TextBoxFor(m=>m.CastId,new { @class = "form-control", @disabled = "disabled"})
-
     <br />
 
     @Html.Label("Name Surname")
     @Html.TextBoxFor(m=>m.CastNameSurname,new { @class = "form-control" })
     @Html.ValidationMessage("CastNameSurname",new { @class ="text-danger" })
-
     <br />
 
     <input class=" btn btn-primary" type="submit" value="Update" />

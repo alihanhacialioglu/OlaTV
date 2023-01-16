@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model ProfileCommunicationSettingModel
+
 @{
     ViewData["Title"] = "ProfileCommunicationSetting_Add";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,24 +8,25 @@
 
 <h2>ProfileCommunicationSetting Adding Page</h2>
 <br />
+
 @using (Html.BeginForm("ProfileCommunicationSetting_Add", "ProfileCommunicationSetting", FormMethod.Post, new { @class = "form-group" }))
 {
-
-    @Html.Label("Selection")
-    @Html.TextBoxFor(m=>m.ProfileCommunicationSetting.ProfileCommunicationSettingSelection,"",new { @class = "form-control" })
-    @Html.ValidationMessage("ProfileCommunicationSettingSelection",new { @class ="text-danger" })
+    <div class="form-check form-switch">
+        @Html.CheckBoxFor(m=>m.ProfileCommunicationSetting.ProfileCommunicationSettingSelection, new { @class = "form-check-input" })
+        @Html.LabelFor(m=>m.ProfileCommunicationSetting.ProfileCommunicationSettingSelection, "Selection", new { @class = "form-check-label" })
+    </div>
     <br />
 
     @Html.Label("Profile Name")
     @Html.DropDownListFor(m => m.ProfileCommunicationSetting.ProfileId,
-		new SelectList(Model.Profiles, "ProfileId", "ProfileName"),
+		new SelectList(Model.Profiles, "ProfileId", "ProfileName"), "Select Profile",
 		new { @class = "form-select" })
     @Html.ValidationMessage("ProfileId",new { @class ="text-danger" })
     <br />
 
     @Html.Label("CommunicationSetting Name")
     @Html.DropDownListFor(m => m.ProfileCommunicationSetting.CommunicationSettingId,
-		new SelectList(Model.CommunicationSettings, "CommunicationSettingId", "CommunicationSettingName"),
+		new SelectList(Model.CommunicationSettings, "CommunicationSettingId", "CommunicationSettingName"), "Select Communication Setting",
 		new { @class = "form-select" })
     @Html.ValidationMessage("CommunicationSettingId",new { @class ="text-danger" })
     <br />

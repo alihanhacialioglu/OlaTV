@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model ProfileVideoRatingModel
+
 @{
 	ViewData["Title"] = "ProfileVideoRating_Add";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,6 +8,7 @@
 
 <h2>ProfileVideoRating Adding Page</h2>
 <br />
+
 @using (Html.BeginForm("ProfileVideoRating_Add", "ProfileVideoRating", FormMethod.Post, new { @class = "form-group" }))
 {
 	@Html.Label("Rate")

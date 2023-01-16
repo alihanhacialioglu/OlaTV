@@ -31,7 +31,7 @@ namespace OlaTvUI.Controllers
             if (result.IsValid)
             {
                 textSizeManager.Add(textSize);
-                return RedirectToAction("TextColor_Index");
+                return RedirectToAction("TextSize_Index");
             }
             else
             {

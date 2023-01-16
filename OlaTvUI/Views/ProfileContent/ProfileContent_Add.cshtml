@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model ProfileContentModel
+
 @{
     ViewData["Title"] = "ProfileContent_Add";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -7,19 +8,19 @@
 
 <h2>ProfileContent Adding Page</h2>
 <br />
+
 @using (Html.BeginForm("ProfileContent_Add", "ProfileContent", FormMethod.Post, new { @class = "form-group" }))
 {
-
     @Html.Label("Profile Name")
     @Html.DropDownListFor(m => m.ProfileContent.ProfileId,
-		new SelectList(Model.Profiles, "ProfileId", "ProfileName"),
+		new SelectList(Model.Profiles, "ProfileId", "ProfileName"), "Select Profile",
 		new { @class = "form-select" })
     @Html.ValidationMessage("ProfileId",new { @class ="text-danger" })
     <br />
 
     @Html.Label("Content Name")
     @Html.DropDownListFor(m => m.ProfileContent.ContentId,
-		new SelectList(Model.Contents, "ContentId", "ContentName"),
+		new SelectList(Model.Contents, "ContentId", "ContentName"), "Select Content",
 		new { @class = "form-select" })
     @Html.ValidationMessage("ContentId",new { @class ="text-danger" })
     <br />

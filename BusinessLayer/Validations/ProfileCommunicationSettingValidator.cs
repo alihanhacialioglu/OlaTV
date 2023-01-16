@@ -12,7 +12,6 @@ namespace BusinessLayer.Validations
     {
         public ProfileCommunicationSettingValidator()
         {
-            RuleFor(m => m.ProfileCommunicationSettingSelection).NotEmpty().WithMessage("this field cannot be left blank");
             RuleFor(m => m.ProfileId).NotEmpty().WithMessage("this field cannot be left blank");
             RuleFor(m => m.CommunicationSettingId).NotEmpty().WithMessage("this field cannot be left blank");
         }

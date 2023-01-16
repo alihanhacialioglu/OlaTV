@@ -87,7 +87,7 @@ namespace OlaTvUI.Controllers
         {
             CreditCard creditCard = creditCardManager.GetById(id);
             creditCardManager.Remove(creditCard);
-            return View("CreditCard_Index");
+            return RedirectToAction("CreditCard_Index");
         }
 
         public IActionResult CreditCard_Activate(int id)
