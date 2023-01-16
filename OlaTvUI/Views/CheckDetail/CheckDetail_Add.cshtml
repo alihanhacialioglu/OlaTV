@@ -1,0 +1,43 @@
+﻿@using EntityLayer.Concrete
+@model CheckDetailModel
+@{
+    ViewData["Title"] = "CheckDetail_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>CheckDetail Adding Page</h2>
+<br />
+@using (Html.BeginForm("CheckDetail_Add", "CheckDetail", FormMethod.Post, new { @class = "form-group" }))
+{
+	@Html.Label("TotalPrice")
+	@Html.TextBoxFor(m=>m.CheckDetail.TotalPrice,new { @class = "form-control"} )
+	@Html.ValidationMessage("TotalPrice",new { @class ="text-danger" })
+		<br />
+
+	@Html.Label("CheckExplanation")
+	@Html.TextBoxFor(m=>m.CheckDetail.CheckExplanation,new { @class = "form-control"} )
+	@Html.ValidationMessage("CheckExplanation",new { @class ="text-danger" })
+		<br />
+
+	@Html.Label("CheckDate")
+		<br />
+	@Html.TextBoxFor(m=>m.CheckDetail.CheckDate, DateTime.Now.ToString("yyyy-MM-dd") ,new { @class = "form-control", @style = "height:40px;width:170px;",@type="date"} )
+	@Html.ValidationMessage("CheckDate",new { @class ="text-danger" })
+		<br />
+
+	@Html.Label("ServiceDate")
+	@Html.TextBoxFor(m=>m.CheckDetail.ServiceDate,DateTime.Now.ToString("yyyy-MM-dd") ,new { @class = "form-control", @style = "height:40px;width:170px;",@type="date"} )
+	@Html.ValidationMessage("ServiceDate",new { @class ="text-danger" })
+		<br />
+
+	@Html.Label("CreditCardHolder")
+	@Html.DropDownListFor(m => m.CheckDetail.CreditCardId,
+        new SelectList(Model.CreditCards,"CreditCardId","CreditCardHolder"), "Select CreditCard Holder",
+        new { @class = "form-select" })
+	@Html.ValidationMessage("CreditCardId",new { @class ="text-danger" })
+		<br />
+
+		<input class=" btn btn-primary" type="submit" value="Add" />
+}
+
+
