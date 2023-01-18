@@ -49,6 +49,8 @@
         ion-icon {
             font-size: 20px;
             color: black;
+            margin-bottom: -4px;
+            margin-right: 5px;
         }
 
         table thead {
@@ -64,7 +66,7 @@
 
         h2, h3 {
             color: black;
-        }       
+        }
 
         span {
             color: white;
@@ -94,7 +96,7 @@
 
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Profile/Profile_Index">
                 <div class="sidebar-brand-text text-light mx-3" style="font-size:20px;">OlaTv</div>
             </a>
 
@@ -281,17 +283,19 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto md-3 my-md-0 mw-100 navbar-search">
-                        <div class="input-group ms-3">
-                            <input type="text" class="form-control border-0 small" placeholder="Search for..."
-                                   aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-light" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    @RenderSection("searchbar",false);
+
+                    @*<form class="d-none d-sm-inline-block form-inline mr-auto md-3 my-md-0 mw-100 navbar-search">
+                    <div class="input-group ms-3">
+                    <input type="text" class="form-control border-0 small" placeholder="Search for..."
+                    aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                    <button class="btn btn-light" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                    </button>
+                    </div>
+                    </div>
+                    </form>*@
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -341,7 +345,7 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="holder overflow-auto">
-            
+
                     @RenderBody()
                 </div>
                 <!-- /.container-fluid -->
@@ -352,7 +356,7 @@
             <footer class="sticky-footer footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span style="color:black;">Copyright &copy; | Admin Panel | 2023</span>
+                        <span style="color:black;">Copyright &copy; | Ola TV | 2023</span>
                     </div>
                 </div>
             </footer>
