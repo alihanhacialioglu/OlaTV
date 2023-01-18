@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Manager;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -7,7 +7,7 @@ using OlaTvUI.Models;
 
 namespace OlaTvUI.Controllers
 {
-	public class VideoLanguageController : Controller
+    public class VideoLanguageController : Controller
 	{
 		VideoLanguageManager videoLanguageManager = new VideoLanguageManager(new EfVideoLanguageDal());
 		VideoManager videoManager = new VideoManager(new EfVideoDal());

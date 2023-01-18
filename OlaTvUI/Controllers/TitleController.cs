@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Manager;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -7,7 +7,7 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace OlaTvUI.Controllers
 {
-	public class TitleController : Controller
+    public class TitleController : Controller
 	{
 		TitleManager titleManager = new TitleManager(new EfTitleDal());
 		public IActionResult Title_Index()

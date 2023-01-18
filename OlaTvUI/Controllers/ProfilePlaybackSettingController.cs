@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Manager;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -7,7 +7,7 @@ using OlaTvUI.Models;
 
 namespace OlaTvUI.Controllers
 {
-	public class ProfilePlaybackSettingController : Controller
+    public class ProfilePlaybackSettingController : Controller
 	{
 		ProfilePlaybackSettingManager profilePlaybackSettingManager = new ProfilePlaybackSettingManager(new EfProfilePlaybackSettingDal());
 		ProfileManager profileManager = new ProfileManager(new EfProfileDal());

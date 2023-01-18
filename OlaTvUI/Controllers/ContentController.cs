@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Manager;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -7,7 +7,7 @@ using OlaTvUI.Models;
 
 namespace OlaTvUI.Controllers
 {
-	public class ContentController : Controller
+    public class ContentController : Controller
 	{
 		ContentManager contentManager = new ContentManager(new EfContentDal());
 		MaturityRatingManager maturityRatingManager = new MaturityRatingManager(new EfMaturityRatingDal());

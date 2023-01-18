@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Manager;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OlaTvUI.Controllers
 {
-	public class MaturityRatingController : Controller
+    public class MaturityRatingController : Controller
 	{
 		MaturityRatingManager maturityRatingManager = new MaturityRatingManager(new EfMaturityRatingDal());
 

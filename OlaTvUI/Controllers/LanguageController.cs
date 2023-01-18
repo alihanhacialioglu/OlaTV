@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Manager;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OlaTvUI.Controllers
 {
-	public class LanguageController : Controller
+    public class LanguageController : Controller
 	{
 		LanguageManager languageManager = new LanguageManager(new EfLanguageDal());
 		public IActionResult Language_Index()

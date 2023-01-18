@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Manager;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -7,7 +7,7 @@ using OlaTvUI.Models;
 
 namespace OlaTvUI.Controllers
 {
-	public class ContentCastTitleController : Controller
+    public class ContentCastTitleController : Controller
 	{
 		ContentCastTitleManager contentCastTitleManager = new ContentCastTitleManager(new EfContentCastTitleDal());
 		ContentManager contentManager = new ContentManager(new EfContentDal());

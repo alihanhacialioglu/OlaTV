@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Manager;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -7,7 +7,7 @@ using OlaTvUI.Models;
 
 namespace OlaTvUI.Controllers
 {
-	public class ProfileVideoWatchingController : Controller
+    public class ProfileVideoWatchingController : Controller
 	{
 		ProfileVideoWatchingManager profileVideoWatchingManager = new ProfileVideoWatchingManager(new EfProfileVideoWatchingDal());
 		ProfileManager profileManager = new ProfileManager(new EfProfileDal());

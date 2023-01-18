@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Manager;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
@@ -7,7 +7,7 @@ using OlaTvUI.Models;
 
 namespace OlaTvUI.Controllers
 {
-	public class GenreContentController : Controller
+    public class GenreContentController : Controller
 	{
 		GenreContentManager genreContentManager = new GenreContentManager(new EfGenreContentDal());
 		GenreManager genreManager = new GenreManager(new EfGenreDal());
