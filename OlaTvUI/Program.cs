@@ -1,13 +1,47 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using NToastNotify;
+
 namespace OlaTvUI
 {
 	public class Program
 	{
-		public static void Main(string[] args)
-		{
-			var builder = WebApplication.CreateBuilder(args);
+        
+        private static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+               AddCookie(options =>
+               {
+                   options.LoginPath = "/Admin/Admin_Login";
+               });
 
-			// Add services to the container.
-			builder.Services.AddControllersWithViews();
+            builder.Services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                   .RequireAuthenticatedUser()
+                   .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
+            //Add services to the container.
+            builder.Services.AddRazorPages().AddNToastNotifyNoty(new NotyOptions
+            {
+                ProgressBar = true,
+                Timeout = 5000
+            });
+            builder.Services.AddMvc();
+
+            //Set Session Timeout.Default is 20 minutes.
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
+            });
+
+
+
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
 
 			var app = builder.Build();
 
@@ -24,12 +58,17 @@ namespace OlaTvUI
 
 			app.UseRouting();
 
-            
-            
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.MapRazorPages();
+            //toastNotify packects
+            app.UseNToastNotify();
 
-			app.MapControllerRoute(
+
+
+            app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=CastTitle}/{action=CastTitle_Index}/{id?}");
+				pattern: "{controller=Admin}/{action=Admin_Index}/{id?}");
 
 			app.Run();
 		}

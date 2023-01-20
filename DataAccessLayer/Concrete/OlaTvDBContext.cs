@@ -13,12 +13,12 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseLazyLoadingProxies().UseSqlServer (@"Server=(localdb)\MSSQLLocalDB;Database=OlaTvDB;Trusted_Connection=true");
+            //optionsBuilder.UseLazyLoadingProxies().UseSqlServer (@"Server=(localdb)\MSSQLLocalDB;Database=OlaTvDB;Trusted_Connection=true");
 
-            //optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Server=LAPTOP-7U5PUCF6;Initial Catalog=OlaTvDB;" +
-            //   "Persist Security Info=False;User ID=sa;Password=6161;" +
-            //   "MultipleActiveResultSets=False;Encrypt=False;" +
-            //   "TrustServerCertificate=False;Connection Timeout=30;");
+            optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Server=LAPTOP-7U5PUCF6;Initial Catalog=OlaTvDB;" +
+               "Persist Security Info=False;User ID=sa;Password=6161;" +
+               "MultipleActiveResultSets=False;Encrypt=False;" +
+               "TrustServerCertificate=False;Connection Timeout=30;");
 
         }
 
@@ -48,6 +48,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<User> Users { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<VideoLanguage> VideoLanguages { get; set; }
+        public DbSet<Admin> Admins { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

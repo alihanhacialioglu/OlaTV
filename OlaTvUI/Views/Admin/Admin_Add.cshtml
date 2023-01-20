@@ -1,0 +1,35 @@
+﻿@using EntityLayer.Concrete
+@model Admin
+@{
+    ViewData["Title"] = "Admin_Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Admin Adding Page</h2>
+<br />
+@using (Html.BeginForm("Admin_Add", "Admin", FormMethod.Post, new { @class = "form-group" }))
+{
+
+    @Html.Label("Name")
+    @Html.TextBoxFor(m=>m.AdminName,"",new { @class = "form-control" })
+    @Html.ValidationMessage("AdminName",new { @class ="text-danger" })
+        <br />
+
+    @Html.Label("Password")
+    @Html.TextBoxFor(m=>m.AdminPassword,"",new { @class = "form-control" })
+    @Html.ValidationMessage("AdminPassword",new { @class ="text-danger" })
+        <br />
+    @Html.Label("Email Address")
+    @Html.TextBoxFor(m=>m.EmailAddress,"",new { @class = "form-control" })
+    @Html.ValidationMessage("EmailAddress",new { @class ="text-danger" })
+        <br />
+    @Html.Label("Admin Type")
+    @Html.TextBoxFor(m=>m.AdminType,"",new { @class = "form-control" })
+    @Html.ValidationMessage("AdminType",new { @class ="text-danger" })
+
+        <br />
+
+        <input class=" btn btn-primary" type="submit" value="Add" />
+}
+
+
