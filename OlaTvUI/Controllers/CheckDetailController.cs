@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -11,10 +13,16 @@ namespace OlaTvUI.Controllers
     {
         CheckDetailManager checkDetailManager = new CheckDetailManager(new EfCheckDetailDal());
         CreditCardManager creditCardManager=new CreditCardManager(new EfCreditCardDal());
-        public IActionResult CheckDetail_Index()
-        {
-            var checks = checkDetailManager.GetAll();
-            return View(checks);
+        public IActionResult CheckDetail_Index(int page = 1)
+		{
+			int pageSize = 5;
+            var itemCounts = checkDetailManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var checkDetails = checkDetailManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "CheckDetail_Index";
+            ViewBag.contrName = "CheckDetail";
+            return View(checkDetails);
         }
 
         [HttpGet]

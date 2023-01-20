@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -13,13 +14,19 @@ namespace OlaTvUI.Controllers
 		VideoManager videoManager = new VideoManager(new EfVideoDal());
 		LanguageManager languageManager = new LanguageManager(new EfLanguageDal());
 
-		public IActionResult VideoLanguage_Index()
-		{
-			var videoLanguages = videoLanguageManager.GetAll();
-			return View(videoLanguages);
-		}
+        public IActionResult VideoLanguage_Index(int page = 1)
+        {
+            int pageSize = 5;
+            var itemCounts = videoLanguageManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var videoLanguages = videoLanguageManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "VideoLanguage_Index";
+            ViewBag.contrName = "VideoLanguage";
+            return View(videoLanguages);
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult VideoLanguage_Add()
 		{
 			VideoLanguageModel videoLanguageModel = new VideoLanguageModel();

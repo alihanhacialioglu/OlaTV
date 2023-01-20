@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -12,9 +14,15 @@ namespace OlaTvUI.Controllers
         ProfileContentManager profileContentManager = new ProfileContentManager(new EfProfileContentDal());
         ProfileManager profileManager = new ProfileManager(new EfProfileDal());
         ContentManager contentManager = new ContentManager(new EfContentDal());
-        public IActionResult ProfileContent_Index()
+        public IActionResult ProfileContent_Index(int page = 1)
         {
-            var profileContents = profileContentManager.GetAll();
+            int pageSize = 5;
+            var itemCounts = profileContentManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var profileContents = profileContentManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "ProfileContent_Index";
+            ViewBag.contrName = "ProfileContent";
             return View(profileContents);
         }
 

@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -13,13 +15,19 @@ namespace OlaTvUI.Controllers
 		ContentManager contentManager = new ContentManager(new EfContentDal());
 		CastTitleManager castTitleManager = new CastTitleManager(new EfCastTitleDal());
 
-		public IActionResult ContentCastTitle_Index()
+        public IActionResult ContentCastTitle_Index(int page = 1)
 		{
-			var contentCastTitles = contentCastTitleManager.GetAll();
-			return View(contentCastTitles);
-		}
+			int pageSize = 5;
+            var itemCounts = contentCastTitleManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var contentCastTitles = contentCastTitleManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "ContentCastTitle_Index";
+            ViewBag.contrName = "ContentCastTitle";
+            return View(contentCastTitles);
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult ContentCastTitle_Add()
 		{
 			ContentCastTitleModel contentCastTitleModel = new ContentCastTitleModel();

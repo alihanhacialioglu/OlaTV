@@ -1,0 +1,31 @@
+﻿@using OlaTvUI.PagedList;
+
+@{
+    var action_name = ViewBag.actionName;
+    var contr_name = ViewBag.contrName;
+}
+
+<nav aria-label="Page navigation example">
+    @if (@Model != null && @Model.TotalPage > 0)
+    {
+        <ul class="pagination justify-content-end">
+            <li class="page-item @(Model.ActivePage>1?"":"invisible")">
+                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="1">First Page</a>
+            </li>
+            <li class="page-item @(Model.ActivePage>1?"":"disabled")">
+                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.ActivePage-1)"><ion-icon name="chevron-back-outline"></ion-icon></a>
+            </li>
+            @for (var i = Model.FirstPage; i <= Model.EndPage; i++)
+            {
+                <li class="page-item @(Model.ActivePage==@i?"active":"")"><a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@i">@i</a></li>
+            }
+
+            <li class="page-item @(Model.ActivePage<Model.TotalPage?"":"disabled")">
+                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.ActivePage+1)"><ion-icon name="chevron-forward-outline"></ion-icon></a>
+            </li>
+            <li class="page-item @(Model.ActivePage<Model.TotalPage?"":"invisible")">
+                <a class="page-link" asp-controller="@contr_name" asp-action="@action_name" asp-route-page="@(Model.TotalPage)">Last Page</a>
+            </li>
+        </ul>
+    }
+</nav>

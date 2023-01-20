@@ -2,17 +2,25 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
     public class CommunicationSettingController : Controller
     {
         CommunicationSettingManager communicationSettingManager = new CommunicationSettingManager(new EfCommunicationSettingDal());
-        public IActionResult CommunicationSetting_Index()
+        public IActionResult CommunicationSetting_Index(int page = 1)
         {
-            var settings = communicationSettingManager.GetAll();
-            return View(settings);
+            int pageSize = 5;
+            var itemCounts = communicationSettingManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var communicationSettings = communicationSettingManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "CommunicationSetting_Index";
+            ViewBag.contrName = "CommunicationSetting";
+            return View(communicationSettings);
         }
 
         [HttpGet]

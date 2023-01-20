@@ -2,7 +2,9 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
+using OlaTvUI.PagedList;
 using System.Net.Sockets;
 
 namespace OlaTvUI.Controllers
@@ -11,9 +13,15 @@ namespace OlaTvUI.Controllers
     {
         TextColorManager textColorManager = new TextColorManager(new EfTextColorDal());
 
-        public IActionResult TextColor_Index()
+        public IActionResult TextColor_Index(int page = 1)
         {
-            var textColors = textColorManager.GetAll();
+            int pageSize = 5;
+            var itemCounts = textColorManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var textColors = textColorManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "TextColor_Index";
+            ViewBag.contrName = "TextColor";
             return View(textColors);
         }
 

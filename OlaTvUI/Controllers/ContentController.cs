@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -12,13 +14,19 @@ namespace OlaTvUI.Controllers
 		ContentManager contentManager = new ContentManager(new EfContentDal());
 		MaturityRatingManager maturityRatingManager = new MaturityRatingManager(new EfMaturityRatingDal());
 
-		public IActionResult Content_Index()
+        public IActionResult Content_Index(int page = 1)
 		{
-			var contents = contentManager.GetAll();
-			return View(contents);
-		}
+			int pageSize = 5;
+            var itemCounts = contentManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var contents = contentManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "Content_Index";
+            ViewBag.contrName = "Content";
+            return View(contents);
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult Content_Add()
 		{
 			ContentModel contentModel = new ContentModel();

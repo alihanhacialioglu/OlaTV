@@ -3,7 +3,9 @@ using BusinessLayer.Validations;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -11,10 +13,16 @@ namespace OlaTvUI.Controllers
     {
         TextSizeManager textSizeManager = new TextSizeManager(new EfTextSizeDal());
 
-        public IActionResult TextSize_Index()
+        public IActionResult TextSize_Index(int page = 1)
         {
-            var textsizes = textSizeManager.GetAll();
-            return View(textsizes);
+            int pageSize = 5;
+            var itemCounts = textSizeManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var textSizes = textSizeManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "TextSize_Index";
+            ViewBag.contrName = "TextSize";
+            return View(textSizes);
         }
 
         [HttpGet]

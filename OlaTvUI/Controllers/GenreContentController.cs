@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -13,13 +15,19 @@ namespace OlaTvUI.Controllers
 		GenreManager genreManager = new GenreManager(new EfGenreDal());
 		ContentManager contentManager = new ContentManager(new EfContentDal());
 
-		public IActionResult GenreContent_Index()
+        public IActionResult GenreContent_Index(int page = 1)
 		{
-			var genreContents = genreContentManager.GetAll();
-			return View(genreContents);
-		}
+			int pageSize = 5;
+            var itemCounts = genreContentManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var genreContents = genreContentManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "GenreContent_Index";
+            ViewBag.contrName = "GenreContent";
+            return View(genreContents);
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult GenreContent_Add()
 		{
 			GenreContentModel genreContentModel = new GenreContentModel();

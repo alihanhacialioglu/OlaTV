@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -11,9 +13,15 @@ namespace OlaTvUI.Controllers
     {
         CreditCardManager creditCardManager = new CreditCardManager(new EfCreditCardDal());
         UserManager userManager = new UserManager(new EfUserDal());
-        public IActionResult CreditCard_Index()
+        public IActionResult CreditCard_Index(int page = 1)
         {
-            var creditCards = creditCardManager.GetAll();
+            int pageSize = 5;
+            var itemCounts = creditCardManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var creditCards = creditCardManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "CreditCard_Index";
+            ViewBag.contrName = "CreditCard";
             return View(creditCards);
         }
 

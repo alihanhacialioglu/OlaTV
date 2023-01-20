@@ -4,15 +4,22 @@ using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
     public class PacketController : Controller
     {
         PacketManager packetManager = new PacketManager(new EfPacketDal());
-        public IActionResult Packet_Index()
+        public IActionResult Packet_Index(int page = 1)
         {
-            var packets = packetManager.GetAll();
+            int pageSize = 5;
+            var itemCounts = packetManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var packets = packetManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "Packet_Index";
+            ViewBag.contrName = "Packet";
             return View(packets);
         }
 

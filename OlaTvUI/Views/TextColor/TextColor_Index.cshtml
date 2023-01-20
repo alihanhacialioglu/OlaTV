@@ -1,9 +1,11 @@
 ﻿@using EntityLayer.Concrete
+@using OlaTvUI.PagedList
 @model List<TextColor>
 
 @{
     ViewData["Title"] = "TextColor_Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var pager = (Pager)ViewBag.pager;
     var i = 1;
 }
 
@@ -57,6 +59,10 @@
 
 <div class="text-center d-flex justify-content-start p-2">
     <a href="/TextColor/TextColor_Add" class="btn btn-success d-flex justify-content-center">Add<ion-icon name="add" style="font-size:25px;  margin-left:10px;"></ion-icon></a>
+</div>
+
+<div id="ListContainer" style="color:white;display:inline-block;position:relative;top:50%;left:50%;transform:translate(-50%,-50%);">
+    <partial name="PartialCustomPager" model="@pager" />
 </div>
 
 <!-- Modal -->

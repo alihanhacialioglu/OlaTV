@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -11,9 +13,15 @@ namespace OlaTvUI.Controllers
     {
         UserManager userManager = new UserManager(new EfUserDal());
         PacketManager packetManager = new PacketManager(new EfPacketDal());
-        public IActionResult User_Index()
+        public IActionResult User_Index(int page = 1)
         {
-            var users = userManager.GetAll();
+            int pageSize = 5;
+            var itemCounts = userManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var users = userManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "User_Index";
+            ViewBag.contrName = "User";
             return View(users);
         }
 

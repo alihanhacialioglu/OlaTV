@@ -2,21 +2,29 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Text;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
     public class TitleController : Controller
 	{
 		TitleManager titleManager = new TitleManager(new EfTitleDal());
-		public IActionResult Title_Index()
-		{
-			var titles = titleManager.GetAll();
-			return View(titles);
-		}
+        public IActionResult Title_Index(int page = 1)
+        {
+            int pageSize = 5;
+            var itemCounts = titleManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var titles = titleManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "Title_Index";
+            ViewBag.contrName = "Title";
+            return View(titles);
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult Title_Add()
 		{
 			return View();

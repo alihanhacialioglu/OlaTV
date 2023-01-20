@@ -3,7 +3,9 @@ using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -14,11 +16,18 @@ namespace OlaTvUI.Controllers
         ContentManager contentManager = new ContentManager(new EfContentDal());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
 
-        public IActionResult Video_Index()
+        public IActionResult Video_Index(int page = 1)
         {
-            var videos = videoManager.GetAll();
+            int pageSize = 5;
+            var itemCounts = videoManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var videos = videoManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "Video_Index";
+            ViewBag.contrName = "Video";
             return View(videos);
         }
+
         [HttpGet]
         public IActionResult Video_Add()
         {

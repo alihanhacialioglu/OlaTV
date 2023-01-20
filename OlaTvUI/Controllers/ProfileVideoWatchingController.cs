@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -13,13 +15,19 @@ namespace OlaTvUI.Controllers
 		ProfileManager profileManager = new ProfileManager(new EfProfileDal());
 		VideoManager videoManager = new VideoManager(new EfVideoDal());
 
-		public IActionResult ProfileVideoWatching_Index()
+        public IActionResult ProfileVideoWatching_Index(int page = 1)
 		{
-			var profileVideoWatchings = profileVideoWatchingManager.GetAll();
-			return View(profileVideoWatchings);
-		}
+			int pageSize = 5;
+            var itemCounts = profileVideoWatchingManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var profileVideoWatchings = profileVideoWatchingManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "ProfileVideoWatching_Index";
+            ViewBag.contrName = "ProfileVideoWatching";
+            return View(profileVideoWatchings);
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult ProfileVideoWatching_Add()
 		{
 			ProfileVideoWatchingModel profileVideoWatchingModel = new ProfileVideoWatchingModel();

@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -13,13 +15,19 @@ namespace OlaTvUI.Controllers
 		ProfileManager profileManager = new ProfileManager(new EfProfileDal());
 		PlaybackSettingManager playbackSettingManager = new PlaybackSettingManager(new EfPlaybackSettingDal());
 
-		public IActionResult ProfilePlaybackSetting_Index()
+        public IActionResult ProfilePlaybackSetting_Index(int page = 1)
 		{
-			var profilePlaybackSettings = profilePlaybackSettingManager.GetAll();
-			return View(profilePlaybackSettings);
-		}
+			int pageSize = 5;
+            var itemCounts = profilePlaybackSettingManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var profilePlaybackSettings = profilePlaybackSettingManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "ProfilePlaybackSetting_Index";
+            ViewBag.contrName = "ProfilePlaybackSetting";
+            return View(profilePlaybackSettings);
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult ProfilePlaybackSetting_Add()
 		{
 			ProfilePlaybackSettingModel profilePlaybackSettingModel = new ProfilePlaybackSettingModel

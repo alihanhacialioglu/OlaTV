@@ -4,6 +4,7 @@ using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -16,9 +17,15 @@ namespace OlaTvUI.Controllers
         TextColorManager textColorManager = new TextColorManager(new EfTextColorDal());
         TextSizeManager textSizeManager = new TextSizeManager(new EfTextSizeDal());
 
-        public IActionResult Profile_Index()
+        public IActionResult Profile_Index(int page = 1)
         {
-            var profiles = profileManager.GetAll();
+            int pageSize = 5;
+            var itemCounts = profileManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var profiles = profileManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "Profile_Index";
+            ViewBag.contrName = "Profile";
             return View(profiles);
         }
 

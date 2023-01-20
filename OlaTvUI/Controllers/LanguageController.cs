@@ -1,18 +1,26 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
     public class LanguageController : Controller
 	{
 		LanguageManager languageManager = new LanguageManager(new EfLanguageDal());
-		public IActionResult Language_Index()
+		public IActionResult Language_Index(int page = 1)
 		{
-			var languages = languageManager.GetAll();
-			return View(languages);
+            int pageSize = 5;
+			var itemCounts = languageManager.GetAll().Count;
+			Pager pager = new Pager(page, pageSize, itemCounts);
+			var languages = languageManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "Language_Index";
+            ViewBag.contrName = "Language";
+            return View(languages);
 		}
 
 		[HttpGet]

@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -11,9 +13,15 @@ namespace OlaTvUI.Controllers
     {
         CastManager castManager = new CastManager(new EfCastDal());
 
-        public IActionResult Cast_Index()
+        public IActionResult Cast_Index(int page = 1)
         {
-            var casts = castManager.GetAll();
+            int pageSize = 5;
+            var itemCounts = castManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var casts = castManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "Cast_Index";
+            ViewBag.contrName = "Cast";
             return View(casts);
         }
 

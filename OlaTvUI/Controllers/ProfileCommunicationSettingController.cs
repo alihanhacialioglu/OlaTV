@@ -2,8 +2,10 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
 using OlaTvUI.Models;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -12,11 +14,16 @@ namespace OlaTvUI.Controllers
         ProfileCommunicationSettingManager profileCommunicationSettingManager = new ProfileCommunicationSettingManager(new EfProfileCommunicationSettingDal());
         ProfileManager profileManager = new ProfileManager(new EfProfileDal());
         CommunicationSettingManager communicationSettingManager = new CommunicationSettingManager(new EfCommunicationSettingDal());
-        public IActionResult ProfileCommunicationSetting_Index()
+        public IActionResult ProfileCommunicationSetting_Index(int page = 1)
         {
-
-            var settings = profileCommunicationSettingManager.GetAll();
-            return View(settings);
+            int pageSize = 5;
+            var itemCounts = profileCommunicationSettingManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var profileCommunicationSettings = profileCommunicationSettingManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "ProfileCommunicationSetting_Index";
+            ViewBag.contrName = "ProfileCommunicationSetting";
+            return View(profileCommunicationSettings);
         }
 
         [HttpGet]

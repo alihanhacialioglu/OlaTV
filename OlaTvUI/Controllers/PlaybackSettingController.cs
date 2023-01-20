@@ -2,7 +2,9 @@
 using BusinessLayer.Validations;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Resources;
 using Microsoft.AspNetCore.Mvc;
+using OlaTvUI.PagedList;
 
 namespace OlaTvUI.Controllers
 {
@@ -10,13 +12,19 @@ namespace OlaTvUI.Controllers
     {
         PlaybackSettingManager playbackSettingManager = new PlaybackSettingManager(new EfPlaybackSettingDal());
 
-		public IActionResult PlaybackSetting_Index()
+        public IActionResult PlaybackSetting_Index(int page = 1)
 		{
-			var playbackSettings = playbackSettingManager.GetAll();
-			return View(playbackSettings);
-		}
+			int pageSize = 5;
+            var itemCounts = playbackSettingManager.GetAll().Count;
+            Pager pager = new Pager(page, pageSize, itemCounts);
+            var playbackSettings = playbackSettingManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.actionName = "PlaybackSetting_Index";
+            ViewBag.contrName = "PlaybackSetting";
+            return View(playbackSettings);
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult PlaybackSetting_Add()
 		{
 			return View();
