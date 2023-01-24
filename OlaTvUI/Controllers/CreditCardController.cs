@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Resources;
@@ -13,17 +14,34 @@ namespace OlaTvUI.Controllers
     {
         CreditCardManager creditCardManager = new CreditCardManager(new EfCreditCardDal());
         UserManager userManager = new UserManager(new EfUserDal());
-        public IActionResult CreditCard_Index(int page = 1)
-        {
-            int pageSize = 5;
-            var itemCounts = creditCardManager.GetAll().Count;
-            Pager pager = new Pager(page, pageSize, itemCounts);
-            var creditCards = creditCardManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
-            ViewBag.pager = pager;
-            ViewBag.actionName = "CreditCard_Index";
-            ViewBag.contrName = "CreditCard";
-            return View(creditCards);
-        }
+        public IActionResult CreditCard_Index(int page = 1, string searchText = "")
+		{
+			int pageSize = 5;
+			OlaTvDBContext c = new OlaTvDBContext();
+			Pager pager;
+			List<CreditCard> data;
+			var itemCounts = 0;
+			if (searchText != "" && searchText != null)
+			{
+				data = c.CreditCards.Where(x => x.CreditCardHolder.Contains(searchText) ||
+				x.User.UserName.Contains(searchText)).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+				itemCounts = c.CreditCards.Where(x => x.CreditCardHolder.Contains(searchText) ||
+				x.User.UserName.Contains(searchText)).ToList().Count;
+			}
+			else
+			{
+				data = c.CreditCards.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+				itemCounts = c.CreditCards.ToList().Count;
+			}
+			pager = new Pager(page, pageSize, itemCounts);
+
+			ViewBag.pager = pager;
+			ViewBag.actionName = "CastTitle_Index";
+			ViewBag.contrName = "CastTitle";
+			ViewBag.searchText = searchText;
+			return View(data);
+		}
 
         [HttpGet]
         public IActionResult CreditCard_Add()
