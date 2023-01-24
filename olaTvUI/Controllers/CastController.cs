@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Resources;
@@ -13,16 +14,32 @@ namespace OlaTvUI.Controllers
     {
         CastManager castManager = new CastManager(new EfCastDal());
 
-        public IActionResult Cast_Index(int page = 1)
+        public IActionResult Cast_Index(int page = 1, string searchText = "")
         {
             int pageSize = 5;
-            var itemCounts = castManager.GetAll().Count;
-            Pager pager = new Pager(page, pageSize, itemCounts);
-            var casts = castManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            OlaTvDBContext c = new OlaTvDBContext();
+            Pager pager;
+            List<Cast> data;
+            var itemCounts = 0;
+            if (searchText != "" && searchText != null)
+            {
+                data = c.Casts.Where(x => x.CastNameSurname.Contains(searchText)).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                itemCounts = c.Casts.Where(x => x.CastNameSurname.Contains(searchText)).ToList().Count;
+            }
+            else
+            {
+                data = c.Casts.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                itemCounts = c.Casts.ToList().Count;
+            }
+            pager = new Pager(page, pageSize, itemCounts);
+
             ViewBag.pager = pager;
             ViewBag.actionName = "Cast_Index";
             ViewBag.contrName = "Cast";
-            return View(casts);
+            ViewBag.searchText = searchText;
+            return View(data);
+
+
         }
 
         [HttpGet]
@@ -35,8 +52,8 @@ namespace OlaTvUI.Controllers
         [HttpPost]
         public IActionResult Cast_Add(Cast cast)
         {
-            CastValidator castValidator= new CastValidator();
-            var result=castValidator.Validate(cast);
+            CastValidator castValidator = new CastValidator();
+            var result = castValidator.Validate(cast);
             if (result.IsValid)
             {
                 castManager.Add(cast);
@@ -50,7 +67,7 @@ namespace OlaTvUI.Controllers
                 }
                 return View();
             }
-            
+
         }
 
 
@@ -80,10 +97,10 @@ namespace OlaTvUI.Controllers
                 }
                 return View();
             }
-                      
+
         }
 
-        
+
         public IActionResult Cast_Delete(int id)
         {
             Cast cast = castManager.GetById(id);
@@ -106,6 +123,6 @@ namespace OlaTvUI.Controllers
             return RedirectToAction("Cast_Index");
         }
 
-    }   
+    }
 
 }

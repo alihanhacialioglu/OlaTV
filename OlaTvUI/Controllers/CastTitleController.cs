@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Resources;
@@ -14,16 +15,33 @@ namespace OlaTvUI.Controllers
 		CastTitleManager castTitleManager = new CastTitleManager(new EfCastTitleDal());
 		CastManager castManager = new CastManager(new EfCastDal());
 		TitleManager titleManager = new TitleManager(new EfTitleDal());
-		public IActionResult CastTitle_Index(int page = 1)
-		{
-			int pageSize = 5;
-            var itemCounts = castTitleManager.GetAll().Count;
-            Pager pager = new Pager(page, pageSize, itemCounts);
-            var castTitles = castTitleManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
+		public IActionResult CastTitle_Index(int page = 1,string searchText = "")
+        {
+            int pageSize = 5;
+            OlaTvDBContext c = new OlaTvDBContext();
+            Pager pager;
+            List<CastTitle> data;
+            var itemCounts = 0;
+            if (searchText != "" && searchText != null)
+            {
+                data = c.CastTitles.Where(x => x.Cast.CastNameSurname.Contains(searchText) || 
+				x.Title.TitleName.Contains(searchText)).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+                itemCounts = c.CastTitles.Where(x => x.Cast.CastNameSurname.Contains(searchText) ||
+                x.Title.TitleName.Contains(searchText)).ToList().Count;
+            }
+            else
+            {
+                data = c.CastTitles.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                itemCounts = c.CastTitles.ToList().Count;
+            }
+            pager = new Pager(page, pageSize, itemCounts);
+
             ViewBag.pager = pager;
             ViewBag.actionName = "CastTitle_Index";
             ViewBag.contrName = "CastTitle";
-            return View(castTitles);
+            ViewBag.searchText = searchText;
+            return View(data);
         }
 		[HttpGet]
 		public IActionResult CastTitle_Add()

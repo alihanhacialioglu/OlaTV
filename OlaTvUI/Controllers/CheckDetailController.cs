@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.Validations;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Resources;
@@ -13,17 +14,31 @@ namespace OlaTvUI.Controllers
     {
         CheckDetailManager checkDetailManager = new CheckDetailManager(new EfCheckDetailDal());
         CreditCardManager creditCardManager=new CreditCardManager(new EfCreditCardDal());
-        public IActionResult CheckDetail_Index(int page = 1)
+        public IActionResult CheckDetail_Index(int page = 1, string searchText = "")
 		{
 			int pageSize = 5;
-            var itemCounts = checkDetailManager.GetAll().Count;
-            Pager pager = new Pager(page, pageSize, itemCounts);
-            var checkDetails = checkDetailManager.GetAll().Skip((page - 1) * pageSize).Take(pageSize).ToList();
-            ViewBag.pager = pager;
-            ViewBag.actionName = "CheckDetail_Index";
-            ViewBag.contrName = "CheckDetail";
-            return View(checkDetails);
-        }
+			OlaTvDBContext c = new OlaTvDBContext();
+			Pager pager;
+			List<CheckDetail> data;
+			var itemCounts = 0;
+			if (searchText != "" && searchText != null)
+			{
+				data = c.CheckDetails.Where(x => x.CreditCard.CreditCardHolder.Contains(searchText)).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+				itemCounts = c.CheckDetails.Where(x => x.CreditCard.CreditCardHolder.Contains(searchText)).ToList().Count;
+			}
+			else
+			{
+				data = c.CheckDetails.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+				itemCounts = c.CheckDetails.ToList().Count;
+			}
+			pager = new Pager(page, pageSize, itemCounts);
+
+			ViewBag.pager = pager;
+			ViewBag.actionName = "CheckDetail_Index";
+			ViewBag.contrName = "CheckDetail";
+			ViewBag.searchText = searchText;
+			return View(data);
+		}
 
         [HttpGet]
         public IActionResult CheckDetail_Add()

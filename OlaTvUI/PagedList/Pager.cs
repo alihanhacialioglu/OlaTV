@@ -16,7 +16,7 @@
             DataPerPage = pageSize;
             TotalData = itemCounts;
 
-            TotalPage = (int)Math.Ceiling((decimal)TotalData / DataPerPage);
+            TotalPage = (int)Math.Ceiling((decimal)TotalData / (decimal)DataPerPage);
 
             FirstPage = ActivePage - 5;
             EndPage = ActivePage + 4;
