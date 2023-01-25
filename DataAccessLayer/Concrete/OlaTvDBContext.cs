@@ -49,6 +49,8 @@ namespace DataAccessLayer.Concrete
         public DbSet<Video> Videos { get; set; }
         public DbSet<VideoLanguage> VideoLanguages { get; set; }
         public DbSet<Admin> Admins { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
