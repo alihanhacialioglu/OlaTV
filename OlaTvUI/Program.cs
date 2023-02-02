@@ -13,11 +13,11 @@ namespace OlaTvUI
         private static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
-            //   AddCookie(options =>
-            //   {
-            //       options.LoginPath = "/Admin/Admin_Login";
-            //   });
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+               AddCookie(options =>
+               {
+                   options.LoginPath = "/Login/Login_Index";
+               });
 
             builder.Services.AddMvc(config =>
             {
