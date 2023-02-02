@@ -1,0 +1,78 @@
+﻿@{
+	ViewData["Title"] = "Login_Index";
+	Layout = null;
+	var init = 0;
+	if (TempData["init"] != null) { init = (int)TempData["init"]; }
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="~/login/Styles/style.css" type="text/css"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+	<title>OlaTv</title>
+</head>
+<body>
+	@if (init == 1)
+	{
+		@await Component.InvokeAsync("NToastNotify")
+		init = 0;
+	}
+	<div class="logo">
+		<img src="~/login/Assets/img/netflix-logo-5.png" alt="" />
+	</div>
+	<div class="container">
+		<div class="card">
+			<p class="tittle">Sign In</p>
+			<form action="/Login/Enter" method="post">
+				<label for="email"></label>
+				<input type="text"
+					   id="email"
+					   name="EmailAddress"
+					   placeholder="Email or phone number" />
+
+				<label for="password"></label>
+				<input type="password"
+					   id="password"
+					   name="Password"
+					   placeholder="Password" />
+
+				<button type="submit">Sign In</button>
+
+				<div class="bottonbutton">
+					<div class="recuerdame">
+						<label class="container-button">
+							<input type="checkbox" checked="checked" />
+							<span class="checkmark"></span>
+						</label>
+						<p>Remember me</p>
+					</div>
+
+					<a href="/">Need help?</a>
+				</div>
+
+				<div class="firsttime">
+					<div>
+						<p>New to Netflix?</p>
+						<a href="/">Sign up now.</a>
+					</div>
+				</div>
+
+				<div class="catpcha">
+					<div>
+						<p>
+							This page is protected by Google reCAPTCHA to ensure you're not a bot.
+							<a href="/">Learn more.</a>
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

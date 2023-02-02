@@ -11,19 +11,19 @@ namespace OlaTvUI
         private static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
-            //   AddCookie(options =>
-            //   {
-            //       options.LoginPath = "/Admin/Admin_Login";
-            //   });
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+               AddCookie(options =>
+               {
+                   options.LoginPath = "/Login/Login_Index";
+               });
 
-            //builder.Services.AddMvc(config =>
-            //{
-            //    var policy = new AuthorizationPolicyBuilder()
-            //       .RequireAuthenticatedUser()
-            //       .Build();
-            //    config.Filters.Add(new AuthorizeFilter(policy));
-            //});
+            builder.Services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                   .RequireAuthenticatedUser()
+                   .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
             //Add services to the container.
             builder.Services.AddRazorPages().AddNToastNotifyNoty(new NotyOptions
             {
@@ -68,7 +68,7 @@ namespace OlaTvUI
 
             app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Admin}/{action=Admin_Index}/{id?}");
+				pattern: "{controller=Login}/{action=Login_Index}/{id?}");
 
 			app.Run();
 		}
