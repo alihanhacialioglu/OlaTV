@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Newtonsoft.Json;
 using NToastNotify;
+
 
 namespace OlaTvUI
 {
@@ -11,6 +13,10 @@ namespace OlaTvUI
         private static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+       options.SerializerSettings.ReferenceLoopHandling =
+         Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
             //   AddCookie(options =>
             //   {

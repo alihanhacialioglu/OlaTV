@@ -1,0 +1,83 @@
+#cardSlider {
+    
+    display: block;
+    border: 1px solid white;
+    margin: 0px 30px;
+    border:1px solid aqua;
+}
+
+.carousel-inner {
+    display: flex;
+    border: 1px solid red;
+    margin:20px 0 20px 0;
+   
+}
+
+.carousel-item {
+    flex: 0 0 19.5%;
+    margin: 4px;
+    display: inline-block;
+    border: 1px solid white;
+    transition: 800ms transform;
+    
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 65px;
+    height: 130px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid white;
+}
+
+.card {
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border-radius: 3px;
+    border: none;
+    width: 100%;
+    height: 200px;
+    z-index: 999;
+}
+
+.customDraw {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.carousel-item:hover {
+    transform: scale(1.3);
+    transition-delay: 800ms;
+}
+
+.carousel-inner:nth-child(1):hover .carousel-item:nth-child(1) {
+    transform-origin: -50% 20%;
+}
+
+.carousel-item:hover .container {
+    display: block;
+    transition-delay:1s;
+    
+}
+
+@media(max-width:768px) {
+    .carousel-item {
+        flex: 0 0 100%;
+    }
+}
+
+h3 {
+    color: white;
+}
+
+.container {
+    display: none;
+    
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
