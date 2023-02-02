@@ -57,7 +57,7 @@ namespace OlaTvUI.Controllers
                 await HttpContext
                     .SignInAsync(
                     principal,
-                    new AuthenticationProperties { ExpiresUtc = DateTime.UtcNow.AddSeconds(15) });
+                    new AuthenticationProperties { ExpiresUtc = DateTime.UtcNow.AddMinutes(60) });
                 return RedirectToAction("Admin_Index", "Admin");
 
             }
