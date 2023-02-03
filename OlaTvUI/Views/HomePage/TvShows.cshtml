@@ -1,0 +1,39 @@
+﻿@using EntityLayer.Concrete
+@model MainModel
+
+@{
+    ViewData["Title"] = "TvShows";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/style2.css">
+<script src="https://kit.fontawesome.com/b0ba441951.js" crossorigin="anonymous"></script>
+
+<div class="container">
+    <div class="slider">
+        <div class="slider-content">
+            @foreach (var item in Model.Videos)
+		{
+            <div class="slide">
+                <div class="slide-content">
+                        <img src=@item.VideoUrl alt="" />
+                    <div class="onhover">
+                            <img src=@item.VideoUrl alt="" />
+                    </div>
+                </div>
+            </div>
+           
+        }
+        </div>
+    </div>
+    <div class="control-pagination">
+        <span class="prev">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </span>
+        <span class="next">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </span>
+    </div>
+</div>
+
+<script src="~/js/script2.js"></script>

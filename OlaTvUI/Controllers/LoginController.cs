@@ -49,7 +49,7 @@ namespace OlaTvUI.Controllers
                     .SignInAsync(
                     principal,
                     new AuthenticationProperties { ExpiresUtc = DateTime.UtcNow.AddMinutes(60) });
-                return RedirectToAction("HomePage", "HomePage");
+                return RedirectToAction("Home", "HomePage");
 
             }
             _toastNotification.AddErrorToastMessage("Your mail address or  password are incorrect");
