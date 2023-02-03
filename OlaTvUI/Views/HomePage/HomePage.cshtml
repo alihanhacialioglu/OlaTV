@@ -1,0 +1,117 @@
+﻿@using EntityLayer.Concrete
+@model MainModel
+
+@{
+	ViewData["Title"] = "HomePage";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/slider-info.css">
+<script src="https://kit.fontawesome.com/b0ba441951.js" crossorigin="anonymous"></script>
+
+
+<div class="container">
+	<button type="button" id="moveLeft" class="btn-nav">
+		ᐊ
+	</button>
+	<div class="container-indicators">
+		<div class="indicator active" data-index=0></div>
+		<div class="indicator" data-index=1></div>
+		<div class="indicator" data-index=2></div>
+	</div>
+
+	<div class="slider" id="mySlider">
+		@foreach (var item in Model.Videos)
+		{
+			<div class="movie" id="movie0">
+				<img src=@item.VideoUrl
+				 alt="" srcset="">
+				<div class="description">
+					<div class="description__buttons-container">
+						<div class="description__button"><i class="fas fa-play"></i></div>
+						<div class="description__button"><i class="fas fa-plus"></i></div>
+						<div class="description__button"><i class="fas fa-thumbs-up"></i></div>
+						<div class="description__button"><i class="fas fa-thumbs-down"></i></div>
+						<div class="description__button"><i class="fas fa-chevron-down"></i></div>
+					</div>
+					<div class="description__text-container">
+						<span class="description__match">@item.Category.CategoryName</span>
+						<span class="description__rating">@item.Content.MaturityRating.StatusName</span>
+						<span class="description__length">@item.Content.MaturityRating.MaturityExplanation</span>
+						<br><br>
+						@foreach (var genre in Model.GenreContents.Where(x => x.ContentId == item.ContentId).Select(x => x.Genre.GenreName).ToList())
+						{
+							<span>@genre</span>
+							<span>&middot;</span>
+						}
+
+						@*<span>@Model.GenreContents.Where(x=>x.ContentId==item.ContentId).SelectMany(x=>x.Genre.GenreName).ToList().ToString()</span>
+						<span>&middot;</span>
+						<span>@item.Language.LanguageName</span>
+						<span>&middot;</span>
+						<span>Family</span>*@
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+	<button type="button" id="moveRight" class="btn-nav">
+		ᐅ
+	</button>
+</div>
+
+
+<div class="container" style="margin-top:-300px;">
+	<button type="button" id="moveLeft2" class="btn-nav">
+		ᐊ
+	</button>
+	<div class="container-indicators">
+		<div class="indicator active" data-index=0></div>
+		<div class="indicator" data-index=1></div>
+		<div class="indicator" data-index=2></div>
+	</div>
+
+	<div class="slider2" id="mySlider">
+		@foreach (var item in Model.Videos)
+		{
+			<div class="movie" id="movie0">
+				<img src=@item.VideoUrl
+				 alt="" srcset="">
+				<div class="description">
+					<div class="description__buttons-container">
+						<div class="description__button"><i class="fas fa-play"></i></div>
+						<div class="description__button"><i class="fas fa-plus"></i></div>
+						<div class="description__button"><i class="fas fa-thumbs-up"></i></div>
+						<div class="description__button"><i class="fas fa-thumbs-down"></i></div>
+						<div class="description__button"><i class="fas fa-chevron-down"></i></div>
+					</div>
+					<div class="description__text-container">
+						<span class="description__match">@item.Category.CategoryName</span>
+						<span class="description__rating">@item.Content.MaturityRating.StatusName</span>
+						<span class="description__length">@item.Content.MaturityRating.MaturityExplanation</span>
+						<br><br>
+						@foreach (var genre in Model.GenreContents.Where(x => x.ContentId == item.ContentId).Select(x => x.Genre.GenreName).ToList())
+						{
+							<span>@genre</span>
+							<span>&middot;</span>
+						}
+
+						@*<span>@Model.GenreContents.Where(x=>x.ContentId==item.ContentId).SelectMany(x=>x.Genre.GenreName).ToList().ToString()</span>
+					<span>&middot;</span>
+					<span>@item.Language.LanguageName</span>
+					<span>&middot;</span>
+					<span>Family</span>*@
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+	<button type="button" id="moveRight2" class="btn-nav">
+		ᐅ
+	</button>
+</div>
+
+
+
+
+<script src="~/js/slider-info.js"></script>

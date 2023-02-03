@@ -1,156 +1,216 @@
 ﻿@{
-    Layout = null;
+	Layout = null;
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tv-shows</title>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <link rel="stylesheet" href="../css/moviereview.css">
-
-    <meta name="theme-color" content="#060404 " />
-    <link rel="icon" href="/img/profile-pic/netflix-logo.ico">
-
-
-   
-
-    <script src='https://cdn.jwplayer.com/libraries/oe7qChJ5.js'></script>
-    <style>
-       
-    </style>
+	<title>Netflix</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="google" value="notranslate" />
+	<meta http-equiv="origin-trial"
+		  data-feature="Mute in Picture-in-Picture window"
+		  data-expires="2019-05-21"
+		  content="AlTswX7XZLgX4u/FK+tnvgmPsG33QKw859iCSrQXz+AJQ5MnpfL9suF1/Z5WeGFgSvYHbLQ8zYI/hMOIv7K4MQMAAABieyJvcmlnaW4iOiJodHRwczovL25ldGZsaXguY29tOjQ0MyIsImZlYXR1cmUiOiJNdXRlQnV0dG9uIiwiZXhwaXJ5IjoxNTU5MDg3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZX0=" />
+	<link type="text/css"
+		  rel="stylesheet"
+		  href="https://codex.nflxext.com/%5E3.0.0/truthBundle/webui/1.22.5-shakti-css-v14727c69/css/css/less%7Ccore%7Cerror-page.less/1/0HyO3Mux8GLN/none/true/none"
+		  data-uia="botLink" />
+	<link type="text/css"
+		  rel="stylesheet"
+		  href="https://codex.nflxext.com/%5E3.0.0/truthBundle/webui/1.22.5-shakti-css-v14727c69/css/css/less%7Cpages%7CakiraClient.less/1/0HyO3Mux8GLN/none/true/none"
+		  data-uia="botLink" />
+	<link rel="shortcut icon"
+		  href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico" />
+	<script>
+		/* Disable minification (remove `.min` from URL path) for more info */
+	</script>
+	<script async=""
+			crossorigin="anonymous"
+			id="player-core-js"
+			src="https://assets.nflxext.com/en_us/ffe/player/html/cadmium-playercore-6.0026.690.011.js"></script>
 </head>
-<body style="background-color:black;" onresize="screenUpdate();">
+<body>
+	<div id="appMountPoint">
+		<div class="netflix-sans-font-loaded">
+			<div dir="ltr" class="">
+				<div>
+					<div class="bd dark-background"
+						 lang="en-US"
+						 data-uia="container-adult">
+						<div class="pinning-header">
+							<div class="pinning-header-container">
+								<div class="main-header has-billboard menu-navigation"
+									 role="navigation">
+									<a aria-label="Netflix"
+									   class="logo icon-logoUpdate active"
+									   href="/browse"></a>
+									<ul class="tabbed-primary-navigation">
+										<li class="navigation-menu">
+											<a class="menu-trigger"
+											   role="button"
+											   aria-haspopup="true"
+											   tabindex="0">Browse</a>
+										</li>
+										<li class="navigation-tab">
+											<a class="current active" href="/browse">Home</a>
+										</li>
+										<li class="navigation-tab">
+											<a href="/browse/genre/83">TV Shows</a>
+										</li>
+										<li class="navigation-tab">
+											<a href="/browse/genre/34399">Movies</a>
+										</li>
+										<li class="navigation-tab">
+											<a href="/latest">Latest</a>
+										</li>
+										<li class="navigation-tab">
+											<a href="/browse/my-list">My List</a>
+										</li>
+									</ul>
+									<div class="secondary-navigation">
+										<div class="nav-element">
+											<div class="searchBox">
+												<button class="searchTab"
+														tabindex="0"
+														aria-label="Search"
+														data-uia="search-box-launcher">
+													<span class="icon-search"></span>
+												</button>
+											</div>
+										</div>
+										<div class="nav-element show-kids">
+											<a href="/Kids">KIDS</a>
+										</div>
+										<div class="nav-element show-dvd">
+											<a href="#">DVD</a>
+										</div>
+										<div class="nav-element">
+											<span class="gifts" data-tooltip="gifts-tooltip">
+												<a data-uia="action-click-gift-box"
+												   class="gifts-menu"
+												   aria-haspopup="true"
+												   aria-label="Gifts"
+												   href="/referfriends">
+													<svg viewBox="0 0 20 21"
+														 role="img"
+														 aria-labelledby="gift-box"
+														 class="gifts-menu__icon">
+														<defs>
+															<polygon id="path-1"
+																	 points="9.09090909e-05 0 19.3881818 0 19.3881818 20.0960909 9.09090909e-05 20.0960909"></polygon>
+														</defs>
+														<g id="V1"
+														   stroke="none"
+														   stroke-width="1"
+														   fill="none"
+														   fill-rule="evenodd">
+															<g id="Cell-4-2"
+															   transform="translate(-1083.000000, -24.000000)">
+																<g id="Group-3"
+																   transform="translate(1083.000000, 24.000000)">
+																	<mask id="mask-2" fill="white">
+																		<use xlink:href="#path-1"></use>
+																	</mask>
+																	<g id="Clip-2"></g>
+																	<path d="M18.0246364,10.087 C18.0246364,10.1733636 17.9519091,10.2460909 17.8655455,10.2460909 L17.6782727,10.2460909 L16.3146364,10.2460909 L3.07372727,10.2460909 L1.71009091,10.2460909 L1.52281818,10.2460909 C1.43645455,10.2460909 1.36372727,10.1733636 1.36372727,10.087 L1.36372727,7.56518182 C1.36372727,7.47790909 1.43645455,7.40518182 1.52281818,7.40518182 L9.01190909,7.40518182 L14.601,7.40518182 L17.8655455,7.40518182 C17.9519091,7.40518182 18.0246364,7.47790909 18.0246364,7.56518182 L18.0246364,10.087 Z M16.3146364,18.6624545 C16.3146364,18.6988182 16.281,18.7324545 16.2446364,18.7324545 L10.3755455,18.7324545 L10.3755455,11.6097273 L16.3146364,11.6097273 L16.3146364,18.6624545 Z M9.01190909,18.7324545 L3.14372727,18.7324545 C3.10645455,18.7324545 3.07372727,18.6988182 3.07372727,18.6624545 L3.07372727,11.6097273 L9.01190909,11.6097273 L9.01190909,18.7324545 Z M6.711,1.36336364 C7.94918182,1.36336364 8.95554545,2.37063636 8.95554545,3.60790909 L8.95554545,5.85245455 L6.711,5.85245455 C5.47372727,5.85245455 4.46645455,4.84518182 4.46645455,3.60790909 C4.46645455,2.37063636 5.47372727,1.36336364 6.711,1.36336364 L6.711,1.36336364 Z M10.3755455,4.95790909 C10.3755455,3.86972727 11.261,2.98518182 12.3491818,2.98518182 C13.4382727,2.98518182 14.3228182,3.86972727 14.3228182,4.95790909 C14.3228182,5.36063636 14.1973636,5.73063636 13.9882727,6.04154545 L10.3755455,6.04154545 L10.3755455,4.95790909 Z M17.8655455,6.04154545 L15.4928182,6.04154545 C15.6128182,5.70154545 15.6864545,5.33972727 15.6864545,4.95790909 C15.6864545,3.11790909 14.1891818,1.62063636 12.3491818,1.62063636 C11.491,1.62063636 10.7155455,1.95609091 10.1237273,2.49063636 C9.65009091,1.04972727 8.30827273,-0.000272727273 6.711,-0.000272727273 C4.72190909,-0.000272727273 3.10281818,1.61881818 3.10281818,3.60790909 C3.10281818,4.55245455 3.47736364,5.40245455 4.07554545,6.04154545 L1.52281818,6.04154545 C0.682818182,6.04154545 9.09090909e-05,6.72518182 9.09090909e-05,7.56518182 L9.09090909e-05,10.087 C9.09090909e-05,10.927 0.682818182,11.6097273 1.52281818,11.6097273 L1.71009091,11.6097273 L1.71009091,18.6624545 C1.71009091,19.4533636 2.35281818,20.0960909 3.14372727,20.0960909 L16.2446364,20.0960909 C17.0355455,20.0960909 17.6782727,19.4533636 17.6782727,18.6624545 L17.6782727,11.6097273 L17.8655455,11.6097273 C18.7055455,11.6097273 19.3882727,10.927 19.3882727,10.087 L19.3882727,7.56518182 C19.3882727,6.72518182 18.7055455,6.04154545 17.8655455,6.04154545 L17.8655455,6.04154545 Z"
+																		  id="Fill-1"
+																		  fill="#FFFFFF"
+																		  mask="url(#mask-2)"></path>
+																</g>
+															</g>
+														</g>
+													</svg>
+												</a>
+											</span>
+										</div>
+										<div class="nav-element">
+											<span class="notifications">
+												<button class="notifications-menu"
+														aria-haspopup="true"
+														aria-expanded="false"
+														aria-label="Notifications">
+													<span class="icon-button-notification"></span>
+												</button>
+											</span>
+										</div>
+										<div class="nav-element">
+											<div class="account-menu-item">
+												<div class="account-dropdown-button">
+													<a href="/YourAccount"
+													   role="button"
+													   tabindex="0"
+													   aria-haspopup="true"
+													   aria-expanded="false"
+													   aria-label="CHurch - Account &amp; Settings">
+														<span class="profile-link" role="presentation">
+															<img class="profile-icon"
+																 src="https://occ-0-851-853.1.nflxso.net/dnm/api/v6/0RO1pLmU93-gdXvuxd_iYjzPqkc/AAAABd0VJiB-jlZOa4mPM_JZLqrwJamcrjh4ZVC5RcX3P3tEVQ-uJNJ36uHQcaIQvtthwlh1Xj_6lCjDxONOY6wr8ow.png?r=f71"
+																 alt="" />
+														</span>
+													</a><span class="caret" role="presentation"></span>
 
-    <div>
-        <div>
-            <nav class="navbar navbar-expand-lg  navbar-expand-md fixed-top ">
-                <a href="" class="nohove"><img src="https://fontmeme.com/permalink/191220/23c21e73bc5321e9d4cd67900457f4b2.png" class="nav-img mt-3" alt="netflix-font"></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-times icon"></i>
-                </button>
-                <div class="collapse navbar-collapse mt-3 ml-3" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="/htmls/browse.htm" data-toggle="tooltip" data-placement="bottom" title="Home">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="/htmls/tvshows.html" data-toggle="tooltip" data-placement="bottom" title="Tv Shows">Tv Shows</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/htmls/movies.html" data-toggle="tooltip" data-placement="bottom" title="Movies">Movies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/htmls/search.html" data-toggle="tooltip" data-placement="bottom" title="Search movies and web series">Search</a>
-                        </li>
-                        <li class="nav-item dropdown ml-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell " data-toggle="tooltip" data-placement="bottom" title="Notification"></i>
-                            </a>
-                            <div class="dropdown-menu" data-spy="scroll" aria-labelledby="navbarDropdownMenuLink">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Profiles
-                                    </div>
-                                    <div class="card-body">
-                                        <a class="dropdown-item" href="#">
-                                            <img src="../img/profile-pic/1.png" style="max-width: 32px;" alt="..." class="img-thumbnail">
-                                            Mehul
-                                        </a>
-                                    </div>
-                                </div>
-                                <a class="dropdown-item" href="../htmls/profile-manage.html">Switch Profiles</a>
-                                <a class="dropdown-item" href="#">Upcomings Shows</a>
-                                <a class="dropdown-item" href="#">Logout</a>
-
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <div>
-
-            <div id="masters">
-                @RenderBody()
-            </div>
-        </div>
-    </div>
-   
-
-
-
-
-
-
-
-    <!-- Default dropleft button
-    <div class="btn-group dropleft float-right">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropleft
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#m2">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-      </div>
-
-    -->
-
-  
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
-    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://kit.fontawesome.com/f50700485d.js" crossorigin="anonymous"></script>
-    <script>
-  $(document).ready(function () {
-          //adds menu.html content into any "#menu" element
-       //   $('#masters').load('/htmls/masterpage.html');
-          //$(".card-columns").slice(0, 3).show();
-
-          $(window).scroll(function() {
-          // checks if window is scrolled more than 500px, adds/removes solid class
-          if($(this).scrollTop() > 10) { 
-              $('.navbar').addClass('solid');
-          } else {
-              $('.navbar').removeClass('solid');
-          }
-        });
-
-
-
-
-
-      });
-
-
-
-
-
-</script>
-
-    <!-- JQuery for card slider-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="~/js/cardSlider.js"></script>
+	@RenderBody()
+	<div role="contentinfo" class="member-footer">
+		<div class="social-links">
+			<a class="social-link" href="https://www.facebook.com/netflixus" target="_blank" aria-label="facebook">
+				<svg class="svg-icon svg-icon-facebook-logo" focusable="true">
+					<use filter="" xlink:href="#facebook-logo"></use>
+				</svg>
+			</a>
+			<a class="social-link" href="https://www.instagram.com/Netflix" target="_blank" aria-label="instagram">
+				<svg class="svg-icon svg-icon-instagram-logo" focusable="true">
+					<use filter="" xlink:href="#instagram-logo"></use>
+				</svg>
+			</a>
+			<a class="social-link" href="https://twitter.com/netflix" target="_blank" aria-label="twitter">
+				<svg class="svg-icon svg-icon-twitter-logo" focusable="true">
+					<use filter="" xlink:href="#twitter-logo"></use>
+				</svg>
+			</a>
+			<a class="social-link" href="https://www.youtube.com/user/NewOnNetflix" target="_blank" aria-label="youtube">
+				<svg class="svg-icon svg-icon-youtube-logo" focusable="true">
+					<use filter="" xlink:href="#youtube-logo"></use>
+				</svg>
+			</a>
+		</div>
+		<ul class="member-footer-links">
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="/browse/subtitles"><span class="member-footer-link-content">Audio and Subtitles</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="/browse/audio-description"><span class="member-footer-link-content">Audio Description</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="https://help.netflix.com/"><span class="member-footer-link-content">Help Center</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="/redeem"><span class="member-footer-link-content">Gift Cards</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="https://media.netflix.com/"><span class="member-footer-link-content">Media Center</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="http://ir.netflix.com/"><span class="member-footer-link-content">Investor Relations</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="https://jobs.netflix.com/"><span class="member-footer-link-content">Jobs</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="https://help.netflix.com/legal/termsofuse"><span class="member-footer-link-content">Terms of Use</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="https://help.netflix.com/legal/privacy"><span class="member-footer-link-content">Privacy</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="https://help.netflix.com/legal/notices"><span class="member-footer-link-content">Legal Notices</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="/Cookies"><span class="member-footer-link-content">Cookie Preferences</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="https://help.netflix.com/legal/corpinfo"><span class="member-footer-link-content">Corporate Information</span></a></li>
+			<li class="member-footer-link-wrapper"><a class="member-footer-link" href="https://help.netflix.com/contactus"><span class="member-footer-link-content">Contact Us</span></a></li>
+		</ul>
+		<div class="member-footer-service"><button class="service-code">OlaTv</button></div>
+		<div class="member-footer-copyright">
+			<span>
+				© 1997-2020 Netflix, Inc.<!-- -->‎
+			</span>
+			<span class="member-footer-copyright-instance">{i-0c3bc7c90f02565ab}</span>
+		</div>
+	</div>
+	<div class="image-preloaders"><span class="jawbone-images"></span></div>
 </body>
 </html>
